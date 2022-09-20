@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- 검색엔진 최적화를 위해 검색엔진이 사용할 키워드 정의 -->
+    <meta name="keywords" content="PAS, MeongGae Yun, ApproSystem" />
+    <!-- 웹 페이지 설명 정의 -->
+    <meta name="description" content="ApproSystem WebSite Project" />
+    <!-- 웹 페이지 저자 명기 -->
+    <meta name="author" content="MeongGae Yun" />
+    <!-- 웹 페이지 Refresh 초 단위 -->
+    <!-- <meta http-equiv="refresh" content="" /> -->
+    <!-- 언어 설정 -->
+    <meta charset="utf-8" >
+    
+    <title>공지사항 페이지</title>
+    <!-- 부트스트랩4 CSS 연결 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <!-- 부트아이콘 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="../mainCSS.css" >
+    <style>
+      * {
+        margin: 0;
+      }
+      header {
+        background-color: gray;
+        color: white;
+        font-size: 18px;
+        font-weight: bold;
+        padding: 10px;
+      }
+
+      main {
+        display: flex;
+      }
+
+      /* aside CSS */
+      aside {
+        width: 190px;
+        height: auto;
+        background-color: rgb(243, 243, 243);
+        margin: 0;
+      }
+      .asideNavBar {
+        display: flex;
+        flex-direction: column;
+        padding: 10px 10px 0;
+      }
+      a {
+        color: black;
+        text-decoration: none;
+      }
+      small {
+        color: rgb(127, 127, 127);
+        font-size: 12px;
+      }
+      #logoutBtn {
+        width: 120px;
+        height: 26px;
+        font-size: 12px;
+        margin: 40px 35px;
+        border: 1px solid;
+      }
+
+      /* mainContent */
+      section {
+        padding: 20px;
+      }
+      #userCard {
+        padding: 15px;
+      }
+      .font25 {
+        font-size: 25px;
+      }
+      .card-body {
+        width: 120px;
+      }
+
+      /* 색상 */
+      .bg-secondary {
+        background-color: rgb(224, 224, 224);
+        color:rgb(224, 224, 224);
+      }
+
+      /* community */
+      .communitySection2 {
+        padding-top: 50px;
+        padding-bottom: 50px;
+        text-align: center;
+      }
+      .communitySection2 div div:nth-child(1) {
+        font-size: 30px;
+        padding-bottom: 10px;
+      }
+      .communitySection2 div div:nth-child(2) {
+        color: gray;
+        font-size: 14px;
+        padding-bottom: 30px;
+      }
+
+      /* 묻고답하기 */
+      .qna {
+        width: 100%;
+      }
+      .qna table {
+        width: 100%;
+        /* height: 300px; */
+        border-top: 2px solid black;
+      }
+      .qna tr {
+        height: 50px;
+        border-bottom: 1px solid rgb(236, 236, 236);
+        cursor: pointer;
+      }
+      .qna td:nth-child(2) {
+        text-align: left;
+        padding-left: 20px;
+      }
+      .qna table tr:nth-child(1) {
+        background-color: rgb(236, 236, 236);
+      }
+      .qna td {
+        color: #777;
+        font-size: 14px;
+      }
+
+      /* search bar */
+      .search > div {
+        text-align: right;
+      }
+      .search {
+        padding-bottom: 50px;
+      }
+      .search input[type="text"] {
+        height: 25px;
+      }
+      .search input[type="image"] {
+        border: 1px solid black;
+        width: 26px;
+      }
+      .search td {
+        padding-left: 3px;
+      }
+      .search td:nth-child(3) {
+        padding-top: 5px;
+      }
+      .search img {
+        cursor: pointer;
+      }
+
+
+
+    </style>
+  </head>
+  <body>
+    <!-- 공용 헤더 -->
+    <header>
+      <span>PAS</span>
+    </header>
+    <main>
+      <aside>
+
+        <div id="approWriteBox" class="asideNavBar" >
+          <small>문서관리</small>
+          <a href="/appro/approWritePage.html" >문서작성</a>
+          <a href="/appro/approListPage.html" >문서함</a>
+          <hr>
+        </div>
+
+        <div id="memberBox" class="asideNavBar">
+          <small>사내인사</small>
+          <a href="memberListPage" >직원조회</a>
+          <hr>
+        </div>
+
+        <div div="community" class="asideNavBar">
+          <small>커뮤니티</small>
+          <a href="/notice/noticePage.html" >회사공지</a>
+          <a href="/commuity/communityPage.html" >커뮤니티</a>
+        </div>
+        <button type="button" class="" id="logoutBtn" > 로그아웃 </button>    
+      </aside>
+
+      <!-- mainContent -->
+      <section class="d-flex flex-column" style="width:800px;">
+        <article></article>
+        <!-- 묻고답하기 -->
+        <div class="communitySection2 container text-center py-2">
+          <div>
+            <div>공지사항</div>
+          </div>
+
+          <div class="mb-2 d-flex justify-content-end">
+            <input type="button" value="글 작성" onclick="location.href='noticeWritePage.html'"/>
+          </div>
+
+          <div class="qna">
+            <table>
+              <tr>
+                <th>번호</th>
+                <th>제목</th>
+                <th>작성자</th>
+                <th>작성일</th>
+              </tr>
+              <c:forEach var="" items="">
+                <tr>
+                    <td>1</td>
+                    <td>커뮤니티 글 제목</td>
+                    <td>작성자 이름</td>
+                    <td>22.00.00</td>
+                  </tr>
+              </c:forEach>
+            </table>
+          </div>
+        </div>
+
+        <!-- search bar -->
+        <div class="search container">
+          <table>
+            <tr>
+              <td>
+                <select name="내용" id="">
+                  <option value="">제목</option>
+                  <option value="">내용</option>
+                  <option value="">작성자</option>
+                </select>
+              </td>
+              <td>
+                <input type="text">
+              </td>
+              <td>
+                <input type="button" value="검색">
+              </td>
+            </tr>
+          </table>
+        </div>
+      </section>
+    </main>
+    <!-- 부트스트랩4 JS 연결 -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+    
+    <!--  -->
+    
+
+
+  </body>
+</html>
