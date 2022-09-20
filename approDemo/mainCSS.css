@@ -1,0 +1,21 @@
+/* 태그 적용 */
+a {
+  color: black;
+  text-decoration: none;
+}
+small {
+  color: rgb(127, 127, 127);
+  font-size: 12px;
+}
+
+/* 폰트 */
+.font25 {
+  font-size: 25px;
+}
+
+/* 버튼 */
+/* 색상 */
+.bg-secondary {
+  background-color: rgb(224, 224, 224);
+  color:rgb(224, 224, 224);
+}
