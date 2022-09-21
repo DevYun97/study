@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
   <head>
-
     <!-- 검색엔진 최적화를 위해 검색엔진이 사용할 키워드 정의 -->
     <meta name="keywords" content="PAS, MeongGae Yun, ApproSystem" />
     <!-- 웹 페이지 설명 정의 -->
@@ -13,59 +12,76 @@
     <!-- 언어 설정 -->
     <meta charset="utf-8" >
     
-    <title>공용 사이드 바</title>
+    <title>신규 사원 팝업창</title>
     <!-- 부트스트랩4 CSS 연결 -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
     <!-- 부트아이콘 -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
     <link rel="stylesheet" href="../mainCSS.css" >
     <style>
-      * {
-        margin: 0;
-      }
-      header {
-        background-color: gray;
-        color: white;
-        font-size: 18px;
-        font-weight: bold;
-        padding: 10px;
-      }
+
     </style>
   </head>
   <body>
     <!-- 공용 헤더 -->
-    <header>
-      <span>PAS</span>
-    </header>
-    <main>
-      <aside>
-
-        <div id="approWriteBox" class="asideNavBar" >
-          <small>문서관리</small>
-          <a href="/appro/approWritePage.html" >문서작성</a>
-          <a href="/appro/approListPage.html" >문서함</a>
-          <hr>
+    <div class="text-center">
+      <h4>신규 회원 발급</h4>
+      <small>신규 사원 정보를 등록할 수 있습니다.</small>
+    </div>   
+    <main class="d-flex justify-content-between">
+      <form action="" method="post" class="w-75 my-4 text-left">
+        <div>
+          <div>
+            이름 :
+            <input type="text" />
+          </div>
+          <div>
+            부서 :
+            <select name="" id="">
+              <option value=""></option>
+            </select>
+          </div>
+          <div>
+            직급 :
+            <select name="" id="">
+              <option value=""></option>
+            </select>
+          </div>
         </div>
-
-        <div id="memberBox" class="asideNavBar">
-          <small>사내인사</small>
-          <a href="/member/memberListPage.html" >직원조회</a>
-          <hr>
+        <div>
+          <textarea class="w-100 mb-2 TASizsFixed" rows="5" ></textarea>
         </div>
-
-        <div div="community" class="asideNavBar">
-          <small>커뮤니티</small>
-          <a href="/notice/noticePage.html" >회사공지</a>
-          <a href="/community/communityPage.html" >커뮤니티</a>
+        <div>
+          <input type="button" value="반려" />
+          <input type="button" value="결제" />
         </div>
-
-        <button type="button" class="" id="logoutBtn" > 로그아웃 </button>
+      </form>
       
-      </aside>
+      
+
     </main>
     <!-- 부트스트랩4 JS 연결 -->
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
     
+    <!-- testTool 하단 스크립트 추가 후 replace에 이름 넣어주면 text에디터? 사용 가능 -->
+    <script src="https://cdn.ckeditor.com/4.15.1/standard/ckeditor.js"></script>
+  	<script>CKEDITOR.replace('appro_content');</script>
+
+    <!-- child 팝업창 -->
+    <script type="text/javascript">
+
+      function popup_close()
+      {
+        window.opener.name="parent";
+        document.frm.target = "parent";
+        document.frm.method = "post";
+        document.frm.action = "/customer/customer02_4";
+        document.frm.submit();
+        window.close();
+      }
+    
+    </script>
+
   </body>
 </html>
