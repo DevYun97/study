@@ -1,5 +1,9 @@
 * {
-  margin: 0 auto;
+  margin: 0;
+  
+}
+body {
+  height: 100vh;
 }
 header {
   background-color: gray;
@@ -11,6 +15,15 @@ header {
 }
 header span {
   cursor: pointer;
+}
+
+main {
+  margin-top: 50px;
+  height: 100%;
+}
+
+section {
+  padding: 20px;
 }
 
 /* aside CSS */
@@ -47,15 +60,21 @@ small {
 }
 
 /* 폰트 */
+.font30 {
+  font-size: 30px;
+}
 .font25 {
   font-size: 25px;
+}
+.font14 {
+  font-size: 14px;
 }
 .font12 {
   font-size: 12px;
 }
 
-
 /* 버튼 */
+
 /* 색상 */
 .bg-secondary {
   background-color: rgb(224, 224, 224);
@@ -68,4 +87,31 @@ small {
 
 .TASizsFixed {
   resize: none;
+}
+
+
+/* 테이블 리스트 CSS */
+.qna {
+  width: 100%;
+}
+.qna table {
+  width: 100%;
+  /* height: 300px; */
+  border-top: 2px solid black;
+}
+.qna tr {
+  height: 50px;
+  border-bottom: 1px solid rgb(236, 236, 236);
+  cursor: pointer;
+}
+.qna td:nth-child(2) {
+  text-align: left;
+  padding-left: 20px;
+}
+.qna table tr:nth-child(1) {
+  background-color: rgb(236, 236, 236);
+}
+.qna td {
+  color: #777;
+  font-size: 14px;
 }

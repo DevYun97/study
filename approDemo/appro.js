@@ -12,3 +12,51 @@ function popupHideAndShow(target) {
       targetWindow.classList.remove("d-block");
   }
 };
+
+// 메인 페이지 매뉴얼 JS
+function openMamual(evt, cityName) {
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("tabcontent");
+
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+  document.getElementById(cityName).style.display = "block";
+  evt.currentTarget.className += " active";
+};
+
+// class를 이용한 nullPoint Check
+function nullChecking() {
+  const nullCK = document.getElementsByClassName('nullPointer');
+  for(var i=0; nullCK.length; i++) {    
+    if( nullCK[i].value == '' ){
+      alert(nullCK[i].placeholder);
+      return false;
+    } else if (nullCK[i].type == 'checkbox' && nullCK[i].checked == false) {
+      alert(nullCK[i].placeholder);
+      return false;
+    }
+  }
+  return true;
+};
+
+// 비밀번호 정규화 넣기
+function pwChange() {
+
+}
+
+// 이미지 파일만
+function fileCheck(){
+  var ext = $("#file_name").val().split(".").pop().toLowerCase();
+  
+  if($.inArray(ext,["gif","jpg","jpeg","png","bmp"]) == -1) {
+      alert("이미지만 등록 가능합니다.");
+      $("#file_name").val("");
+      return;
+  }
+}

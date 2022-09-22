@@ -17,7 +17,9 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
     <!-- 부트아이콘 -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="../mainCSS.css" >
+    <!-- myCSS -->
+    <link rel="stylesheet" href="/mainCSS.css" >
+    <link rel="stylesheet" href="/testCSS.css" >
     <style>
       * {
         margin: 0;
@@ -49,7 +51,7 @@
   </head>
   <body>
     <!-- 공용 헤더 -->
-    <header>
+    <header class="fixed-top">
       <span>PAS</span>
     </header>
     <main>
@@ -64,7 +66,7 @@
 
         <div id="memberBox" class="asideNavBar">
           <small>사내인사</small>
-          <a href="memberListPage" >직원조회</a>
+          <a href="/member/memberListPage.html" >직원조회</a>
           <hr>
         </div>
 
@@ -82,7 +84,7 @@
         <article id="userCard" class="d-flex border" style="max-width: 800px; min-width: 400px;" >
           <div id="userInfo" class="py-3 px-4 border-right">
             <div class="text-right">
-              <small class="border rounded p-1 bg-secondary text-white "> 정보수정 </small>
+              <small class="border rounded p-1 bg-secondary text-white " onclick="popupHideAndShow(target ='myCard');"> 정보수정 </small>
             </div>
             <div class="font25 text-center my-2">
               <span>홍길동</span><span> ( 사원 )</span>              
@@ -120,9 +122,14 @@
 
         <article class="d-flex justify-content-between" style="max-width: 800px;">
           <div class="border mt-3 p-2" style="width: 570px; min-width: 400px;">
-            <div class="d-flex justify-content-between">
-              <span>공지사항</span>
-              <span class="text-right pointer" onclick="location.href='/notice/noticePage.html'">more</span>
+            <div class="d-flex justify-content-between align-items-center">
+              <span>
+                <i class="bi bi-megaphone"></i>
+                공지사항
+              </span>
+              <span class="text-right pointer pl-2 my-2" onclick="location.href='/notice/noticePage.html'">
+                more <i class="bi bi-chevron-right " ></i>
+              </span>
             </div>
             <hr>
             <div class="w-100 d-flex justify-content-between align-items-center mt-2 pb-3">
@@ -140,8 +147,11 @@
           </div>
   
           <div class="border mt-3 p-2" style="width: 220px;">
-            <div class="d-flex justify-content-between">
-              <span>문서</span>
+            <div class="d-flex justify-content-between pl-2 my-2">
+              <span>
+                <i class="bi bi-clipboard-check"></i>
+                문서
+              </span>
             </div>
             <hr>
             <div class="w-100 d-flex justify-content-between align-items-center mt-2 pb-3">
@@ -155,11 +165,16 @@
           </div>
         </article>
 
-        <article class="d-flex justify-content-between" style="max-width: 800px;">
+        <article class="d-flex justify-content-between " style="max-width: 800px;">
           <div class="border mt-3 p-2" style="width: 570px; min-width: 400px;">
-            <div class="d-flex justify-content-between">
-              <span>커뮤니티</span>
-              <span class="text-right pointer" onclick="location.href='/community/communityPage.html'">more</span>
+            <div class="d-flex justify-content-between align-items-center">
+              <span>
+                <i class="bi bi-chat-square-dots"></i>
+                커뮤니티
+              </span>
+              <span class="text-right pointer pl-2 my-2" onclick="location.href='/community/communityPage.html'">
+                more <i class="bi bi-chevron-right " ></i>
+              </span>
             </div>
             <hr>
             <div class="w-100 d-flex justify-content-between align-items-center mt-2 pb-3">
@@ -180,15 +195,117 @@
     </main>
 
     <!-- 팝업창_ 팝업창 좌표는 화면 정가운데 고정시킴 -->
+    <!-- 회원카드 -->
+    <div class=" container-sm container-fluid position-absolute d-none flex-column bg-white border border-dark-50 rounded p-2 "style="top:50%; left: 50%; transform:translate(-50%, -50%); width: 550px;" id="myCard">
+      <div class="w-100 d-flex flex-row justify-content-end">
+        <i class="bi bi-x-lg" width="30px" height="30px" onclick="popupHideAndShow(target = 'myCard');"></i>
+      </div>
+      <form action="" method="post" class="w-100 d-flex flex-row justify-content-around mt-4 mb-3 needs-validation" onsubmit="return nullChecking();" enctype="multipart/form-data" accept-charset="UTF-8" >     
+        <div class="form-row mx-1">
+          <div class="border" style="width:100px; height: 100px;">
+            <img src="" class="" name="" id="" />
+          </div>
+          <div>
+            <label for="file_name" class="border rounded my-2 text-center" style="width: 100px; color: white; background-color: rgb(175, 175, 175);">이미지 등록</label>
+            <input type="file" class="d-none" name="" id="file_name" accept=".gif, .png, .jpg, .jpeg, bmp" onchange="fileCheck()" >
+          </div>
+        </div>
+        <!--  -->
+        <div>
+          <div class="form-row">
+            <div class="col-6 mb-2">
+              <label for="member_id">사원 아이디</label>
+              <input type="text" class="form-control-plaintext" id="member_id" name="member_id" value="Mark" readonly />
+            </div>
+            <div class="col-3 mb-2">
+              <label for="">부서</label>
+              <input type="text" class="form-control-plaintext" id="" readonly />         
+            </div>
+            <div class="col-3 mb-1">
+              <label for="">직급</label>
+              <input type="text" class="form-control-plaintext" id="" readonly />         
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="col-6 mb-2">
+              <label for="member_pw">비밀번호</label>
+              <input type="text" class="form-control nullPointer" id="member_pw" name="member_pw" required onchange="pwChange();">
+            </div>
+            <div class="col-6 mb-2">
+              <label for="member_id">사원 이름</label>
+              <input type="text" class="form-control nullPointer" id="member_id" name="member_id" required>
+            </div>
+          </div>
+        </div>
+       </form>
+       <div class="w-100 d-flex justify-content-center mb-2">
+        <button class=" col-6 btn btn-primary" type="submit" onclick="">수정</button>
+       </div>
+       
+    </div>
     <!-- 팝업창 - 클래스에 기본값으로 포지션 속성 등 부여 | d-none : 화면에서 숨기기 / 배경화면 흰색 / 테두리, 테두리 색 회색, 테두리 둥굴게 -->
-    <div class="container-sm container-fluid position-absolute d-none flex-column justify-content-center bg-white border border-dark-50 rounded" style="top:50%; left: 50%; transform:translate(-50%, -50%); width:800px;" id="aaaa">
+    <!--  -->
+    
+    <div class="container-sm container-fluid position-absolute d-none flex-column justify-content-center bg-white border border-dark-50 rounded px-0 " style="top:50%; left: 50%; transform:translate(-50%, -50%); width:800px;" id="aaaa">
       <!-- 캔슬 아이콘 -->
-      <div class="w-100 d-flex flex-row justify-content-end my-2">
+      <div class="w-100 d-flex flex-row justify-content-end my-2 pr-2">
         <i class="bi bi-x-lg" width="30px" height="30px" onclick="popupHideAndShow(target = 'aaaa');"></i>
       </div>
       <!-- MainDiv -->
       <div class="w-100 d-flex flex-column justify-content-center align-items-center">
-        <h4 class="">사용자 메뉴얼</h4>
+        <h4 class="">사용자 매뉴얼</h4>
+        <!--  -->
+        <div class="w-100">
+          <div class="tab">
+            <button class="tablinks" onclick="openMamual(event, 'London')">직급과 직급에 따른 권한</button>
+            <button class="tablinks" onclick="openMamual(event, 'Paris')">문서 작성과 결제</button>
+            <button class="tablinks" onclick="openMamual(event, 'Tokyo')">직원 리스트 조회</button>
+            <button class="tablinks" onclick="openMamual(event, 'test1')">회사공지</button>
+            <button class="tablinks" onclick="openMamual(event, 'test2')">커뮤니티</button>
+          </div>
+          
+          <div id="London" class="tabcontent" style="display: none;">
+            <h5>직급과 직급에 따른 권한</h5>
+            <p>
+              London is the capital city of England.
+            </p>
+          </div>
+          
+          <div id="Paris" class="tabcontent" style="display: none;">
+            <h5>문서 작성과 결제</h5>
+            <p>
+              Paris is the capital of France.
+            </p>
+          </div>
+          
+          <div id="Tokyo" class="tabcontent" style="display: none;">
+            <h5>인사관리</h5>
+            <p>
+              전체 직원의 리스트를 조회할 수 있습니다. <br>
+              해당 페이지에서 신규 회원 아이디를 발급 할 수 있으며, 회원 정보의 수정이 가능합니다.
+            </p>
+          </div>
+
+          <div id="test1" class="tabcontent" style="display: none;">
+            <h5>회사공지</h5>
+            <p>
+              사내 공지사항 페이지입니다. <br>
+              공지사항 작성은 일부 권한 있는 직급이 작성하실 수 있습니다.<br>
+              권한 : 사장 / 책임 / 팀장
+            </p>
+          </div>
+
+          <div id="test2" class="tabcontent" style="display: none;">
+            <h5>커뮤니티</h5>
+            <p>
+              사내 커뮤니티 공간입니다. <br>
+              작성자의 익명성이 보장되는 공간으로 자유롭게 의견을 주고받을 수 있습니다. <br>
+              글 수정은 글 작성자만 가능하며, 글 삭제는 작성자와 system 아이디로만 삭제하실 수 있습니다.<br>
+              이용자 : 모든 직급
+            </p>
+          </div>
+
+        </div>
         
       </div>
     </div>
@@ -202,6 +319,7 @@
       <div class="w-100 d-flex flex-column justify-content-center align-items-center">
         <h4>프로젝트 소개</h4>
         <div class="pl-2 pt-2 pb-4 w-100 text-left">
+          <hr>
           <p>
             프로젝트 PAS <small>(ProjectApproSystem)</small>
           </p>
