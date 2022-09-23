@@ -47,7 +47,15 @@ function nullChecking() {
 
 // 비밀번호 정규화 넣기
 function pwChange() {
-
+  //alert('c');
+  const pwChack = /^[a-zA-Z0-9]*$/;
+  const pw = document.getElementById('member_pw');
+  if( !pwChack.test(pw.value) ) {
+      alert("비밀번호는 영어와 숫자로만 입력 가능합니다.");
+      pw.value = null;
+      pw.focus();
+      return false;
+  }
 }
 
 // 이미지 파일만
