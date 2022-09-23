@@ -18,28 +18,14 @@
     <!-- 부트아이콘 -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
     <link rel="stylesheet" href="../mainCSS.css" >
+    <link rel="stylesheet" href="../testCSS.css" >
     <style>
       * {
         margin: 0;
       }
-      header {
-        background-color: gray;
-        color: white;
-        font-size: 18px;
-        font-weight: bold;
-        padding: 10px;
-      }
-
+ 
       main {
         display: flex;
-      }
-
-      /* mainContent */
-      section {
-        padding: 20px;
-      }
-      #userCard {
-        padding: 15px;
       }
       
       .card-body {
@@ -59,32 +45,6 @@
         color: gray;
         font-size: 14px;
         padding-bottom: 30px;
-      }
-
-      /* 묻고답하기 */
-      .qna {
-        width: 100%;
-      }
-      .qna table {
-        width: 100%;
-        /* height: 300px; */
-        border-top: 2px solid black;
-      }
-      .qna tr {
-        height: 50px;
-        border-bottom: 1px solid rgb(236, 236, 236);
-        cursor: pointer;
-      }
-      .qna td:nth-child(2) {
-        text-align: left;
-        padding-left: 20px;
-      }
-      .qna table tr:nth-child(1) {
-        background-color: rgb(236, 236, 236);
-      }
-      .qna td {
-        color: #777;
-        font-size: 14px;
       }
 
       /* search bar */
@@ -110,8 +70,6 @@
       .search img {
         cursor: pointer;
       }
-
-
 
     </style>
   </head>
@@ -166,7 +124,7 @@
                 <th>작성일</th>
               </tr>
               <c:forEach var="" items="">
-                <tr>
+                <tr onclick="location.href='noticeDetailPage.html'">
                     <td>1</td>
                     <td>커뮤니티 글 제목</td>
                     <td>작성자 이름</td>

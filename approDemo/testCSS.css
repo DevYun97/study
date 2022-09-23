@@ -42,3 +42,30 @@
   border-left: none;
   height: 300px;
 }
+
+
+/* 테이블 리스트 CSS */
+.qna {
+  width: 100%;
+}
+.qna table {
+  width: 100%;
+  /* height: 300px; */
+  border-top: 2px solid black;
+}
+.qna tr {
+  height: 50px;
+  border-bottom: 1px solid rgb(236, 236, 236);
+  cursor: pointer;
+}
+.qna td:nth-child(2) {
+  text-align: left;
+  padding-left: 20px;
+}
+.qna table tr:nth-child(1) {
+  background-color: rgb(236, 236, 236);
+}
+.qna td {
+  color: #777;
+  font-size: 14px;
+}
