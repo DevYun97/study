@@ -6,53 +6,49 @@
 <head>
 <meta charset="UTF-8">
 <title>login 페이지</title>
-<script>
-	
-	function nullChk(){
-		
-		var id = $("#memId").val();
-		var pw = $("#memPw").val()
-		
-		if( !id) {
-			alert("아이디를 입력해주세요.");
-			return false;
-			}
-		else if( !pw ) {
-			alert("비밀번호를 입력해주세요.");
-			return false;
-			}
-		return true;
-		}
- 
- 
-	var loginChk = '${loginMsg}'; /* controller 에서 어트리뷰트 한 거 꼭 싱글쿼터? ''해야 값을 받을 수 있음.  */
-	if(loginChk != null){
-		if(loginChk == 'idFail') {
-			alert("아이디를 확인하세요");
-			//$("#memId").focus();
-			}
-		if(loginChk == 'pwFail') {
-			alert("비밀번호를 확인하세요");
-			//$("#memPw").focus();
-			}
-		}
-	
-</script>
+<!-- 부트스트랩4 CSS 연결 -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+<!-- 부트아이콘 -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+<!-- myCSS -->
+<link rel="stylesheet" href="../css/mainCss.css" >
 </head>
 <body>
  
-	<c:if test="${ empty memName }" >
-	로그인하지 않은 상태입니다.
-	</c:if>
-	<c:if test="${ not empty memName }" >
-	${ memName }
-	</c:if>
- 
-	<h1>로그인 화면</h1>
-	<form action="loginAction" method="post" onsubmit="return nullChk();" >
-		아이디 : <input type="text" id="memId" name="memId" /> <br>
-		비밀번호 : <input type="password" id="memPw" name="memPw" /> <br>
-		<input type="submit" value="로그인" />
-	</form>
-</body>
+ 	<!-- 헤더 -->
+	<c:import url="header.jsp"></c:import>
+	
+	<!-- main -->
+    <main class="d-flex flex-column justify-content-center align-items-center mt-0">
+      <div class="text-center mb-4">
+        <h2>사내 결제 시스템</h2>
+        <small>ProjectApproSystem</small>
+      </div>
+      <div style="width: 500px;">
+        <form action="loginAciton" method="post" onsubmit="return nullChecking()">
+          <div class="form-group row">
+            <label for="member_id" class="col-sm-2 col-form-label">아이디</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control nullPointer" id="member_id" name="member_id">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="member_pw" class="col-sm-2 col-form-label ">비밀번호</label>
+            <div class="col-sm-10">
+              <input type="password" class="form-control nullPointer" id="member_pw" name="member_pw">
+            </div>
+          </div>
+          <div class="text-right">
+            <input type="submit" value="로그인" />
+          </div>          
+        </form>      
+      </div>
+    </main>
+    
+    <!-- 부트스트랩4 JS 연결 -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+    <!-- JS -->
+    <script src="/JS/main.js"></script>
+  </body>
 </html>

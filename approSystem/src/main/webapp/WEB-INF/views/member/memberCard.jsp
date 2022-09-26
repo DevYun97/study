@@ -1,26 +1,18 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-  <head>
-    <!-- 검색엔진 최적화를 위해 검색엔진이 사용할 키워드 정의 -->
-    <meta name="keywords" content="PAS, MeongGae Yun, ApproSystem" />
-    <!-- 웹 페이지 설명 정의 -->
-    <meta name="description" content="ApproSystem WebSite Project" />
-    <!-- 웹 페이지 저자 명기 -->
-    <meta name="author" content="MeongGae Yun" />
-    <!-- 웹 페이지 Refresh 초 단위 -->
-    <!-- <meta http-equiv="refresh" content="" /> -->
-    <!-- 언어 설정 -->
-    <meta charset="utf-8" >
-    
-    <title>사원 정보 카드</title>
-    <!-- 부트스트랩4 CSS 연결 -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
-    <!-- 부트아이콘 -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="../mainCSS.css" >
-  </head>
-  <body>
-    <!-- 공용 헤더 -->
+<head>
+<meta charset="UTF-8">
+<title> 사원 카드 </title>
+<!-- 부트스트랩4 CSS 연결 -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+<!-- 부트아이콘 -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+<link rel="stylesheet" href="../mainCSS.css" >
+</head>
+<body>
+	<!-- 공용 헤더 -->
     <div class="text-center mt-3">
       <h4>사원 정보 카드</h4>
       <small>사원 정보를 상세보기 / 수정할 수 있는 카드입니다.</small>
@@ -74,8 +66,6 @@
         </div>
       </form>
       
-      
-
     </main>
     <!-- 부트스트랩4 JS 연결 -->
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
@@ -100,5 +90,5 @@
     
     </script>
 
-  </body>
+</body>
 </html>
