@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="com.project.appro.dao.IcommunityReplyDAO">
+	
+	<!-- 댓글 개수 조회 -->
+	<select id="ReplyCount" resultType="String">
+		SELECT 
+			COUNT(*) 
+		FROM PAS_COMMUNITY_REPLY 
+		WHERE commu_no = #{param1} 
+	</select>
+	
+	<!-- 댓글불러오기 -->
+	<select id="replyList" resultType="com.project.appro.dto.CommunityReply">
+		SELECT * FROM PAS_COMMUNITY_REPLY 
+		WHERE commu_no = #{ param1 } 
+		ORDER BY reply_date ASC
+	</select>
+	
+	<!-- 댓글 작성 -->
+	<insert id="ReplyWrite">
+		 INSERT INTO PAS_COMMUNITY_REPLY
+		  	(
+			  	commu_no,
+			 	reply_id,
+			 	reply_name,
+			 	reply_content,
+			 	reply_date
+			)
+		VALUES 
+			(
+				#{ param1 },
+				#{ param2 },
+				#{ param3 },
+				#{ param4 },
+				sysdate
+			)
+	</insert>
+</mapper>

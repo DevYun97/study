@@ -23,7 +23,8 @@
       <c:import url="../navBar.jsp"></c:import>
       
       <section class="w-100 d-flex flex-column align-items-center" >
-        <form method="post" action="" style="width:900px;" onsubmit="return ">
+        <form method="post" action="communityWriteAction" style="width:900px;" onsubmit="return nullChecking()">
+          <input type="hidden" id="commu_id" name="commu_id" value="${ id }" />
           <div class="communitySection2 container text-center">
             <div class="mb-5">
               <h2>커뮤니티</h2>
@@ -34,12 +35,14 @@
                 <tr>
                   <th>제목</th>
                   <td>
-                    <input type="text" name="commu_title" id="commu_title" class="w-75" required />
+                    <input type="text" name="commu_title" id="commu_title" class="w-75 nullPointer" required />
                   </td>
                 </tr>
                 <tr>
                   <th>작성자</th>
-                  <td><input type="text" name="commu_name" id="commun_name" class="w-75 bg-white" disabled />
+                  <td>
+                  	<input type="text" class="w-75 bg-white" value="${ name }" disabled />
+                  	<input type="hidden" name="commu_name" id="commun_name" value="${ name }"  />
                   </td>
                 </tr>
               </table>              

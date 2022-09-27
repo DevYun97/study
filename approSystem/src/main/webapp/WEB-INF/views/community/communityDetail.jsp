@@ -37,7 +37,7 @@
               <table>
                 <tr>
                   <th>제목</th>
-                  <td colspan="3">글 제목</td>
+                  <td colspan="3">${ community.commu_title }</td>
                 </tr>
                 <tr>
                   <th>작성자</th>
@@ -45,18 +45,17 @@
                 </tr>
                 <tr>
                   <th>작성일</th>
-                  <td>2022.00.00</td>
+                  <td>${ community.commu_date }</td>
                   <th>조회수</th>
-                  <td>0</td>
+                  <td>${ community.commu_hit }</td>
                 </tr>
               </table>              
             </div>
           </div>
           <div class="container content_textarea pb-2">
-            <div>
-              <textarea id="commu_content" name="commu_content" class="w-100 TASizsFixed bg-white" value="" style="min-height: 100px;" disabled >
-              </textarea>
-            </div>
+            <div class="w-100 TASizsFixed bg-white border-bottom px-1 py-2" style="min-height: 100px;">
+            	${ community.commu_content }
+          	</div>
             <!-- 버튼칸 -->
             <div class="text-left mt-2 pb-2">
               <input type="button" class="" onclick="location.href='/community/communityList'" value="목록">
@@ -66,23 +65,29 @@
           
           <div class="mb-3" style="width: 900px; padding: 0 15px">
             
-            <p>댓글 : 0개</p>
+            <p>댓글 :  </p>
             <div class="border p-3 text-right">
-              <form action="" method="post">
+              <form action="replyWriteAction" method="post">
+                <input type="hidden" name="commu_no" value="${ community.commu_no }" />
+                <input type="hidden" name="reply_id" value="${ id }" />
+                <input type="hidden" name="reply_name" value="${ name }" />
                 <div class="w-100 text-left mb-1">댓글 작성</div>
-                <textarea name="" id="" class="w-100 border TASizsFixed bg-white" rows="2" ></textarea>
-                <input type="button" value="댓글 쓰기" />
+                <textarea name="reply_content" id="" class="w-100 border TASizsFixed bg-white" rows="2" ></textarea>
+                <input type="submit" value="댓글 쓰기" />
               </form>             
             </div>   
             
-            <div class="my-4 pb-3 border-bottom">
+            <c:forEach var="reply" items="${ reply }" varStatus="re">
+            <div class="my-4 pb-3 border-bottom">           
               <div>
-                <span class="font-weight-bold mr-2">익명1 </span><small> 날짜</small>
+                <span class="font-weight-bold mr-2">익명${ re.count } </span><small> ${ reply.reply_date }</small>
               </div>
               <div>
-                글 내용
-              </div>
+                ${ reply.reply_content }
+              </div>           
             </div>
+            </c:forEach>  
+            
             <div class="my-4 pb-3 border-bottom">
               <div>
                 <span class="font-weight-bold mr-2">익명2</span><small> 날짜</small>

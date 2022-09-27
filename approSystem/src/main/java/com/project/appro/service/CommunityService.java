@@ -4,12 +4,45 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.project.appro.dao.IcommunityDAO;
+import com.project.appro.dao.IcommunityReplyDAO;
 
 @Service
 public class CommunityService {
 
 	@Autowired
 	IcommunityDAO comDao;
+	
+	@Autowired
+	IcommunityReplyDAO replyDao;
+	
+	public String comWrite(String commu_id, String commu_title, String commu_name, String commu_content) {
+		
+		String result = "";
+		
+		int community = comDao.comWrite(commu_id, commu_title, commu_name, commu_content);		
+		if( community == 0 ) {
+			result = "<script>history.back()-1;</script>";
+		} else {
+			result = "<script>location.href='communityList';</script>";
+		}
+		
+		return result;
+	}	
+	
+	//replyWrite
+	public String replyWrite(String commu_no, String reply_id, String reply_name, String reply_content) {
+		
+		String result = "";
+		
+		int reply = replyDao.ReplyWrite(commu_no, reply_id, reply_name, reply_content);
+		if( reply == 0 ) {
+			result = "<script>history.back()-1;</script>";
+		} else {
+			result = "<script>location.href='communityList';</script>";
+		}
+		return result;
+	}
+	
 	
 	//noticeWrite
 	public String noticeWrite(String notice_id, String notice_title, String notice_name, String notice_content) {
@@ -38,6 +71,6 @@ public class CommunityService {
 		}
 		
 		return result;
-	}	
+	}
 
 }

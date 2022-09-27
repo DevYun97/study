@@ -43,14 +43,16 @@
 	                <th>댓글 / 조회수</th>
 	                <th>작성일</th>
               	</tr>
+              	<c:forEach var="community" items="${ community }" varStatus="status" >		 
               	<tr>
-                    <td>1</td>
-                    <td onclick="location.href='/community/communityDetail'">커뮤니티 글 제목</td>
+                    <td>${ status.count }</td>
+                    <td onclick="location.href='/community/communityDetail?commu_no=${community.commu_no}'">${community.commu_title}</td>
                     <td>
-                      댓글: 00 | 조회수: 00
+                      댓글: 00 | 조회수: ${community.commu_hit}
                     </td>
-                    <td>22.00.00</td>
-            	</tr>             
+                    <td>${community.commu_date}</td>
+            	</tr>  
+            	</c:forEach>           
           	</table>
           </div>
         </div>
