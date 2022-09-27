@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.project.appro.dao.ImemberDAO;
 
 @Controller
-public class mainController {
+public class MainController {
 
 	@Autowired
 	ImemberDAO memberDao;
