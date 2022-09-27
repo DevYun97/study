@@ -23,22 +23,22 @@
         <div class="form-group row">
           <div class="col-6 mb-3">
             <label for="member_name">이름</label>
-            <input type="text" class="form-control bg-white" id="member_name" value="${ member.member_name }" disabled required />
+            <input type="text" class="form-control bg-white" id="member_name" value="" disabled required>
           </div>
           <div class="col-3 mb-3">
             <label for="member_name">가입일</label>
-            <input type="text" class="form-control bg-white" id="member_join" value="${ member.member_join }" disabled required />
+            <input type="text" class="form-control bg-white" id="member_join" value="" disabled required>
           </div>
           <div class="col-3 mb-3">
             <label for="member_name">성별</label>
-            <input type="text" class="form-control bg-white" id="member_gender" value="${ member.member_gender }" disabled required />
+            <input type="text" class="form-control bg-white" id="member_gender" value="" disabled required>
           </div>
           </div>
         </div>  
         <div class="form-group row">
           <div class="col-6 mb-3">
             <label for="">부서</label>
-            <select class="custom-select" id="member_dep" name="member_dep" required>
+            <select class="custom-select" id="" required>
               <option selected disabled value="">Choose...</option>
               <option value="">개발팀</option>
             </select>
@@ -48,7 +48,7 @@
           </div>
           <div class="col-6 mb-3">
             <label for="">직급</label>
-            <select class="custom-select" id="member_position" name="member_position" required>
+            <select class="custom-select" id="" required>
               <option selected disabled value="">Choose...</option>
               <option vlaue="">책임</option>
               <option value="">팀장</option>

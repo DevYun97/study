@@ -3,7 +3,7 @@ package com.project.appro.dto;
 import lombok.Data;
 
 @Data
-public class Member {
+public class MemberDTO {
 	
 	private String member_id;
 	private String member_pw;
@@ -14,7 +14,7 @@ public class Member {
 	private String member_join;
 	
 	
-	public Member(String member_id, String member_pw, String member_name, String member_gender, String member_dep,
+	public MemberDTO(String member_id, String member_pw, String member_name, String member_gender, String member_dep,
 			String member_position, String member_join) {
 		super();
 		this.member_id = member_id;
