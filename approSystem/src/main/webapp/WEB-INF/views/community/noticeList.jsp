@@ -43,12 +43,14 @@
                 <th>작성자</th>
                 <th>작성일</th>
               </tr>
-              <tr onclick="location.href='/community/noticeDetail'">
-                <td>1</td>
-                <td>커뮤니티 글 제목</td>
-                <td>작성자 이름</td>
-              	<td>22.00.00</td>
-              </tr>             
+              <c:forEach var="notice" items="${ notice }" varStatus="status" >		                
+              <tr onclick="location.href='/community/noticeDetail?notice_no=${notice.notice_no}'">
+                <td>${ status.count }</td>              
+                <td>${ notice.notice_title }</td>
+                <td>${ notice.notice_name }</td>
+              	<td>${ notice.notice_date }</td>
+              </tr>     
+              </c:forEach>        
             </table>
           </div>
         </div>

@@ -29,13 +29,13 @@
           <div class="form-group row">
             <label for="member_id" class="col-sm-2 col-form-label">아이디</label>
             <div class="col-sm-10">
-              <input type="text" class="form-control nullPointer" id="member_id" name="member_id">
+              <input type="text" class="form-control nullPointer" id="member_id" name="member_id" placeholder="아이디를 입력해주세요" />
             </div>
           </div>
           <div class="form-group row">
             <label for="member_pw" class="col-sm-2 col-form-label ">비밀번호</label>
             <div class="col-sm-10">
-              <input type="password" class="form-control nullPointer" id="member_pw" name="member_pw">
+              <input type="password" class="form-control nullPointer" id="member_pw" name="member_pw" placeholder="비밀번호를 입력해주세요" />
             </div>
           </div>
           <div class="text-right">

@@ -20,5 +20,5 @@
           <a href="/community/noticeList" >회사공지</a>
           <a href="/community/communityList" >커뮤니티</a>
         </div>
-        <button type="button" class="" id="logoutBtn" > 로그아웃 </button>    
+        <button type="button" class="" id="logoutBtn" onclick="location.href='../logoutAciton'"> 로그아웃 </button>    
 	</aside>

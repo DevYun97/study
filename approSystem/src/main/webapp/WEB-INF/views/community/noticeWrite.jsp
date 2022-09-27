@@ -20,46 +20,49 @@
 	<c:import url="../header.jsp"></c:import>
 	
 	<main>
-      <c:import url="../navBar.jsp"></c:import>
+		<!--  -->
+      	<c:import url="../navBar.jsp"></c:import>
       
-      <section class="w-100 d-flex flex-column align-items-center" >
-        <form method="post" action="" style="width:900px;" onsubmit="return ">
-          <div class="communitySection2 container text-center">
-            <div class="mb-5">
-              <h2>공지사항</h2>
-              <small>사내 공지사항을 등록해주세요</small>
-            </div>
-            <div class="main">
-              <table>
-                <tr>
-                  <th>제목</th>
-                  <td>
-                    <input type="text" name="notice_title" id="notice_title" class="w-75" required />
-                  </td>
-                </tr>
-                <tr>
-                  <th>작성자</th>
-                  <td><input type="text" name="notice_name" id="notice_name" class="w-75 bg-white" disabled />
-                  </td>
-                </tr>
-              </table>              
-            </div>
-          </div>
-          <div class="container content_textarea">
-            <div>
-              <textarea id="notice_content" name="notice_content">
-              </textarea>
-            </div>
-          </div>
-
-          <!-- 등록 버튼칸 -->
-          <div class="text-center">
-            <input type="submit" class="" value="등록">
-            <input type="button" class="" onclick="location.href='/community/noticeList'" value="취소">
-          </div>      
-      	</form>
-      
-      </section>
+      	<section class="w-100 d-flex flex-column align-items-center" >
+	        <form method="post" action="noticeWriteAction" style="width:900px;" onsubmit="return nullChecking()">
+	          <input type="hidden" name="notice_id" value="${ id }" />
+	          <div class="communitySection2 container text-center">
+	            <div class="mb-5">
+	              <h2>공지사항</h2>
+	              <small>사내 공지사항을 등록해주세요</small>
+	            </div>
+	            <div class="main">
+	              <table>
+	                <tr>
+	                  <th>제목</th>
+	                  <td>
+	                    <input type="text" name="notice_title" id="notice_title" class="w-75 nullPointer" required />
+	                  </td>
+	                </tr>
+	                <tr>
+	                  <th>작성자</th>
+	                  <td>
+	                  	<input type="text" class="w-75 bg-white" value="${ name }" disabled />
+	                  	<input type="hidden" name="notice_name" id="notice_name" value="${ name }" />
+	                  </td>
+	                </tr>
+	              </table>        
+	            </div>
+	          </div>
+	          <div class="container content_textarea">
+	            <div>
+	              <textarea id="notice_content" name="notice_content" ></textarea>
+	              
+	            </div>
+	          </div>
+	
+	          <!-- 등록 버튼칸 -->
+	          <div class="text-center">
+	            <input type="submit" class="" value="등록">
+	            <input type="button" class="" onclick="location.href='/community/noticeList'" value="취소">
+	          </div>      
+	      	</form>      
+    	</section>
       
     </main>
 	<!-- 부트스트랩4 JS 연결 -->

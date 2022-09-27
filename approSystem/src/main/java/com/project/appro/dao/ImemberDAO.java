@@ -10,7 +10,12 @@ import com.project.appro.dto.MemberDTO;
 public interface ImemberDAO {
 
 	public String getMemId(String member_id);
-
+	
+	public String getMemPw(String member_id);
+	
+	public String getMemName(String member_id);
+	
 	public ArrayList<MemberDTO> getMemList();
+	
 	
 }

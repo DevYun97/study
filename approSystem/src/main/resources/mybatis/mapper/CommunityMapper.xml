@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="com.project.appro.dao.IcommunityDAO">
+		
+	<select id="notice" resultType="com.project.appro.dto.Notice">
+		SELECT * FROM PAS_NOTICE ORDER BY notice_date desc
+	</select>
+	
+	<insert id="noticeWrite">
+		INSERT INTO PAS_NOTICE ( notice_no, notice_id, notice_title, notice_name, notice_content, notice_date )
+		VALUES ( 'noticeNum_' || PAS_NOTICE_SEQ.nextval, #{ param1 }, #{ param2 }, #{ param3 }, #{ param4 }, sysdate )
+	</insert>
+	
+	<select id="getNoticeDetail" resultType="com.project.appro.dto.Notice">
+		SELECT * FROM PAS_NOTICE WHERE notice_no = #{ param1 }
+	</select>
+	
+	<!-- 공지사항 조회수 -->
+	<update id="noticehit">
+		UPDATE
+			PAS_NOTICE
+		SET notice_hit = notice_hit + 1
+		WHERE notice_no = #{ param1 }
+	</update>
+	
+	<delete id="noticeDelete">
+		DELETE FROM PAS_NOTICE WHERE notice_no = #{param1}
+	</delete>
+	
+</mapper>

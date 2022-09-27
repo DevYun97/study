@@ -33,31 +33,32 @@
               <table>
                 <tr>
                   <th>제목</th>
-                  <td colspan="3">공지사항 제목</td>
+                  <td colspan="3"> ${ notice.notice_title } </td>
                 </tr>
                 <tr>
                   <th>작성자</th>
-                  <td colspan="3">작성자 이름 (개발팀/팀장)</td>
+                  <td colspan="3"> ${ notice.notice_name }</td>
                 </tr>
                 <tr>
                   <th>작성일</th>
-                  <td>2022.00.00</td>
+                  <td> ${ notice.notice_date } </td>
                   <th>조회수</th>
-                  <td>0</td>
+                  <td> ${ notice.notice_hit } </td>
                 </tr>
               </table>              
             </div>
           </div>
           <div class="container content_textarea">
-            <div>
-              <textarea id="notice_content" name="notice_content" class="w-100 TASizsFixed bg-white" value="" style="min-height: 100px;" disabled >
-              </textarea>
-            </div>
+            <div class="w-100 TASizsFixed bg-white border-bottom px-1 py-2" style="min-height: 100px;">
+            	${ notice.notice_content }
+          	</div>
           </div>
 
           <!-- 등록 버튼칸 -->
           <div class="text-center">
-            <input type="button" class="" value="삭제">
+          	<c:if test="${ notice.notice_id == id }">
+            <input type="button" class="" value="삭제" onclick="location.href='/community/noticeDeleteAction?notice_no=${ notice.notice_no }'" />
+            </c:if>
             <input type="button" class="" onclick="location.href='/community/noticeList'" value="목록">
           </div>      
         </div>

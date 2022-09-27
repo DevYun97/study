@@ -42,10 +42,10 @@
               <small class="border rounded p-1 bg-secondary text-white " onclick="popupHideAndShow(target ='myCard');"> 정보수정 </small>
             </div>
             <div class="font25 text-center my-2">
-              <span>홍길동</span><span> ( 사원 )</span>              
+              <span>${ name }</span><span> ( 사원 )</span>              
             </div>
             <div>              
-              userID
+              ${ id }
             </div>
           </div>
           
@@ -54,7 +54,7 @@
             <div class="card-group text-right">
               <div class="">
                 <div class="card-body">
-                  <h6 class="card-title">진행 중 서류</h5>
+                  <h6 class="card-title">진행 중 서류</h6>
                   <p class="card-text">1건</p>
                 </div>
               </div>
@@ -66,7 +66,7 @@
               </div>
               <div class="">
                 <div class="card-body">
-                  <h6 class="card-title"> 테스트 </h5>
+                  <h6 class="card-title"> 테스트 </h6>
                   <p class="card-text">1건</p>
                 </div>
               </div>
@@ -193,8 +193,7 @@
        </form>
        <div class="w-100 d-flex justify-content-center mb-2">
         <button class=" col-6 btn btn-primary" type="submit" onclick="">수정</button>
-       </div>
-       
+       </div>       
     </div>
     
     <!-- 팝업창 -->
