@@ -19,7 +19,7 @@
       <hr>
     </div>   
     <main class="d-flex justify-content-between">
-      <form action="" method="post" name="memberUpdatefrm" class="w-100 text-left px-3">
+      <form action="memberJoinAction" method="post" name="memberUpdatefrm" class="w-100 text-left px-3">
         <div class="form-group row">
           <div class="col-6 mb-3">
             <label for="member_name">이름</label>

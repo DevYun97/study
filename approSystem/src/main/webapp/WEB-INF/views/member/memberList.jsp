@@ -66,13 +66,15 @@
 			                <th>직급</th>
 			                <th>입사일</th>
 		              	</tr>
+		              	<c:forEach var="mem" items="${ getMemberList }">
 		                <tr onclick="window.open('/member/memberCard', '신규 아이디 발급', 'width=700,height=450,location=no,status=no,scrollbars=no')">
-		                    <td>1</td>
-		                    <td>김빵빵</td>
+		                    <td> ${ mem.member_id } </td>
+		                    <td> ${ mem.member_name } </td>
 		                    <td>A팀</td>
 		                    <td>사원</td>
 		                    <td>22.00.00</td>
 		                </tr>
+		                </c:forEach>
             		</table>
           		</div>
         	</div>

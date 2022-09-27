@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="com.project.appro.dao.ImemberDAO">
+
+<!--
+	CREATE SEQUENCE PAS_MEMBER_SEQ
+	START WITH 1
+	INCREMENT BY 1;
+	
+	drop SEQUENCE PAS_MEMBER_SEQ;
+	
+	select * from PAS_MEMBER;
+	
+	SELECT member_id FROM pas_member WHERE member_id = 'pas_memNum_2';
+	
+	delete from PAS_MEMBER;
+	
+	insert into PAS_MEMBER ( member_id, member_pw, member_name, member_gender, member_dep, member_position )
+	values ( 'pas_memNum_' || PAS_MEMBER_SEQ.nextval, '1111', 'system', '', '', '' );
+	
+	insert into PAS_MEMBER ( member_id, member_pw, member_name, member_gender, member_dep, member_position )
+	values ( 'system', '1111', 'system', '-', '-', '-' );
+	 -->
+
+	<select id="getMemId" resultType="String">
+		select * from pas_member where member_id = #{param1}
+	</select>
+	
+	<select id="getMemList" resultType="com.project.appro.dto.MemberDTO">
+		select * from pas_member
+	</select>
+	
+	<insert id="memberJoin">
+	insert into PAS_MEMBER 
+		( 
+			member_id, 
+			member_name, 
+			member_gender, 
+			member_dep, 
+			member_position 
+		)
+	values 
+		( 
+			'pas_memNum_' || PAS_MEMBER_SEQ.nextval, 
+			'system', 
+			'', 
+			'', 
+			'' 
+		)
+	</insert>
+</mapper>
