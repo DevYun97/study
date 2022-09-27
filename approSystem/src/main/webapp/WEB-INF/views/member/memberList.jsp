@@ -66,13 +66,13 @@
 			                <th>직급</th>
 			                <th>입사일</th>
 		              	</tr>
-		              	<c:forEach var="mem" items="${ getMemberList }">
-		                <tr onclick="window.open('/member/memberCard', '신규 아이디 발급', 'width=700,height=450,location=no,status=no,scrollbars=no')">
-		                    <td> ${ mem.member_id } </td>
+		              	<c:forEach var="mem" items="${ getMemberList }" varStatus="status" >
+		                <tr onclick="window.open('/member/memberCard?member_id=${ mem.member_id }', '신규 아이디 발급', 'width=700,height=450,location=no,status=no,scrollbars=no')">
+		                    <td> ${ status.count } </td>
 		                    <td> ${ mem.member_name } </td>
-		                    <td>A팀</td>
-		                    <td>사원</td>
-		                    <td>22.00.00</td>
+		                    <td>${ mem.member_dep }</td>
+		                    <td>${ mem.member_position }</td>
+		                    <td>${ mem.member_join }</td>
 		                </tr>
 		                </c:forEach>
             		</table>
