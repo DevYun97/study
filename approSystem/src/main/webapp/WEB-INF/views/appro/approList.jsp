@@ -21,80 +21,70 @@
 	<c:import url="../header.jsp"></c:import>
 	
 	<main>
-      <c:import url="../navBar.jsp"></c:import>
+    	<c:import url="../navBar.jsp"></c:import>
       
-      <section class="d-flex flex-column" style="width:800px;">
-        
-        <article class="w-100 px-3">
-        
-          <!-- 검색박스  : 우선 get으로 테스트하고 post 로 변경하기 -->
-          <form id="" name="" action="" method="get" class="form-inline">
-            
-            <div class="form-group mb-2">
-              <select id="schType" class="form-control mr-2" name="schType">
-                <option value="sel" >선택</option>
-                <option value="memName">작성자</option>
-                <option value="lTitle">결재자</option>
-                <option value="lContent">제목+내용</option>
-              </select>
-              
-              <input type="text" id="schTxt" class="form-control mr-2"  name="schTxt" />
-              
-              <select name="statusType" class="form-control" id="statusType" >
-                <option value="" >결재상태</option>
-                <option value="aa" >임시저장</option>
-                <option value="bb">결재대기</option>
-                <option value="cc">결재중</option>
-                <option value="dd">결재완료</option>
-                <option value="ff">반려</option>
-              </select>
-            </div>
-
-            <div class="form-group mb-2">
-              <input type="date" id="startDate" name="startDate" class="form-control mr-2">
-              ~
-              <input type="date" id="endDate" name="endDate" class="form-control mx-2">  
-              <input type="submit" value="검색" />
-            </div>
-          </form>
-        </article>
-
-
-        <!-- 묻고답하기 -->
-        <div class="communitySection2 container text-center py-2">
-          
-
-          <div class="mb-2 d-flex justify-content-end">
-            <input type="button" value="글 작성" onclick="location.href='approWritePage.html'"/>
-          </div>
-
-          <div class="qna">
-            <table>
-              <tr>
-                <th>번호</th>
-                <th>제목</th>
-                <th>작성자</th>
-                <th>작성일</th>
-                <th>결제자</th>
-                <th>상태</th>
-                <th>결제일</th>
-              </tr>
-              <c:forEach var="dto" items="${ qna_list }">
-                <tr>
-                    <td>1</td>
-                    <td>문서 제목</td>
-                    <td>김방방</td>
-                    <td>22.00.00</td>
-                    <td>이땡떙</td>
-                    <td>반려</td>
-                    <td>22.00.00</td>
-                  </tr>
-              </c:forEach>
-            </table>
-          </div>
-        </div>
-      </section>
-    </main>
+      	<section class="d-flex flex-column" style="width:800px;">
+      		<div class="communitySection2 container text-center py-2">
+		    	<div>
+		        	<div>문서조회</div>
+		        </div>
+          		<article class="w-100 px-3"> 
+            		<!-- 검색박스  : 우선 get으로 테스트하고 post 로 변경하기 -->
+            		<form id="" name="" action="" method="get" class="form-inline">              
+	            		<div class="form-group mb-2">
+		            		<select id="schType" class="form-control mr-2" name="schType">
+		                		<option value="sel" >부서</option>
+		                  		<option value=""></option>
+		                	</select>
+		                	
+	                		<select name="statusType" class="form-control" id="statusType" >
+					            <option value="" >직급</option>
+					            <option value="aa" >사장</option>
+					            <option value="bb">책임</option>
+					            <option value="cc">팀장</option>
+					            <option value="dd">사수</option>
+					            <option value="ff">사원</option>
+			                </select>
+	                		<input type="text" id="schTxt" class="form-control mr-2"  name="schTxt" />             
+	              		</div>
+		              	<div class="form-group mb-2">
+			                <input type="date" id="startDate" name="startDate" class="form-control mr-2">
+			                ~
+			                <input type="date" id="endDate" name="endDate" class="form-control mx-2">  
+			                <input type="submit" value="검색" />
+		              	</div>
+            		</form>
+				</article>
+				<div class="mb-2 d-flex justify-content-end">
+	            	<input type="button" value="글 작성" onclick="location.href='approWrite'"/>
+	          	</div>
+	          	<div class="qna">
+	            	<table>
+	              		<tr>
+			                <th>번호</th>
+			                <th>제목</th>
+			                <th>작성자</th>
+			                <th>작성일</th>
+			                <th>결제자</th>
+			                <th>상태</th>
+			                <th>결제일</th>
+			            </tr>
+	              		<c:forEach var="dto" items="${ qna_list }">
+		                <tr>
+		                    <td>1</td>
+		                    <td>문서 제목</td>
+		                    <td>김방방</td>
+		                    <td>22.00.00</td>
+		                    <td>이땡떙</td>
+		                    <td>반려</td>
+		                    <td>22.00.00</td>
+		               	</tr>
+	              		</c:forEach>
+	            	</table>
+				</div>
+       		</div>
+    	</section>
+	</main>
 	<!-- 부트스트랩4 JS 연결 -->
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
