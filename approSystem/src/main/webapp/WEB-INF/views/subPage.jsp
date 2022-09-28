@@ -97,27 +97,28 @@
 		      <div class="w-100 d-flex flex-column justify-content-center align-items-center">
 		        <h4>신규 회원 등록카드</h4>
 		        <div class="pl-2 pt-2 pb-4 w-100 text-left">
-		          <form action="" method="post" onsubmit="return nullChecking()">
+		          <form action="memberJoinAction" method="post" onsubmit="return nullChecking()">
 		            <div class="form-group row">
 		              <div class="col-md-6 mb-3">
 		                <label for="member_name">이름</label>
-		                <input type="text" class="form-control" id="member_name" required>
+		                <input type="text" class="form-control nullPointer" name="member_name" id="member_name" required>
 		              </div>
 		              <div class="col-md-3 mb-3">
 		                <label for="">부서</label>
-		                <select class="custom-select" id="" required>
+		                <select class="custom-select" name="member_dep" id="member_dep" required>
 		                  <option selected disabled value="">Choose...</option>
-		                  <option value="">개발팀</option>
+		                  <option value="dev">개발팀</option>
 		                </select>
 		              </div>
 		              <div class="col-md-3 mb-3">
 		                <label for="">직급</label>
-		                <select class="custom-select" id="" required>
+		                <select class="custom-select" name="member_position" id="member_position" required>
 		                  <option selected disabled value="">Choose...</option>
-		                  <option value="">책임</option>
-		                  <option value="">팀장</option>
-		                  <option value="">사수</option>
-		                  <option value="">사원</option>
+		                  <option value="AA">책임</option>
+		                  <option value="BB">책임</option>
+		                  <option value="CC">팀장</option>
+		                  <option value="DD">사수</option>
+		                  <option value="EE">사원</option>
 		                </select>                
 		              </div>
 		            </div>

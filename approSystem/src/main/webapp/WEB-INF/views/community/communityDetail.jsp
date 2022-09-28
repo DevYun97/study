@@ -29,10 +29,12 @@
               <h2>커뮤니티</h2>
               <small>사내 익명 커뮤니티 페이지입니다.</small>
             </div>
+            <c:if test="${ community.commu_id == id }">
             <div class="text-right mb-2 mr-2">
               <input type="button" value="수정" onclick="" />
               <input type="button" value="삭제" onclick="" />
             </div>
+            </c:if>
             <div class="main">
               <table>
                 <tr>
@@ -65,7 +67,7 @@
           
           <div class="mb-3" style="width: 900px; padding: 0 15px">
             
-            <p>댓글 :  </p>
+            <p>댓글 : ${ reCount } </p>
             <div class="border p-3 text-right">
               <form action="replyWriteAction" method="post">
                 <input type="hidden" name="commu_no" value="${ community.commu_no }" />

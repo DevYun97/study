@@ -20,44 +20,39 @@
     </div>   
     <main class="d-flex justify-content-between">
       <form action="memberJoinAction" method="post" name="memberUpdatefrm" class="w-100 text-left px-3">
+        <input type="hidden" name="member_id" value="${ member.member_id }" />
         <div class="form-group row">
           <div class="col-6 mb-3">
             <label for="member_name">이름</label>
-            <input type="text" class="form-control bg-white" id="member_name" value="" disabled required>
+            <input type="text" class="form-control bg-white" id="member_name" value="${ member.member_name }" disabled required>
           </div>
           <div class="col-3 mb-3">
-            <label for="member_name">가입일</label>
-            <input type="text" class="form-control bg-white" id="member_join" value="" disabled required>
+            <label for="member_join">가입일</label>
+            <input type="text" class="form-control bg-white" id="member_join" value="${ member.member_join }" disabled required>
           </div>
           <div class="col-3 mb-3">
-            <label for="member_name">성별</label>
-            <input type="text" class="form-control bg-white" id="member_gender" value="" disabled required>
+            <label for="member_gender">성별</label>
+            <input type="text" class="form-control bg-white" id="member_gender" value="${ member.member_gender }" disabled required>
           </div>
-          </div>
-        </div>  
+        </div> 
         <div class="form-group row">
           <div class="col-6 mb-3">
-            <label for="">부서</label>
-            <select class="custom-select" id="" required>
-              <option selected disabled value="">Choose...</option>
-              <option value="">개발팀</option>
-            </select>
-            <div class="invalid-feedback">
-              Please select a valid state.
-            </div>
+            <label for="member_dep">부서</label>
+            <select class="custom-select" id="member_dep" name="member_dep" required>
+              <option selected disabled>Choose...</option>
+              <option value="dev">개발팀</option>
+            </select>           
           </div>
           <div class="col-6 mb-3">
-            <label for="">직급</label>
-            <select class="custom-select" id="" required>
-              <option selected disabled value="">Choose...</option>
-              <option vlaue="">책임</option>
-              <option value="">팀장</option>
-              <option value="">사수</option>
-              <option value="">사원</option>
-            </select>
-            <div class="invalid-feedback">
-              Please select a valid state.
-            </div>
+            <label for="member_position">직급</label>
+            <select class="custom-select" id="member_position" name="member_position" required>
+              <option selected disabled >Choose...</option>
+              <option value="AA">책임</option>
+              <option value="BB">책임</option>
+              <option value="CC">팀장</option>
+              <option value="DD">사수</option>
+              <option value="EE">사원</option>
+            </select>            
           </div>
         </div>      
         <div>
@@ -83,7 +78,7 @@
         window.opener.name="parent";
         document.memberUpdatefrm.target = "parent";
         document.memberUpdatefrm.method = "post";
-        document.memberUpdatefrm.action = "/member/memberListPage.html";
+        document.memberUpdatefrm.action = "memberUpdate";
         document.memberUpdatefrm.submit();
         window.close();
       }

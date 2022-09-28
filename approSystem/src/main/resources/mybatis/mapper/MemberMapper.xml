@@ -53,10 +53,23 @@
 	values 
 		( 
 			'pas_memNum_' || PAS_MEMBER_SEQ.nextval, 
-			'system', 
-			'', 
-			'', 
-			'' 
+			#{param1}, 
+			#{param2}, 
+			#{param3}, 
+			#{param4} 
 		)
 	</insert>
+	
+	<update id="memberUpdate">
+		UPDATE PAS_MEMBER
+		SET  
+			member_dep = #{param2}, 
+			member_position = #{param3} 
+		WHERE member_id = #{param1}
+	</update>
+	
+	<select id="getMemberInpor" resultType="com.project.appro.dto.MemberDTO">
+		select * from pas_member where member_id = #{param1}
+	</select>
+	
 </mapper>

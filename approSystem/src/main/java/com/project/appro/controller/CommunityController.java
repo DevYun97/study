@@ -63,9 +63,8 @@ public class CommunityController {
 		List<CommunityReply> reply = replyDao.replyList(commu_no);
 		model.addAttribute("reply", reply);
 		
-//		int replyCount = replyDao.ReplyCount(commu_no);
-//		model.addAttribute("reCount", replyCount);
-//		
+		//int replyCount = replyDao.ReplyCount(commu_no);
+		//model.addAttribute("reCount", replyCount);
 		
 		return "community/communityDetail";
 	}

@@ -33,4 +33,33 @@ public class MemberService {
 		return result;
 	}
 
+	//Update
+	public String memberUpdate(String member_id, String member_dep, String member_position) {
+		
+		String result = "";
+		int update = memberDao.memberUpdate(member_id, member_dep, member_position);
+		
+		if(update == 0) {
+			result = "<script>alert('가입 실패'); history.back(-1);</script>";
+		} else {
+			result = "<script>alert('신규 사원의 아이디가 발급되었습니다.');location.href='../member/memberList';</script>";
+		}	
+		return result;
+	}
+	
+	//Join
+	public String memberJoin(String member_name, String member_dep, String member_position,
+			String member_gender) {
+		
+		String result = "";
+		int join = memberDao.memberJoin( member_name, member_dep, member_position, member_gender);
+		
+		if(join == 0) {
+			result = "<script>alert('가입 실패'); history.back(-1);</script>";
+		} else {
+			result = "<script>alert('신규 사원의 아이디가 발급되었습니다.');location.href='../member/memberList';</script>";
+		}	
+		return result;
+	}
+	
 }

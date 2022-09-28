@@ -16,6 +16,13 @@ public interface ImemberDAO {
 	public String getMemName(String member_id);
 	
 	public ArrayList<MemberDTO> getMemList();
+
+	public int memberJoin( String member_name, String member_dep, String member_position, String member_gender);
+			
+
+	public int memberUpdate(String member_id, String member_dep, String member_position);
+			
 	
+	public MemberDTO getMemberInpor(String member_id);
 	
 }
