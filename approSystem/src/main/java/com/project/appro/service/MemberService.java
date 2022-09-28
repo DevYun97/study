@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.project.appro.dao.ImemberDAO;
+import com.project.appro.dto.MemberDTO;
 
 @Service
 public class MemberService {
@@ -34,25 +35,24 @@ public class MemberService {
 	}
 
 	//Update
-	public String memberUpdate(String member_id, String member_dep, String member_position) {
+	public String memberUpdate(MemberDTO member) {
 		
 		String result = "";
-		int update = memberDao.memberUpdate(member_id, member_dep, member_position);
+		int update = memberDao.memberUpdate(member);
 		
 		if(update == 0) {
-			result = "<script>alert('가입 실패'); history.back(-1);</script>";
+			result = "<script>alert('정보 업데이트 실패'); history.back(-1);</script>";
 		} else {
-			result = "<script>alert('신규 사원의 아이디가 발급되었습니다.');location.href='../member/memberList';</script>";
+			result = "<script>alert('사원정보가 변경되었습니다.');location.href='../member/memberList';</script>";
 		}	
 		return result;
 	}
 	
 	//Join
-	public String memberJoin(String member_name, String member_dep, String member_position,
-			String member_gender) {
+	public String memberJoin(MemberDTO member) {
 		
 		String result = "";
-		int join = memberDao.memberJoin( member_name, member_dep, member_position, member_gender);
+		int join = memberDao.memberJoin(member);
 		
 		if(join == 0) {
 			result = "<script>alert('가입 실패'); history.back(-1);</script>";

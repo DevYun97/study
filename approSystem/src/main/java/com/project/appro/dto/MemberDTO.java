@@ -1,7 +1,13 @@
 package com.project.appro.dto;
 
-import lombok.Data;
+import org.springframework.stereotype.Component;
 
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Component
+@NoArgsConstructor
 @Data
 public class MemberDTO {
 	
@@ -13,7 +19,7 @@ public class MemberDTO {
 	private String member_position;
 	private String member_join;
 	
-	
+	@Builder
 	public MemberDTO(String member_id, String member_pw, String member_name, String member_gender, String member_dep,
 			String member_position, String member_join) {
 		super();

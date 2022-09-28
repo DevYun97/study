@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -40,18 +41,18 @@
             <label for="member_dep">부서</label>
             <select class="custom-select" id="member_dep" name="member_dep" required>
               <option selected disabled>Choose...</option>
-              <option value="dev">개발팀</option>
+              <option value="dev" <c:if test="${ member.member_dep == 'dev' }" > selected </c:if> >개발팀</option>
             </select>           
           </div>
           <div class="col-6 mb-3">
             <label for="member_position">직급</label>
             <select class="custom-select" id="member_position" name="member_position" required>
               <option selected disabled >Choose...</option>
-              <option value="AA">책임</option>
-              <option value="BB">책임</option>
-              <option value="CC">팀장</option>
-              <option value="DD">사수</option>
-              <option value="EE">사원</option>
+              <option value="AA" <c:if test="${ member.member_position == 'AA' }" > selected </c:if>> 책임</option>
+              <option value="BB" <c:if test="${ member.member_position == 'BB' }" > selected </c:if>> 책임</option>
+              <option value="CC" <c:if test="${ member.member_position == 'CC' }" > selected </c:if>> 팀장</option>
+              <option value="DD" <c:if test="${ member.member_position == 'DD' }" > selected </c:if>> 사수</option>
+              <option value="EE" <c:if test="${ member.member_position == 'EE' }" > selected </c:if>> 사원</option>
             </select>            
           </div>
         </div>      

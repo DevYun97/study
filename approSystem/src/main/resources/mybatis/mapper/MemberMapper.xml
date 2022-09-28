@@ -26,23 +26,29 @@
 	 -->
 
 	<select id="getMemId" resultType="String">
-		select * from pas_member where member_id = #{param1}
+		SELECT * FROM pas_member WHERE member_id = #{param1}
 	</select>
 	
 	<select id="getMemPw" resultType="String">
-		select member_pw from pas_member where member_id = #{param1}
+		SELECT member_pw FROM pas_member WHERE member_id = #{param1}
 	</select>
 	
 	<select id="getMemName" resultType="String">
-		select member_name from pas_member where member_id = #{param1}
+		SELECT member_name FROM pas_member WHERE member_id = #{param1}
 	</select>
 	
 	<select id="getMemList" resultType="com.project.appro.dto.MemberDTO">
-		select * from pas_member
+		SELECT
+			member_id,
+			member_name,
+			member_dep,
+			member_position,
+			member_join 
+		FROM pas_member ORDER BY member_join DESC
 	</select>
 	
 	<insert id="memberJoin">
-	insert into PAS_MEMBER 
+	INSERT INTO PAS_MEMBER 
 		( 
 			member_id, 
 			member_name, 
@@ -50,26 +56,33 @@
 			member_dep, 
 			member_position 
 		)
-	values 
+	VALUES 
 		( 
 			'pas_memNum_' || PAS_MEMBER_SEQ.nextval, 
-			#{param1}, 
-			#{param2}, 
-			#{param3}, 
-			#{param4} 
+			#{member_name}, 
+			#{member_gender}, 
+			#{member_dep}, 
+			#{member_position} 
 		)
 	</insert>
 	
 	<update id="memberUpdate">
 		UPDATE PAS_MEMBER
 		SET  
-			member_dep = #{param2}, 
-			member_position = #{param3} 
-		WHERE member_id = #{param1}
+			member_dep = #{ member_dep }, 
+			member_position = #{ member_position } 
+		WHERE member_id = #{ member_id }
 	</update>
 	
 	<select id="getMemberInpor" resultType="com.project.appro.dto.MemberDTO">
-		select * from pas_member where member_id = #{param1}
+		SELECT
+			member_name,
+			member_join,
+			member_gender,
+			member_dep,
+			member_position
+		FROM pas_member 
+		WHERE member_id = #{param1}
 	</select>
 	
 </mapper>
