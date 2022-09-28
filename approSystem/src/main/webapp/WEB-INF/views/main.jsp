@@ -82,23 +82,17 @@
                 <i class="bi bi-megaphone"></i>
                 공지사항
               </span>
-              <span class="text-right pointer pl-2 my-2" onclick="location.href='/notice/noticePage.html'">
+              <span class="text-right pointer pl-2 my-2" onclick="location.href='/community/noticeList'">
                 more <i class="bi bi-chevron-right " ></i>
               </span>
             </div>
             <hr>
+            <c:forEach var="notice" items="${ notice }" begin="0" end="2" >		 
             <div class="w-100 d-flex justify-content-between align-items-center mt-2 pb-3">
-                <a href=""> 공지사항 제목 </a>             
-                <small class="text-right">날짜</small>                        
-            </div>
-            <div class="w-100 d-flex justify-content-between align-items-center mt-2 pb-3">
-              <a href=""> 공지사항 제목 </a>             
-              <small class="text-right">날짜</small>                        
-            </div>       
-            <div class="w-100 d-flex justify-content-between align-items-center mt-2 pb-3">
-              <a href=""> 공지사항 제목 </a>             
-              <small class="text-right">날짜</small>                        
-            </div>   
+                <a href="/community/noticeDetail?notice_no=${notice.notice_no}">${notice.notice_title}</a>             
+                <small class="text-right">${notice.notice_date}</small>                        
+            </div>          	 
+            </c:forEach>
           </div>
   
           <div class="border mt-3 p-2" style="width: 220px;">
@@ -125,23 +119,17 @@
                 <i class="bi bi-chat-square-dots"></i>
                 커뮤니티
               </span>
-              <span class="text-right pointer pl-2 my-2" onclick="location.href='/community/communityPage.html'">
+              <span class="text-right pointer pl-2 my-2" onclick="location.href='/community/communityList'">
                 more <i class="bi bi-chevron-right " ></i>
               </span>
             </div>
             <hr>
+            <c:forEach var="community" items="${ community }" begin="0" end="2" >		 
             <div class="w-100 d-flex justify-content-between align-items-center mt-2 pb-3">
-                <a href=""> 커뮤니티 제목 </a>             
-                <small class="text-right">날짜</small>                        
-            </div>
-            <div class="w-100 d-flex justify-content-between align-items-center mt-2 pb-3">
-              <a href=""> 커뮤니티 제목 </a>             
-              <small class="text-right">날짜</small>                        
-            </div>
-            <div class="w-100 d-flex justify-content-between align-items-center mt-2 pb-3">
-              <a href=""> 커뮤니티 제목 </a>             
-              <small class="text-right">날짜</small>                        
-            </div>        
+                <a href="/community/communityDetail?commu_no=${community.commu_no}">${community.commu_title}</a>             
+                <small class="text-right">${community.commu_date}</small>                        
+            </div>          	 
+            </c:forEach>       
           </div>
         </article>
       </section>
