@@ -1,11 +1,17 @@
 package com.project.appro.dto;
 
-import lombok.Data;
+import org.springframework.stereotype.Component;
 
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Component
+@NoArgsConstructor
 @Data
 public class Report {
 
-	private String report_no;
+	private int report_no;
 	private String report_id;
 	private String report_name;
 	private String report_title;
@@ -14,7 +20,8 @@ public class Report {
 	private String report_status;
 	private String report_date;
 	
-	public Report(String report_no, String report_id, String report_name, String report_title, String report_content,
+	@Builder
+	public Report(int report_no, String report_id, String report_name, String report_title, String report_content,
 			String report_approver, String report_status, String report_date) {
 		super();
 		this.report_no = report_no;

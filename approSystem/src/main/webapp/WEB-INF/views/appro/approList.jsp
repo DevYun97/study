@@ -67,18 +67,17 @@
 			                <th>작성일</th>
 			                <th>결제자</th>
 			                <th>상태</th>
-			                <th>결제일</th>
 			            </tr>
-	              		<c:forEach var="dto" items="${ qna_list }">
-		                <tr>
+	              		
+		                <tr onclick="location.href='approDetail'">
 		                    <td>1</td>
 		                    <td>문서 제목</td>
 		                    <td>김방방</td>
 		                    <td>22.00.00</td>
 		                    <td>이땡떙</td>
 		                    <td>반려</td>
-		                    <td>22.00.00</td>
 		               	</tr>
+		               	<c:forEach var="appro" items="${ appro }" >
 	              		</c:forEach>
 	            	</table>
 				</div>

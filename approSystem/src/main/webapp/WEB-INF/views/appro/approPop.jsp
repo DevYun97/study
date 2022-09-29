@@ -12,33 +12,43 @@
 <link rel="stylesheet" href="../mainCSS.css" >
 </head>
 <body>
- 	<header class="fixed-top">
-      <h4>서류 결제 팝업창</h4>
+	<header class="fixed-top text-center">
+    	<h4 class="mt-3" >서류 결재 팝업창</h4>
     </header>
-    <main class="d-flex justify-content-between">
-      <form action="" method="post" class="w-75 my-4 text-left">
-        <div>
-          <p>문서 번호 :</p>
-          <p>문서 제목 :</p>
-          <p>결제자 :</p>
-        </div>
-        <div>
-          <textarea class="w-100 mb-2 TASizsFixed" rows="5" ></textarea>
-        </div>
-        <div>
-          <input type="button" value="반려" />
-          <input type="button" value="결제" />
-        </div>
-      </form>
-    </main>
+    <main class="d-flex justify-content-center mt-5 pt-4">
+    	<form action="" method="post" class="w-75 text-left">
+    		<div class="form-group row">
+            	<label for="appro_no" class="col-2 col-form-label">문서번호:</label>
+              	<div class="col-10">
+                	<input type="text" class="form-control" id="appro_no" name="appro_no">
+              	</div>
+        	</div>
+        	<div class="form-group row">
+            	<label for="appro_title" class="col-2 col-form-label">문서제목:</label>
+              	<div class="col-10">
+                	<input type="text" class="form-control" id="appro_title" name="appro_title">
+              	</div>
+        	</div>
+        	<div class="form-group row">
+            	<label for="appro_title" class="col-2 col-form-label">결제자 : </label>
+              	<div class="col-10">
+                	<input type="text" class="form-control" id="appro_title" name="appro_title">
+              	</div>
+        	</div>
+        	<div class="form-group">
+              	<label for="appro_content">내용</label>
+              	<textarea class="form-control TASizsFixed" id="appro_content" name="appro_content" rows="2"></textarea>
+            </div>
+	        <div>
+	          <input type="button" value="반려" />
+	          <input type="button" value="결제" />
+	        </div>
+		</form>
+	</main>
     <!-- 부트스트랩4 JS 연결 -->
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
     
-    <!-- testTool 하단 스크립트 추가 후 replace에 이름 넣어주면 text에디터? 사용 가능 -->
-    <script src="https://cdn.ckeditor.com/4.15.1/standard/ckeditor.js"></script>
-  	<script>CKEDITOR.replace('appro_content');</script>
-
     <!-- child 팝업창 -->
     <script type="text/javascript">
 

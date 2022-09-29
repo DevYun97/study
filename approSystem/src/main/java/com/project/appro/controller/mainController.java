@@ -36,7 +36,17 @@ public class mainController {
 	}
 	
 	@RequestMapping("main")
-	public String index (Model model) {
+	public String index ( HttpSession session ,Model model) {
+		
+		String member_id;
+		try {
+			member_id = (String) session.getAttribute("id");			
+		} catch (NullPointerException e) {
+			member_id = null;
+		}
+		if( member_id == null ) {
+			return "redirect:login";
+		}
 		
 		//MyCard
 		
