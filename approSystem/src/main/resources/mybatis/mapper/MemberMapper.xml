@@ -36,6 +36,9 @@
 	<select id="getMemName" resultType="String">
 		SELECT member_name FROM pas_member WHERE member_id = #{param1}
 	</select>
+	<select id="getMemPosition" resultType="String">
+		SELECT member_position FROM pas_member WHERE member_id = #{param1}
+	</select>
 	
 	<select id="getMemList" resultType="com.project.appro.dto.MemberDTO">
 		SELECT

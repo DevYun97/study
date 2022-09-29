@@ -30,4 +30,19 @@ public class ApproService {
 		return result;
 	}
 
+	public int reportUpdate(Report report) {
+		
+		String result ="";
+		
+		int reportUpdate = reportDao.reportUpdate(report);
+//		System.out.println("reportUpdate:"+reportUpdate);
+//		if( reportUpdate == 0 ) {
+//			result = "<script>location.href='history.back(-1)';</script>";
+//		} else {
+//			result = "<script>alert(수정 완료'); location.href='../appro/approList';</script>";
+//		}
+		
+		return reportUpdate;
+	}
+
 }

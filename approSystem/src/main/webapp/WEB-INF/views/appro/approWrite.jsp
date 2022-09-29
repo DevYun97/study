@@ -31,8 +31,8 @@
         <!-- 체크박스  -->   
 
         <form id="writeFrm" name="writeFrm" >
-            <c:if test="${ appro.report_no }">
-            <input type="hidden" name="report_no" value="${ appro.report_no }" />
+        	<c:if test="${ not empty report.report_no  }">
+        	<input type="hidden" name="report_no" value="${ report.report_no }"/>        
             </c:if>
             <input type="hidden" name="report_id" value="${ id }" />
             <div class="form-group row">
@@ -46,15 +46,15 @@
             <div class="form-group row">
               <label for="report_title" class="col-2 col-form-label">제목 :</label>
               <div class="col-10">
-                <input type="text" class="form-control nullPointer" id="report_title" name="report_title" value="${ appro.report_title }" />
+                <input type="text" class="form-control nullPointer" id="report_title" name="report_title" value="${ report.report_title }" />
               </div>
             </div>
             <div class="form-group">
               <label for="report_content">내용</label>
-              <textarea class="form-control TASizsFixed" id="report_content" name="report_content" rows="3">${ appro.report_content }</textarea>
+              <textarea class="form-control TASizsFixed" id="report_content" name="report_content" rows="3">${ report.report_content }</textarea>
             </div>
             
-            <input type="hidden" id="report_status" name="report_status" value="" />
+            <input type="hidden" id="report_status" name="report_status" value="${ report.report_status }" />
             <input type="file" />         	
         </form>
         <hr>

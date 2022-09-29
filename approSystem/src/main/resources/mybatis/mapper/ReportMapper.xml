@@ -5,17 +5,29 @@
     
 <mapper namespace="com.project.appro.dao.IreportDAO">
 
-	<select id="ReportList" resultType="com.project.appro.dto.Report">
+	<resultMap type="map" id="list">
+			<result column="report_no" property="report_no" />
+			<result column="report_title" property="report_title" />
+			<result column="report_content" property="report_content" />
+			<result column="report_name" property="report_name" />
+			<result column="report_id" property="report_id" />
+			<result column="report_date" property="report_date" />
+			<result column="report_status" property="report_status" />
+		</resultMap>
+
+
+
+	<select id="reportList" parameterType="map" resultMap="list" >
 		SELECT 
 			* 
-		FROM PAS_REPORT re LEFT JOIN PAS_MEMBER mem LEFT JOIN PAS_APPRO appro
-		WHERE re.report_id = #{ report_id }
+		FROM PAS_REPORT re LEFT JOIN PAS_MEMBER mem
+		ON re.report_id = mem.member_id
+		LEFT JOIN PAS_APPRO appro
+		ON re.report_no = appro.report_no
+		WHERE re.report_id = #{ member_id }
 		<choose>
 			<when test="member_position == 'DD'">
-				OR ( report_status = '결재대기' OR report_name = #{ report_name } )
-			</when>
-			 <when test="member_position == 'CC'"> 
-				OR ( report_status = '' OR list_status = 'd')
+				OR ( report_status = '결재대기' OR report_id = #{ member_id } )
 			</when>
 		</choose>
 		ORDER BY report_date DESC
@@ -33,5 +45,19 @@
 		 		#{ report_status }
 		 	)
 	</insert>
+	
+	<select id="reportDetail" resultType="com.project.appro.dto.Report">
+		SELECT * FROM PAS_REPORT WHERE report_no = #{report_no}
+	</select>
+	
+	<update id="reportUpdate">
+		UPDATE 
+			PAS_REPORT
+		SET
+			report_title = #{ report_title },
+			report_content = #{ report_content }, 
+			report_status = #{ report_status }
+		WHERE report_no = #{ report_no }
+	</update>
 
 </mapper>

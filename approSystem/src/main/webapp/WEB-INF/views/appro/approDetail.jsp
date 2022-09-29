@@ -35,24 +35,24 @@
             <div class="d-flex ">
               <div class="w-100 mr-2">
                 <div class="form-group row">
-                  <label for="appro_no" class="col-sm-2 col-form-label A">문서번호 :</label>
+                  <label for="report_no" class="col-sm-2 col-form-label A">문서번호 :</label>
                   <div class="col-sm-10">
-                    <input type="text" class="form-control-plaintext" id="appro_no" name="appro_no">
+                    <input type="text" class="form-control-plaintext" id="report_no" name="report_no" value="${ report.report_no }" />
                   </div>
                 </div>
 
                 <div class="form-group row">
-                  <label for="appro_name" class="col-sm-2 col-form-label A">작성자 :</label>
+                  <label for="report_name" class="col-sm-2 col-form-label A">작성자 :</label>
                   <div class="col-sm-10">
-                    <input type="text" class="form-control-plaintext" id="appro_name" name="appro_name">
+                    <input type="text" class="form-control-plaintext" id="report_name" name="report_name" value="${ report.report_name }" />
                   </div>
                 </div>
 
 
                 <div class="form-group row">
-                  <label for="appro_date" class="col-sm-2 col-form-label A">작성일 :</label>
+                  <label for="report_date" class="col-sm-2 col-form-label A">작성일 :</label>
                   <div class="col-sm-10">
-                    <input type="text" class="form-control-plaintext" id="appro_date" name="appro_date">
+                    <input type="text" class="form-control-plaintext" id="report_date" name="report_date" value="${ report.report_date }" />
                   </div>
                 </div>
               </div>
@@ -81,25 +81,26 @@
             
 
             <div class="form-group row">
-              <label for="appro_title" class="col-sm-2 col-form-label">제목 :</label>
+              <label for="report_title" class="col-sm-2 col-form-label">제목 :</label>
               <div class="col-10">
-                <input type="text" class="form-control" id="appro_title" name="appro_title">
+                <input type="text" class="form-control" id="report_title" name="report_title" value="${ report.report_title} ">
               </div>
             </div>
             <div class="form-group">
-              <label for="appro_content">내용</label>
-              <textarea class="form-control TASizsFixed" id="appro_content" name="appro_content" rows="3"></textarea>
+              <label for="report_content">내용</label>
+              <div id="report_content" class="form-control" style="min-height:120px;">
+              ${ report.report_content }
+              </div>
             </div>
 
-            <input type="hidden" id="appro_status" name="appro_status" value="" />
+            <input type="hidden" id="report_status" name="report_status" value="" />
             <input type="file" />
           	
         </form>
         <hr>
         <div>
           <input type="button" value="취소" onclick="location.href='approList'" />
-            <input type="button" value="임시저장" onclick="writeBtnA()" />			
-            <input type="button" value="결재" onclick="writeBtnB()" />
+            <input type="button" value="수정" onclick="location.href='reportUpdate?report_no=${report.report_no}'" />
             <input type="button" value="appro" onclick="window.open('/appro/approPop', '결재 팝업창', 'width=700, height=450, location=no, status=no, scrollbars=no')">			
         </div>
       </section>

@@ -34,16 +34,16 @@
 	            		<div class="form-group mb-2">
 		            		<select id="schType" class="form-control mr-2" name="schType">
 		                		<option value="sel" >부서</option>
-		                  		<option value=""></option>
+		                  		<option value="dev">개발팀</option>
 		                	</select>
 		                	
 	                		<select name="statusType" class="form-control" id="statusType" >
 					            <option value="" >직급</option>
-					            <option value="aa" >사장</option>
-					            <option value="bb">책임</option>
-					            <option value="cc">팀장</option>
-					            <option value="dd">사수</option>
-					            <option value="ff">사원</option>
+					            <option value="AA" >사장</option>
+					            <option value="BB">책임</option>
+					            <option value="CC">팀장</option>
+					            <option value="DD">사수</option>
+					            <option value="EE">사원</option>
 			                </select>
 	                		<input type="text" id="schTxt" class="form-control mr-2"  name="schTxt" />             
 	              		</div>
@@ -68,17 +68,16 @@
 			                <th>결제자</th>
 			                <th>상태</th>
 			            </tr>
-	              		
-		                <tr onclick="location.href='approDetail'">
-		                    <td>1</td>
-		                    <td>문서 제목</td>
-		                    <td>김방방</td>
-		                    <td>22.00.00</td>
-		                    <td>이땡떙</td>
-		                    <td>반려</td>
+	              		<c:forEach var="report" items="${ reportList }" varStatus="status" >
+		                <tr onclick="location.href='approDetail?report_no=${report.report_no}'">
+		                    <td>${ status.count }</td>
+		                    <td>${ report.report_title }</td>
+		                    <td>${ report.report_name }</td>
+		                    <td>${ report.report_date }</td>
+		                    <td>${ report.report_approver }</td>
+		                    <td>${ report.report_status }</td>
 		               	</tr>
-		               	<c:forEach var="appro" items="${ appro }" >
-	              		</c:forEach>
+		               	</c:forEach>
 	            	</table>
 				</div>
        		</div>
