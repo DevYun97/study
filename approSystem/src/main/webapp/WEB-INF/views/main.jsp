@@ -42,7 +42,7 @@
               <small class="border rounded p-1 bg-secondary text-white " onclick="popupHideAndShow(target ='myCard');"> 정보수정 </small>
             </div>
             <div class="font25 text-center my-2">
-              <span>${ name }</span><span> ( 사원 )</span>              
+              <span>${ name }</span><span> ( ${ position } )</span>              
             </div>
             <div>              
               ${ id }
