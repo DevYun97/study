@@ -18,21 +18,22 @@
     <main class="d-flex justify-content-center mt-5 pt-4">
     	<form action="" method="post" class="w-75 text-left">
     		<div class="form-group row">
-            	<label for="appro_no" class="col-2 col-form-label">문서번호:</label>
+            	<label for="report_no" class="col-2 col-form-label">문서번호:</label>
               	<div class="col-10">
-                	<input type="text" class="form-control" id="appro_no" name="appro_no">
+                	<input type="text" class="form-control" id="report_no" name="report_no" value="${ report.report_no }">
               	</div>
         	</div>
         	<div class="form-group row">
-            	<label for="appro_title" class="col-2 col-form-label">문서제목:</label>
+            	<label for="report_title" class="col-2 col-form-label">문서제목:</label>
               	<div class="col-10">
-                	<input type="text" class="form-control" id="appro_title" name="appro_title">
+                	<input type="text" class="form-control" id="report_title" name="report_title" value="${ report.report_title }">
               	</div>
         	</div>
         	<div class="form-group row">
-            	<label for="appro_title" class="col-2 col-form-label">결제자 : </label>
+            	<label for="report_approver" class="col-2 col-form-label">결재자 : </label>
               	<div class="col-10">
-                	<input type="text" class="form-control" id="appro_title" name="appro_title">
+                	<input type="text" class="form-control" value="${ name }" />
+              		<input type="hidden" id="report_approver" name="report_approver" value="${ name }" />
               	</div>
         	</div>
         	<div class="form-group">
@@ -40,8 +41,8 @@
               	<textarea class="form-control TASizsFixed" id="appro_content" name="appro_content" rows="2"></textarea>
             </div>
 	        <div>
-	          <input type="button" value="반려" />
-	          <input type="button" value="결제" />
+	          <input type="button" value="반려" onclick="" />
+	          <input type="button" value="결재" onclick="approBtn" />
 	        </div>
 		</form>
 	</main>
@@ -57,7 +58,7 @@
         window.opener.name="parent";
         document.frm.target = "parent";
         document.frm.method = "post";
-        document.frm.action = "/customer/customer02_4";
+        document.frm.action = "/appro/approDetail";
         document.frm.submit();
         window.close();
       }

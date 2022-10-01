@@ -101,7 +101,7 @@
         <div>
           <input type="button" value="취소" onclick="location.href='approList'" />
             <input type="button" value="수정" onclick="location.href='reportUpdate?report_no=${report.report_no}'" />
-            <input type="button" value="appro" onclick="window.open('/appro/approPop', '결재 팝업창', 'width=700, height=450, location=no, status=no, scrollbars=no')">			
+            <input type="button" value="appro" onclick="window.open('/appro/approPop?report_no=${report.report_no}', '결재 팝업창', 'width=700, height=450, location=no, status=no, scrollbars=no')">			
         </div>
       </section>
       <!-- 댓글 같은 ? 결제자 정보 -->
@@ -109,14 +109,16 @@
         <div>
           <p>결제선 <hr> 
           </p>
+          <c:forEach var="appro" items="${ approList }" >		                
           <div class="w-100 d-flex justify-content-between">
-            <span class="font-weight-bold font18" >결재자이름</span>
-            <input type="button" value="상태" class="text-right font12" style="pointer-events: none;" />
+            <span class="font-weight-bold font18" >${ appro.report_approver }</span>
+            <input type="button" value="${ appro.appro_status }" class="text-right font12" style="pointer-events: none;" />
           </div>
           <p>
-            결재내용
-            <small>결재일</small>
+            ${ appro.appro_content }
+            <small>${ appro.appro_date }</small>
           </p>
+          </c:forEach>
         </div>
       </section>
       
@@ -127,7 +129,7 @@
     <!-- child 팝업창 -->
     <script>
       function openWindow( no ){
-        window.open('/appro/approPop', '결재 팝업창', 'width=700, height=450, location=no, status=no, scrollbars=no')
+        window.open('/appro/approPop?report_no=${report.report_no}', '결재 팝업창', 'width=700, height=450, location=no, status=no, scrollbars=no')
       }
     </script>
     <!-- myJS -->

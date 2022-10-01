@@ -1,6 +1,7 @@
 package com.project.appro.controller;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpSession;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.project.appro.dao.IapproDAO;
 import com.project.appro.dao.IreportDAO;
+import com.project.appro.dto.Appro;
 import com.project.appro.dto.Report;
 import com.project.appro.service.ApproService;
 
@@ -80,23 +82,32 @@ public class ApproController {
 			return "appro/approList";
 		} else {
 			return "redirect:approList";
-		}
-		
+		}		
 		
 	}
 	
 	@RequestMapping("approDetail")
 	public String approDetail (@RequestParam("report_no") int report_no, Model model) {
 		
+		
 		Report report = reportDao.reportDetail(report_no);
 		model.addAttribute("report", report);
+		
+		List <Appro> approList = approDao.approList(report_no);
+		model.addAttribute("approList", approList);
 		
 		return "appro/approDetail";
 	}
 	
 	@RequestMapping("approPop")
-	public String approPop () {
+	public String approPop ( @RequestParam("report_no") int report_no, Model model ) {
+		
+		Report report = reportDao.reportDetail(report_no);
+		model.addAttribute("report", report);
+		
 		return "appro/approPop";
 	}
+	
+	
 
 }
