@@ -99,9 +99,13 @@
         </form>
         <hr>
         <div>
-          <input type="button" value="취소" onclick="location.href='approList'" />
+        	<input type="button" value="목록" onclick="location.href='approList'" />       	
+            <c:if test="${ report.report_status == 'TS' || report.report_status == 'RT' }" >
             <input type="button" value="수정" onclick="location.href='reportUpdate?report_no=${report.report_no}'" />
+            </c:if>
+            <c:if test="${ report.report_status != 'END' }" >
             <input type="button" value="appro" onclick="window.open('/appro/approPop?report_no=${report.report_no}', '결재 팝업창', 'width=700, height=450, location=no, status=no, scrollbars=no')">			
+        	</c:if>
         </div>
       </section>
       <!-- 댓글 같은 ? 결제자 정보 -->

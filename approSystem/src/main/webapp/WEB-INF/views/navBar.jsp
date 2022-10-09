@@ -6,6 +6,7 @@
           <small>문서관리</small>
           <a href="/appro/approWrite" >문서작성</a>
           <a href="/appro/approList" >문서함</a>
+          <a href="/appro/approEND" >완료문서</a>
           <hr>
         </div>
 

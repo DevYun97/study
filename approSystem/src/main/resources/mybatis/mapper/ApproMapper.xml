@@ -5,7 +5,7 @@
     
 <mapper namespace="com.project.appro.dao.IapproDAO">
 	<select id="approList" resultType="com.project.appro.dto.Appro">
-		SELECT * FROM PAS_APPRO WHERE report_no = #{param1}
+		SELECT * FROM PAS_APPRO WHERE report_no = #{param1} order by appro_date
 	</select>
 	
 	<insert id="approWrite">

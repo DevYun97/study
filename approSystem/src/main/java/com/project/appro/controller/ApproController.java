@@ -49,6 +49,17 @@ public class ApproController {
 		return "appro/approList";
 	}
 	
+	@RequestMapping("approEND")
+	public String approEND ( @RequestParam Map <String, Object> map, HttpSession session ,Model model) {
+				
+			
+		ArrayList<Map <String, Object>> endReport = new ArrayList<>();
+		endReport = reportDao.endReport( map );
+		model.addAttribute("reportList", endReport);
+		
+		return "appro/approEND";
+	}
+	
 	@RequestMapping("approWrite")
 	public String approWrite ( ) {
 		return "appro/approWrite";

@@ -17,19 +17,8 @@
 	</resultMap>
 
 <!--  
-select
-    re.report_no 번호,
-    re.report_title 제목,
-    re.report_name 작성자,
-    re.report_date 날짜,
-    re.report_status 상태,
-    ap.report_approver 결재자
-from PAS_REPORT re LEFT JOIN (select * from pas_appro where rownum = 1) ap
-on re.report_no = ap.report_no;
--->
 
-	<select id="reportList" parameterType="map" resultMap="list" >
-		SELECT 
+SELECT 
 			DISTINCT
 			re.report_no,
 			re.report_title,
@@ -40,6 +29,26 @@ on re.report_no = ap.report_no;
 		FROM PAS_REPORT re LEFT JOIN PAS_MEMBER mem
 		ON re.report_id = mem.member_id
 		LEFT JOIN PAS_APPRO ap
+		ON re.report_no = ap.report_no
+
+-->
+
+	<select id="reportList" parameterType="map" resultMap="list" >
+		SELECT
+			re.report_no,
+			re.report_title,
+			re.report_name,
+			re.report_date,
+			ap.report_approver,
+			re.report_status
+		FROM PAS_report re LEFT JOIN 
+			(
+			select    
+			    report_no,
+			    max(report_approver) KEEP (DENSE_RANK LAST order by appro_date) report_approver
+			from pas_appro
+			GROUP by report_no
+			) ap
 		ON re.report_no = ap.report_no
 		WHERE re.report_id = #{ member_id }
 		<choose>
@@ -56,13 +65,6 @@ on re.report_no = ap.report_no;
 				OR ( report_status = 'AR' OR report_id = #{ member_id } )
 			</when>
 		</choose>
-		
-		
-		<!-- <choose>
-			<when test="member_position == 'DD'">
-				OR ( report_status = '결재대기' OR report_id = #{ member_id } )
-			</when>
-		</choose> -->
 		ORDER BY report_date DESC
 	</select>
 	
@@ -100,5 +102,25 @@ on re.report_no = ap.report_no;
 			report_status = #{ report_status }
 		WHERE report_no = #{ report_no }
 	</update>
+	
+	<select id="endReport" parameterType="map" resultMap="list">
+		SELECT
+			re.report_no,
+			re.report_title,
+			re.report_name,
+			re.report_date,
+			ap.report_approver,
+			re.report_status
+		FROM PAS_report re LEFT JOIN 
+			(
+			select    
+			    report_no,
+			    max(report_approver) KEEP (DENSE_RANK LAST order by appro_date) report_approver
+			from pas_appro
+			GROUP by report_no
+			) ap
+		ON re.report_no = ap.report_no
+		where report_status = 'END'
+	</select>
 
 </mapper>

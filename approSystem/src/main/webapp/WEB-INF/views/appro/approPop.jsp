@@ -44,7 +44,7 @@
             <input type="hidden" id="report_status" name="report_status" value="${ report.report_status }" />
             <input type="hidden" id="appro_status" name="appro_status" value="" />
 	        <div>
-	          <input type="button" value="반려" onclick="retrunBtn" />
+	          <input type="button" value="반려" onclick="retrunBtn()" />
 	          <input type="button" value="결재" onclick="approBtn()" />
 	        </div>
 		</form>
@@ -81,6 +81,26 @@
     		  alert('결재를 할 수 없습니다.');
     		  window.close();
     	  }
+    	  window.opener.name="parent";
+    	  document.approFrm.target = "parent";
+    	  document.approFrm.method = "post";
+    	  document.approFrm.action = "approAction";
+    	  document.approFrm.submit();
+    	  window.close();
+      }
+     
+      function retrunBtn() {
+    	  var reValue = $("#report_status");
+    	  var apValue = $("#appro_status");
+    	  if( reValue.val() == 'END' ) {
+    		  alert('반려 할 수 없는 문서입니다.');
+    		  window.close();
+    		} 
+    	  else {
+    		  alert('문서 반려');
+    		  reValue.val('END').toString;
+    		  apValue.val('END').toString;
+    	  	}
     	  window.opener.name="parent";
     	  document.approFrm.target = "parent";
     	  document.approFrm.method = "post";

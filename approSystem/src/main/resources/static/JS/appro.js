@@ -8,7 +8,7 @@
 			alert("제목을  입력해주세요.");			
 			}
 		else {		
-			if(statusValue.val() == 'TS' || statusValue.val() == 'Re') {
+			if(statusValue.val() == 'TS' || statusValue.val() == 'RT') {
 				alert("수정완료");
 				$("#writeFrm").attr({"action":"reportUpdateAction", "method":"get"}).submit();
 				} 
@@ -32,7 +32,7 @@
 			alert("제목을  입력해주세요.");			
 			}
 		else {		
-			if( statusValue.val() == 'Re' || statusValue.val() == 'TS' || statusValue.val() == 'Re') {
+			if( statusValue.val() == 'Re' || statusValue.val() == 'TS' || statusValue.val() == 'RT') {
 				alert("결재대기 등록");
 				$("#report_status").val('TS').toString;
 				$("#writeFrm").attr({"action":"reportUpdateAction", "method":"get"}).submit();
