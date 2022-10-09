@@ -6,7 +6,7 @@
 <mapper namespace="com.project.appro.dao.IcommunityReplyDAO">
 	
 	<!-- 댓글 개수 조회 -->
-	<select id="ReplyCount" resultType="String">
+	<select id="ReplyCount" resultType="Integer">
 		SELECT 
 			COUNT(*) 
 		FROM PAS_COMMUNITY_REPLY 

@@ -1,10 +1,13 @@
 package com.project.appro.service;
 
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.project.appro.dao.IapproDAO;
 import com.project.appro.dao.IreportDAO;
+import com.project.appro.dto.Appro;
 import com.project.appro.dto.Report;
 
 @Service
@@ -35,6 +38,18 @@ public class ApproService {
 		int reportUpdate = reportDao.reportUpdate(report);
 		
 		return reportUpdate;
+	}
+
+	public int approWrite( Map <String, Object> map ) {
+		
+		int approWrite = approDao.approWrite(map);
+		
+		return approWrite;
+	}
+
+	public int reportStatus(Map<String, Object> map) {
+		int reportStatus = reportDao.reStatus(map);
+		return reportStatus;
 	}
 
 }

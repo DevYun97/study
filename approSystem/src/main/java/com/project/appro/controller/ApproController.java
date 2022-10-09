@@ -72,8 +72,7 @@ public class ApproController {
 		return "appro/approWrite";
 	}
 	
-	@RequestMapping("reportUpdateAction")
-	
+	@RequestMapping("reportUpdateAction")	
 	public String reportUpdateAction (@ModelAttribute Report report) {
 		
 		int result = approService.reportUpdate(report);
@@ -108,6 +107,22 @@ public class ApproController {
 		return "appro/approPop";
 	}
 	
-	
+	@RequestMapping("approAction")
+	public String approAction (@RequestParam Map <String, Object> map) {
+		
+		int approWrite = approService.approWrite(map);
+		
+		if( approWrite == 0 ) {
+			return "";
+		}
+		else {
+			int result = approService.reportStatus(map);
+			if(result == 0) {
+				return "appro/approList";
+			} else {
+				return "redirect:approList";
+			}		
+		}
+	}
 
 }

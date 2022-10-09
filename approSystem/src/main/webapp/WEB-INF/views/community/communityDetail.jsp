@@ -79,26 +79,22 @@
               </form>             
             </div>   
             
-            <c:forEach var="reply" items="${ reply }" varStatus="re">
+            <c:forEach var="reply" items="${ reply }" varStatus="re" >
             <div class="my-4 pb-3 border-bottom">           
               <div>
+              <c:if test="${ community.commu_id != reply.reply_id }">
                 <span class="font-weight-bold mr-2">익명${ re.count } </span><small> ${ reply.reply_date }</small>
+              </c:if>
+              
+              <c:if test="${ community.commu_id == reply.reply_id }">
+                <span class="font-weight-bold mr-2" style="color:red;">작성자</span><small> ${ reply.reply_date }</small>
+              </c:if>
               </div>
               <div>
                 ${ reply.reply_content }
               </div>           
             </div>
             </c:forEach>  
-            
-            <div class="my-4 pb-3 border-bottom">
-              <div>
-                <span class="font-weight-bold mr-2">익명2</span><small> 날짜</small>
-              </div>
-              <div>
-                글 내용
-              </div>
-            </div>
-
           </div>    
         </div>
       </section>

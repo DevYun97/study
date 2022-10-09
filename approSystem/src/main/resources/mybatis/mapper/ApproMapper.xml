@@ -7,4 +7,9 @@
 	<select id="approList" resultType="com.project.appro.dto.Appro">
 		SELECT * FROM PAS_APPRO WHERE report_no = #{param1}
 	</select>
+	
+	<insert id="approWrite">
+		INSERT INTO PAS_APPRO (report_no, appro_id, report_approver, appro_content, appro_status)
+		VALUES ( #{ report_no }, #{ appro_id }, #{ report_approver }, #{ appro_content }, #{ appro_status } )
+	</insert>
 </mapper>

@@ -18,4 +18,6 @@ public interface IreportDAO {
 
 	public int reportUpdate(Report report);
 
+	public int reStatus(Map<String, Object> map);
+
 }

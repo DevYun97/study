@@ -65,7 +65,7 @@
 			                <th>제목</th>
 			                <th>작성자</th>
 			                <th>작성일</th>
-			                <th>결제자</th>
+			                <th>결재자</th>
 			                <th>상태</th>
 			            </tr>
 	              		<c:forEach var="report" items="${ reportList }" varStatus="status" >

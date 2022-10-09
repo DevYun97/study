@@ -40,7 +40,7 @@
             	<tr>
 	                <th>번호</th>
 	                <th>제목</th>
-	                <th>댓글 / 조회수</th>
+	                <th>조회수</th>
 	                <th>작성일</th>
               	</tr>
               	<c:forEach var="community" items="${ community }" varStatus="status" >		 
@@ -48,7 +48,7 @@
                     <td>${ status.count }</td>
                     <td onclick="location.href='/community/communityDetail?commu_no=${community.commu_no}'">${community.commu_title}</td>
                     <td>
-                      댓글: 00 | 조회수: ${community.commu_hit}
+                    	조회수: ${community.commu_hit}
                     </td>
                     <td>${community.commu_date}</td>
             	</tr>  
