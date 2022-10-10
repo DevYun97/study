@@ -24,5 +24,7 @@ public interface ImemberDAO {
 	public int memberUpdate(MemberDTO member);
 				
 	public MemberDTO getMemberInpor(String member_id);
+
+	public int updatePwInfo(String member_id, String member_pw);
 	
 }

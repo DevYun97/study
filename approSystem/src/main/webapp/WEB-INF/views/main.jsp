@@ -37,19 +37,38 @@
       <section class="d-flex w-100 flex-column">
         
         <article id="userCard" class="d-flex border" style="max-width: 800px; min-width: 400px;" >
-          <div id="userInfo" class="py-3 px-4 border-right">
-            <div class="text-right">
-              <small class="border rounded p-1 bg-secondary text-white " onclick="popupHideAndShow(target ='myCard');"> 정보수정 </small>
-            </div>
-            <div class="font25 text-center my-2">
-              <span>${ name }</span><span> ( ${ position } )</span>              
-            </div>
-            <div>              
-              ${ id }
-            </div>
-          </div>
           
-          <div class="">
+          <!-- myCard -->
+			<div id="userInfo" class="py-3 px-4 border-right" style="width:450px;">
+	          	<div class="text-right mt-2 mb-3">
+	          		<input type="button" value="비밀번호 변경" onclick="popupHideAndShow(target ='pwUpdate');" >
+	          	</div>           
+          	
+				<div>
+	          		<div class="form-row">
+			            <div class="col-6 mb-2">
+			            	<label for="member_id" class="font14 text-black-50 mb-0">사원 아이디</label>
+			              	<input type="text" class="form-control-plaintext" id="member_id" name="member_id" value="${ id }" readonly />
+			            </div>
+		          	</div>
+		          	<div class="form-row">
+			            <div class="col-6 mb-2">
+			            	<label for="member_name" class="font14 text-black-50">사원 이름</label>
+			              	<input type="text" class="form-control bg-white" id="member_name" name="member_ name" value="${ name }" readonly />			             
+			            </div>
+			            <div class="col-3 mb-2">
+				        	<label for="member_dep" class="font14 text-black-50">부서</label>
+				            <input type="text" class="form-control bg-white" id="member_dep" value="${ mem.member_dep }" readonly />         
+			            </div>
+		            	<div class="col-3 mb-1">
+			            	<label for="member_position" class="font14 text-black-50">직급</label>
+			              	<input type="text" class="form-control bg-white" id="member_position" value="${ mem.member_position }" readonly />         
+			            </div>
+		          	</div>
+	        	</div>
+			</div>
+          
+          <div class="d-flex align-items-center">
 
             <div class="card-group text-right">
               <div class="">
@@ -137,52 +156,23 @@
 
     <!-- 팝업창_ 팝업창 좌표는 화면 정가운데 고정시킴 -->
     <!-- 회원카드 -->
-    <div class=" container-sm container-fluid position-absolute d-none flex-column bg-white border border-dark-50 rounded p-2 "style="top:50%; left: 50%; transform:translate(-50%, -50%); width: 550px;" id="myCard">
-      <div class="w-100 d-flex flex-row justify-content-end">
-        <i class="bi bi-x-lg" width="30px" height="30px" onclick="popupHideAndShow(target = 'myCard');"></i>
+    <div class=" container-sm container-fluid position-absolute d-none flex-column bg-white border border-dark-50 rounded p-2 "style="top:50%; left: 50%; transform:translate(-50%, -50%); width: 400px;" id="pwUpdate">
+      	<div class="w-100 d-flex flex-row justify-content-end">
+        	<i class="bi bi-x-lg" width="30px" height="30px" onclick="popupHideAndShow(target = 'pwUpdate');"></i>
+      	</div>
+      	<div class="w-100 d-flex flex-column justify-content-center align-items-center">
+        	<h6 class="">비밀번호 변경하기</h6>
+        	<form action="member/pwChange" method="get" id="pwChangeFrm" class="d-flex flex-column align-items-center col-12 mt-2" onsubmit="return pwChangeOk();">
+	          	<input type="hidden" name="member_id" value="${ id }"  /> 
+	          	<input type="password" class="mt-2 mb-1 w-75 form-control" id="checkPw" placeholder="기존 비밀번호를 입력하세요" />
+	          	<input type="password" class="mt-2 mb-1 w-75 form-control" id="pw1" placeholder="새 비밀번호를 입력하세요" />
+	          	<input type="password" class="my-1 w-75 form-control" name="member_pw" id="pw2" placeholder="새 비밀번호 재확인" />
+	          	<div id="pwCkNo" style="color: red; display: none;" >*비밀번호가 일치하지 않습니다*</div>
+		      	<div id="pwCkOk" style="color: green; display: none;" >*비밀번호가 일치합니다*</div>
+	          	<input type="submit" id="pwSubmitBtn" class="btn btn-primary col-6 mt-3 mb-5" value="확인" disabled />
+        	</form>
       </div>
-      <form action="" method="post" class="w-100 d-flex flex-row justify-content-around mt-4 mb-3 needs-validation" onsubmit="return nullChecking();" enctype="multipart/form-data" accept-charset="UTF-8" >     
-        <div class="form-row mx-1">
-          <div class="border" style="width:100px; height: 100px;">
-            <img src="" class="" name="" id="" />
-          </div>
-          <div>
-            <label for="file_name" class="border rounded my-2 text-center" style="width: 100px; color: white; background-color: rgb(175, 175, 175);">이미지 등록</label>
-            <input type="file" class="d-none" name="" id="file_name" accept=".gif, .png, .jpg, .jpeg, bmp" onchange="fileCheck()" >
-          </div>
-        </div>
-        <!--  -->
-        <div>
-          <div class="form-row">
-            <div class="col-6 mb-2">
-              <label for="member_id">사원 아이디</label>
-              <input type="text" class="form-control-plaintext" id="member_id" name="member_id" value="Mark" readonly />
-            </div>
-            <div class="col-3 mb-2">
-              <label for="">부서</label>
-              <input type="text" class="form-control-plaintext" id="" readonly />         
-            </div>
-            <div class="col-3 mb-1">
-              <label for="">직급</label>
-              <input type="text" class="form-control-plaintext" id="" readonly />         
-            </div>
-          </div>
-          <div class="form-row">
-            <div class="col-6 mb-2">
-              <label for="member_pw">비밀번호</label>
-              <input type="password" class="form-control nullPointer" id="member_pw" name="member_pw" required onchange="pwChange();">
-            </div>
-            <div class="col-6 mb-2">
-              <label for="member_id">사원 이름</label>
-              <input type="text" class="form-control nullPointer" id="member_id" name="member_id" required>
-            </div>
-          </div>
-        </div>
-       </form>
-       <div class="w-100 d-flex justify-content-center mb-2">
-        <button class=" col-6 btn btn-primary" type="submit" onclick="">수정</button>
-       </div>       
-    </div>
+	</div>
     
     <!-- 팝업창 -->
     <c:import url="subPage.jsp"></c:import>
@@ -191,8 +181,38 @@
     <!-- 부트스트랩4 JS 연결 -->
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
-    
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <!-- myJS -->
     <script src="/JS/main.js"></script>
+    <script>
+ 	// 비밀번호 일치 ajax
+	$(function(){
+	    $('#checkPw').focusout(function(){
+	        
+	    	//비밀번호 확인
+	        const member_pw = $('#checkPw').val();
+	        if(!member_pw){
+	        	alert("비밀번호를 입력해주세요.");
+	            return false;
+	        }
+	        $.ajax({	        	
+	            url: 'http://localhost:8081/member/pwChkAjax?member_pw='+ member_pw,	// action	            
+	            type: 'POST', //method     
+	            success: function(data) {   //success : function( 변수명 ) -- return "data"; 호출받아서 실행되는 부분.  function: 액션이 선행되어어야 함.
+	            	let data_num = Number( data );
+	               	if( data_num >= 1){
+	          			alert('기존비밀번호를 재확인 해 주세요');
+	          			$('#checkPw').val('');
+	          		  }else{
+	                   	$('#pwSubmitBtn').removeAttr('disabled'); //submit 버튼 잠금해제
+	          		  }
+	          		},
+	            error: function(){
+	            	console.log('통신 실패');
+	            }	
+	   		});
+	    })
+    })    
+    </script>
   </body>
 </html>

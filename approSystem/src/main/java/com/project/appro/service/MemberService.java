@@ -63,5 +63,25 @@ public class MemberService {
 		}	
 		return result;
 	}
-	
+
+	public int pwChkAjax(String member_id, String member_pw) {
+		
+		String mem_pw = memberDao.getMemPw(member_id);
+
+		if( member_pw.equals(mem_pw)) { //	비밀번호 확인		
+			return 0;
+		} else { // 비밀번호 재확인 필요
+			return 1;
+		}
+	}
+
+	public int userPwUpdate(String member_id, String member_pw) {
+		
+		int result = memberDao.updatePwInfo(member_id, member_pw);
+		if(result == 1) {
+			return 1;
+		} else {
+			return 0;
+		}		
+	}
 }

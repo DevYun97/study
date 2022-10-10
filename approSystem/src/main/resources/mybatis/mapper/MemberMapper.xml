@@ -88,4 +88,10 @@
 		WHERE member_id = #{param1}
 	</select>
 	
+	
+	<update id="updatePwInfo">
+		UPDATE pas_member SET member_pw = #{ param2 } 
+		WHERE member_id = #{param1}
+	</update>
+	
 </mapper>

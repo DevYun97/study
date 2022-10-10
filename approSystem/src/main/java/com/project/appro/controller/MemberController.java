@@ -2,6 +2,9 @@ package com.project.appro.controller;
 
 import java.util.ArrayList;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -60,5 +63,36 @@ public class MemberController {
 		String result = memService.memberJoin(member);
 		
 		return result;
+	}
+	
+	@RequestMapping("pwChkAjax")
+	@ResponseBody
+	public int pwChkAjax(
+			@RequestParam("member_pw") String member_pw,
+			HttpSession session) {
+		String member_id;
+		member_id = (String)session.getAttribute("id");
+		
+		int result = memService.pwChkAjax(member_id, member_pw);					
+		return result;		
+	}
+	
+	//비밀번호 변경
+	@RequestMapping("pwChange")
+	@ResponseBody
+	public String pwChange(
+			@RequestParam ("member_id") String member_id,
+			@RequestParam ("member_pw") String member_pw,			
+			HttpServletRequest request) {
+		
+		System.out.println(member_id);
+		int result = memService.userPwUpdate(member_id, member_pw);
+		if(result == 1) {
+			request.getSession().invalidate();
+			return "<script>alert('회원정보가 변경되었습니다.');location.href='../login';</script>";
+		} else {
+			return "<script>alert('error: 확인후 다시 시도해주세요.'); location.href=',,/member/memberList';</script>";
+		}
+			
 	}
 }

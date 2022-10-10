@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.project.appro.dao.IcommunityDAO;
 import com.project.appro.dao.ImemberDAO;
 import com.project.appro.dto.Community;
+import com.project.appro.dto.MemberDTO;
 import com.project.appro.dto.Notice;
 import com.project.appro.service.MemberService;
 
@@ -49,7 +50,9 @@ public class mainController {
 		}
 		
 		//MyCard
-		
+		MemberDTO member = memberDao.getMemberInpor(member_id);
+		model.addAttribute("mem", member);
+				
 		//Notice
 		ArrayList<Notice> notice = comDao.notice();
 		model.addAttribute("notice", notice);
