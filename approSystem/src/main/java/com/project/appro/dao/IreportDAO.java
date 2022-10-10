@@ -22,4 +22,6 @@ public interface IreportDAO {
 
 	public ArrayList<Map<String, Object>> endReport(Map<String, Object> map);
 
+	public ArrayList<Map<String, Object>> returnReport(Map<String, Object> map);
+
 }

@@ -14,6 +14,7 @@
 		<result column="report_id" property="report_id" />
 		<result column="report_date" property="report_date" />
 		<result column="report_status" property="report_status" />
+		<result column="report_returnYN" property="report_returnYN" />
 	</resultMap>
 
 <!--  
@@ -121,6 +122,26 @@ SELECT
 			) ap
 		ON re.report_no = ap.report_no
 		where report_status = 'END'
+	</select>
+	
+	<select id="returnReport" parameterType="map" resultMap="list">
+		SELECT
+			re.report_no,
+			re.report_title,
+			re.report_name,
+			re.report_date,
+			ap.report_approver,
+			re.report_status
+		FROM PAS_report re LEFT JOIN 
+			(
+			select    
+			    report_no,
+			    max(report_approver) KEEP (DENSE_RANK LAST order by appro_date) report_approver
+			from pas_appro
+			GROUP by report_no
+			) ap
+		ON re.report_no = ap.report_no
+		where report_returnYN = 'Y'
 	</select>
 
 </mapper>

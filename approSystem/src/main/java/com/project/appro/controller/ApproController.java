@@ -60,6 +60,17 @@ public class ApproController {
 		return "appro/approEND";
 	}
 	
+	@RequestMapping("approReturn")
+	public String approReturn ( @RequestParam Map <String, Object> map, HttpSession session ,Model model) {
+				
+			
+		ArrayList<Map <String, Object>> returnReport = new ArrayList<>();
+		returnReport = reportDao.returnReport( map );
+		model.addAttribute("reportList", returnReport);
+		
+		return "appro/approReturn";
+	}
+	
 	@RequestMapping("approWrite")
 	public String approWrite ( ) {
 		return "appro/approWrite";

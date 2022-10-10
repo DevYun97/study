@@ -2,10 +2,16 @@
     pageEncoding="UTF-8"%>
 	
 	<aside>
+	
+		<div id="approMain" class="asideNavBar my-4" >
+          <input type="button" class="" value="PAS HOME" onclick="location.href='../main'" />
+        </div>
+
         <div id="approWriteBox" class="asideNavBar" >
           <small>문서관리</small>
           <a href="/appro/approWrite" >문서작성</a>
           <a href="/appro/approList" >문서함</a>
+          <a href="/appro/approReturn" >반려문서</a>
           <a href="/appro/approEND" >완료문서</a>
           <hr>
         </div>
