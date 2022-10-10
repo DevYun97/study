@@ -45,11 +45,11 @@ public class MemberController {
 		return "member/memberCard";
 	}
 	
-	//신규 사원 발급
+	//사원 정보 수정
 	@RequestMapping("memberUpdate")
 	@ResponseBody
 	public String memberUpdate (@ModelAttribute MemberDTO member) {
-		
+		System.out.println(member);
 		String result = memService.memberUpdate(member);
 			
 		return result;

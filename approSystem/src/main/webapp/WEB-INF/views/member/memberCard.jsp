@@ -20,7 +20,7 @@
       <hr>
     </div>   
     <main class="d-flex justify-content-between">
-      <form action="memberJoinAction" method="post" name="memberUpdatefrm" class="w-100 text-left px-3">
+      <form action="memberUpdate" method="post" name="memberUpdatefrm" class="w-100 text-left px-3">
         <input type="hidden" name="member_id" value="${ member.member_id }" />
         <div class="form-group row">
           <div class="col-6 mb-3">
@@ -74,14 +74,19 @@
     <!-- child 팝업창 -->
     <script type="text/javascript">
 
-      function popup_close()
-      {
-        window.opener.name="parent";
-        document.memberUpdatefrm.target = "parent";
-        document.memberUpdatefrm.method = "post";
-        document.memberUpdatefrm.action = "memberUpdate";
-        document.memberUpdatefrm.submit();
-        window.close();
+    	function popup_close() {
+    	  
+    		if( ${ position == 'AA'} ){
+    			window.opener.name="parent";
+    	        document.memberUpdatefrm.target = "parent";
+    	        document.memberUpdatefrm.method = "post";
+    	        document.memberUpdatefrm.action = "memberUpdate";
+    	        document.memberUpdatefrm.submit();
+    	        window.close();	
+    		}
+    		else {
+    			alert('권한 없는 사용자입니다.');
+    		}
       }
     
     </script>

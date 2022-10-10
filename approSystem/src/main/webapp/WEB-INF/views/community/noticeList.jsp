@@ -32,7 +32,8 @@
           </div>
 
           <div class="mb-2 d-flex justify-content-end">
-            <input type="button" value="글 작성" onclick="location.href='/community/noticeWrite'"/>
+            <!-- <input type="button" value="글 작성" onclick="location.href='/community/noticeWrite'"/> -->
+          	<input type="button" value="글 작성" onclick="noticeWrite()"/>
           </div>
 
           <div class="qna">
@@ -84,5 +85,17 @@
     
     <!-- myJS -->
     <script src="/JS/main.js"></script>
+    <script>
+    	function noticeWrite(){
+    		if( ${ position == 'AA' || position == 'BB' || position == 'CC' } ){
+    			location.href='/community/noticeWrite';
+    		} 
+    		else {
+    			alert('공지사항 작성 권한이 없는 아이디입니다.');
+    		}
+    		
+    	}
+    
+    </script>
   </body>
 </html>

@@ -87,67 +87,67 @@
     </div>
 			
 			
-			<!-- 신규 회원 등록 카드 -->
-		    <div class="container-sm container-fluid col-12 position-absolute d-none flex-column justify-content-center bg-white border border-dark-50 rounded" style="top:50%; left: 50%; transform:translate(-50%, -50%); width:580px;" id="memberAdd">
-		      <!-- 캔슬 아이콘 -->
-		      <div class="w-100 d-flex flex-row justify-content-end my-2">
-		        <i class="bi bi-x-lg" width="30px" height="30px" onclick="popupHideAndShow(target = 'memberAdd');"></i>
-		      </div>
-		      <!-- MainDiv -->
-		      <div class="w-100 d-flex flex-column justify-content-center align-items-center">
-		        <h4>신규 회원 등록카드</h4>
-		        <div class="pl-2 pt-2 pb-4 w-100 text-left">
-		          <form action="memberJoinAction" method="post" onsubmit="return nullChecking()">
-		            <div class="form-group row">
-		              <div class="col-md-6 mb-3">
-		                <label for="member_name">이름</label>
-		                <input type="text" class="form-control nullPointer" name="member_name" id="member_name" required>
-		              </div>
-		              <div class="col-md-3 mb-3">
-		                <label for="">부서</label>
-		                <select class="custom-select" name="member_dep" id="member_dep" required>
-		                  <option selected disabled value="">Choose...</option>
-		                  <option value="dev">개발팀</option>
-		                </select>
-		              </div>
-		              <div class="col-md-3 mb-3">
-		                <label for="">직급</label>
-		                <select class="custom-select" name="member_position" id="member_position" required>
-		                  <option selected disabled value="">Choose...</option>
-		                  <option value="AA">책임</option>
-		                  <option value="BB">책임</option>
-		                  <option value="CC">팀장</option>
-		                  <option value="DD">사수</option>
-		                  <option value="EE">사원</option>
-		                </select>                
-		              </div>
+	<!-- 신규 회원 등록 카드 -->
+	<div class="container-sm container-fluid col-12 position-absolute d-none flex-column justify-content-center bg-white border border-dark-50 rounded" style="top:50%; left: 50%; transform:translate(-50%, -50%); width:580px;" id="memberAdd">
+	<!-- 캔슬 아이콘 -->
+		<div class="w-100 d-flex flex-row justify-content-end my-2">
+		   	<i class="bi bi-x-lg" width="30px" height="30px" onclick="popupHideAndShow(target = 'memberAdd');"></i>
+		</div>
+		<!-- MainDiv -->
+		<div class="w-100 d-flex flex-column justify-content-center align-items-center">
+		    <h4>신규 회원 등록카드</h4>
+		    <div class="pl-2 pt-2 pb-4 w-100 text-left">
+		    	<form action="memberJoinAction" method="post" onsubmit="return nullChecking()">
+		        	<div class="form-group row">
+		            	<div class="col-md-6 mb-3">
+		                	<label for="member_name">이름</label>
+		                	<input type="text" class="form-control nullPointer" name="member_name" id="member_name" required>
+		              	</div>
+		              	<div class="col-md-3 mb-3">
+		                	<label for="">부서</label>
+		                	<select class="custom-select" name="member_dep" id="member_dep" required>
+		                  		<option selected disabled value="">Choose...</option>
+		                  		<option value="dev">개발팀</option>
+		                	</select>
+		              	</div>
+		              	<div class="col-md-3 mb-3">
+		                	<label for="">직급</label>
+		                	<select class="custom-select" name="member_position" id="member_position" required>
+		                  		<option selected disabled value="">Choose...</option>
+			                  	<option value="AA">책임</option>
+			                  	<option value="BB">책임</option>
+			                  	<option value="CC">팀장</option>
+			                  	<option value="DD">사수</option>
+			                  	<option value="EE">사원</option>
+		                	</select>                
+		              	</div>
 		            </div>
 		            <fieldset class="form-group row">
-		              <legend class="col-form-label col-sm-2 float-sm-left pt-0">성별</legend>
-		              <div class="col-sm-10">
-		                <div class="form-check">
-		                  <input class="form-check-input" type="radio" name="member_gender" id="male" value="male" checked>
-		                  <label class="form-check-label" for="male">
-		                    남자
-		                  </label>
-		                </div>
-		                <div class="form-check">
-		                  <input class="form-check-input" type="radio" name="member_gender" id="female" value="female">
-		                  <label class="form-check-label" for="female">
-		                    여자
-		                  </label>
-		                </div>
-		              </div>
+		            	<legend class="col-form-label col-sm-2 float-sm-left pt-0">성별</legend>
+		              	<div class="col-sm-10">
+		                	<div class="form-check">
+		                  		<input class="form-check-input" type="radio" name="member_gender" id="male" value="male" checked>
+		                  		<label class="form-check-label" for="male">
+		                    	남자
+		                  		</label>
+		                	</div>
+		                	<div class="form-check">
+		                  		<input class="form-check-input" type="radio" name="member_gender" id="female" value="female">
+			                  	<label class="form-check-label" for="female">
+			                    	여자
+			                  	</label>
+		                	</div>
+		              	</div>
 		            </fieldset>
 		            <div class="form-group row">
-		              <div class="col-sm-10 offset-sm-2">
-		                <div class="form-check">
-		                  <input class="form-check-input nullPointer" type="checkbox" id="joinCK" placeholder="신규 사원 발급에 동의 후 가입이 가능합니다.">
-		                  <label class="form-check-label" for="joinCK">
-		                    신규 사원 발급에 동의합니다.
-		                  </label>
-		                </div>
-		              </div>
+		            	<div class="col-sm-10 offset-sm-2">
+		                	<div class="form-check">
+		                  		<input class="form-check-input nullPointer" type="checkbox" id="joinCK" placeholder="신규 사원 발급에 동의 후 가입이 가능합니다.">
+		                 		<label class="form-check-label" for="joinCK">
+		                    	신규 사원 발급에 동의합니다.
+		                  		</label>
+		                	</div>
+		              	</div>
 		            </div>
             		<div class="form-group row">
               			<div class="col-sm-10">
@@ -155,6 +155,6 @@
               			</div>
             		</div>
           		</form>
-        		</div>     
-      		</div>
-    	</div>
+        	</div>     
+      	</div>
+    </div>

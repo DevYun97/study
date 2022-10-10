@@ -76,5 +76,61 @@
     <!-- myJS -->
     <script src="/JS/main.js"></script>
     <script src="/JS/appro.js"></script>
+    <script>
+    function writeBtnB() {
+    	 
+		var title = $("#report_title").val();
+		var statusValue = $("#report_status");
+		
+		if( !title ) {
+			alert("제목을  입력해주세요.");			
+			}
+		else {		
+			if( ( statusValue.val() == 'TS' || statusValue.val() == 'RT') && ${ position == 'EE'} ) {
+				alert("결재대기 등록");
+				$("#report_status").val('DR').toString;
+				$("#writeFrm").attr({"action":"reportUpdateAction", "method":"get"}).submit();
+			}
+			else if(( statusValue.val() == 'TS' || statusValue.val() == 'RT') && ${ position == 'DD'}){
+				alert("결재대기 등록");
+				$("#report_status").val('CR').toString;
+				$("#writeFrm").attr({"action":"reportUpdateAction", "method":"get"}).submit();
+			}
+			else if(( statusValue.val() == 'TS' || statusValue.val() == 'RT') && ${ position == 'CC'}){
+				alert("결재대기 등록");
+				$("#report_status").val('BR').toString;
+				$("#writeFrm").attr({"action":"reportUpdateAction", "method":"get"}).submit();
+			}
+			else if(( statusValue.val() == 'TS' || statusValue.val() == 'RT') && ${ position == 'BB'}){
+				alert("결재대기 등록");
+				$("#report_status").val('AR').toString;
+				$("#writeFrm").attr({"action":"reportUpdateAction", "method":"get"}).submit();
+			}
+			else if(statusValue.val() == '' && ${ position == 'EE'}) {
+				alert("결재대기 등록");
+				$("#report_status").val('DR').toString;
+				$("#writeFrm").attr({"action":"reportWriteAction", "method":"get"}).submit();
+			}
+			else if( statusValue.val() == '' && ${ position == 'DD'}){
+				alert("결재대기 등록");
+				$("#report_status").val('CR').toString;
+				$("#writeFrm").attr({"action":"reportWriteAction", "method":"get"}).submit();
+			}
+			else if( statusValue.val() == '' && ${ position == 'CC'}){
+				alert("결재대기 등록");
+				$("#report_status").val('BR').toString;
+				$("#writeFrm").attr({"action":"reportWriteAction", "method":"get"}).submit();
+			}
+			else if( statusValue.val() == '' && ${ position == 'BB'}){
+				alert("결재대기 등록");
+				$("#report_status").val('AR').toString;
+				$("#writeFrm").attr({"action":"reportWriteAction", "method":"get"}).submit();
+			}
+			else {
+				alert("임시작성 상태에서만 글 수정이 가능합니다.");				
+			}
+		}			
+	}
+    </script>
   </body>
 </html>

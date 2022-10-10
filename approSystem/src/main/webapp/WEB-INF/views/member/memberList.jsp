@@ -98,9 +98,9 @@
     <script src="/JS/main.js"></script>
     <!-- child 팝업창 -->
     <script>
-      function openWindow( no ){
-        window.open('/member/memberCard?member_id=${mem.member_id}', '신규 아이디 발급', 'width=700,height=450,location=no,status=no,scrollbars=no')
-      }
+    	function openWindow( no ){   		
+    		window.open('/member/memberCard?member_id=${mem.member_id}', '신규 아이디 발급', 'width=700,height=450,location=no,status=no,scrollbars=no');   	      	    		
+        }
     </script>
   </body>
 </html>

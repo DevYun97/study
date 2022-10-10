@@ -79,6 +79,7 @@
 	
 	<select id="getMemberInpor" resultType="com.project.appro.dto.MemberDTO">
 		SELECT
+			member_id,
 			member_name,
 			member_join,
 			member_gender,

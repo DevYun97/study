@@ -56,7 +56,9 @@
             		</form>
 				</article>
 				<div class="mb-2 d-flex justify-content-end">
+					<c:if test="${ position != 'AA'  }" >
 	            	<input type="button" value="글 작성" onclick="location.href='approWrite'"/>
+	          		</c:if>
 	          	</div>
 	          	<div class="qna">
 	            	<table>
