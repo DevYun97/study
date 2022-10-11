@@ -5,13 +5,13 @@ import lombok.Data;
 @Data
 public class CommunityReply {
 
-	private String commu_no;
+	private int commu_no;
 	private String reply_id;
 	private String reply_name;
 	private String reply_content;
 	private String reply_date;
 	
-	public CommunityReply(String commu_no, String reply_id, String reply_name, String reply_content,
+	public CommunityReply(int commu_no, String reply_id, String reply_name, String reply_content,
 			String reply_date) {
 		super();
 		this.commu_no = commu_no;

@@ -11,7 +11,15 @@
 	
 	<insert id="comWrite">
 		INSERT INTO PAS_COMMUNITY ( commu_no, commu_id, commu_title, commu_name, commu_content, commu_date )
-		VALUES ( 'commusNum_' || PAS_COMMUNITY_SEQ.nextval,  #{ param1 }, #{ param2 }, #{ param3 }, #{ param4 }, sysdate )
+		VALUES 
+			( 
+				(select nvl(max(commu_no),0)+1 from PAS_COMMUNITY),
+			  	#{ param1 },
+			  	#{ param2 },
+			  	#{ param3 }, 
+			  	#{ param4 }, 
+			  	sysdate
+		  	)
 	</insert>	
 		
 	<select id="comDetail" resultType="com.project.appro.dto.Community">
@@ -33,7 +41,15 @@
 	
 	<insert id="noticeWrite">
 		INSERT INTO PAS_NOTICE ( notice_no, notice_id, notice_title, notice_name, notice_content, notice_date )
-		VALUES ( 'noticeNum_' || PAS_NOTICE_SEQ.nextval, #{ param1 }, #{ param2 }, #{ param3 }, #{ param4 }, sysdate )
+		VALUES 
+		( 
+			(select nvl(max(notice_no),0)+1 from PAS_NOTICE ), 
+			#{ param1 }, 
+			#{ param2 }, 
+			#{ param3 }, 
+			#{ param4 }, 
+			sysdate
+		)
 	</insert>
 	
 	<select id="getNoticeDetail" resultType="com.project.appro.dto.Notice">

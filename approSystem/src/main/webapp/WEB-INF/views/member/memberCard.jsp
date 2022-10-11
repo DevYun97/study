@@ -21,7 +21,7 @@
     </div>   
     <main class="d-flex justify-content-between">
       <form action="memberUpdate" method="post" name="memberUpdatefrm" class="w-100 text-left px-3">
-        <input type="hidden" name="member_id" value="${ member.member_id }" />
+        <input type="hidden" id="member_id" name="member_id" value="${ member.member_id }" />
         <div class="form-group row">
           <div class="col-6 mb-3">
             <label for="member_name">이름</label>
@@ -57,8 +57,9 @@
           </div>
         </div>      
         <div>
-          <input type="button" value="수정" onclick="popup_close();"/>
+          <input type="button" value="수정" onclick="updateBtn();"/>
           <input type="button" value="확인" onclick="window.close();" />
+          <input type="button" value="삭제" onclick="deleteBtn()" />
         </div>
       </form>
       
@@ -74,9 +75,9 @@
     <!-- child 팝업창 -->
     <script type="text/javascript">
 
-    	function popup_close() {
+    	function updateBtn() {
     	  
-    		if( ${ position == 'AA'} ){
+    		if( ${ position == 'AA' || position == 'BB' || ( position == 'CC' && dep == '인사과')} ){
     			window.opener.name="parent";
     	        document.memberUpdatefrm.target = "parent";
     	        document.memberUpdatefrm.method = "post";
@@ -88,6 +89,22 @@
     			alert('권한 없는 사용자입니다.');
     		}
       }
+    	
+    	function deleteBtn() {
+    		
+    		if( ${ position == 'AA' || position == 'BB' || ( position == 'CC' && dep == '인사과')} ){
+    			//location.href='memberDelete?member_id=${ member.member_id }';
+    			window.opener.name="parent";
+    			document.memberUpdatefrm.target = "parent";
+    	        document.memberUpdatefrm.method = "post";
+    	        document.memberUpdatefrm.action = "memberDelete";
+    	        document.memberUpdatefrm.submit();
+    			window.close();	
+    		}
+    		else {
+    			alert('권한 없는 사용자입니다.');
+    		}
+    	}
     
     </script>
 

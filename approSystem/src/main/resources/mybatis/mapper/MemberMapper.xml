@@ -95,4 +95,8 @@
 		WHERE member_id = #{param1}
 	</update>
 	
+	<delete id="memberDelete">
+		DELETE FROM PAS_MEMBER WHERE member_id = #{ param1 }
+	</delete>
+	
 </mapper>

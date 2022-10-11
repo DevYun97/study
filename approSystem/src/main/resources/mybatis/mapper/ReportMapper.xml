@@ -141,7 +141,7 @@ SELECT
 			GROUP by report_no
 			) ap
 		ON re.report_no = ap.report_no
-		where report_returnYN = 'Y'
+		where re.report_status = 'RT' AND re.report_id = #{ param1 }
 	</select>
 
 </mapper>

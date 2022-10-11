@@ -5,7 +5,7 @@ import lombok.Data;
 @Data
 public class Notice {
 
-	private String notice_no;
+	private int notice_no;
 	private String notice_name;
 	private String notice_title;
 	private String notice_content;
@@ -14,7 +14,7 @@ public class Notice {
 	private String notice_id;
 	
 
-	public Notice(String notice_no, String notice_name, String notice_title, String notice_content, String notice_date,
+	public Notice(int notice_no, String notice_name, String notice_title, String notice_content, String notice_date,
 			int notice_hit, String notice_id) {
 		super();
 		this.notice_no = notice_no;

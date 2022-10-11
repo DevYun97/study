@@ -34,7 +34,7 @@
         	<c:if test="${ not empty report.report_no  }">
         	<input type="hidden" name="report_no" value="${ report.report_no }"/>        
             </c:if>
-            <input type="hidden" name="report_id" value="${ id }" />
+            <input type="hidden" id="report_id" name="report_id" value="${ id }" />
             <div class="form-group row">
               <label for="report_name" class="col-2 col-form-label">작성자 :</label>
               <div class="col-10">
@@ -60,9 +60,16 @@
         <hr>
         <div>
         	<input type="button" class="" value="취소" onclick="location.href='approList'" />
+            <c:if test="${ report.report_status != 'RT' }" >
             <input type="button" class="" value="임시저장" onclick="writeBtnA()" />			
             <input type="button" class="" value="결재" onclick="writeBtnB()" />	
+        	</c:if>
+        	<c:if test="${ report.report_status == 'RT' }" >
+            <input type="button" class="" value="임시저장" onclick="writeRT()" />			
+            <input type="button" class="" value="결재" onclick="approRT()" />	
+        	</c:if>
         </div>
+        <input type="hidden" name="member_position" id="member_position" value="${ position }" />
       </section>      
     </main>
 	<!-- 부트스트랩4 JS 연결 -->
@@ -76,61 +83,6 @@
     <!-- myJS -->
     <script src="/JS/main.js"></script>
     <script src="/JS/appro.js"></script>
-    <script>
-    function writeBtnB() {
-    	 
-		var title = $("#report_title").val();
-		var statusValue = $("#report_status");
-		
-		if( !title ) {
-			alert("제목을  입력해주세요.");			
-			}
-		else {		
-			if( ( statusValue.val() == 'TS' || statusValue.val() == 'RT') && ${ position == 'EE'} ) {
-				alert("결재대기 등록");
-				$("#report_status").val('DR').toString;
-				$("#writeFrm").attr({"action":"reportUpdateAction", "method":"get"}).submit();
-			}
-			else if(( statusValue.val() == 'TS' || statusValue.val() == 'RT') && ${ position == 'DD'}){
-				alert("결재대기 등록");
-				$("#report_status").val('CR').toString;
-				$("#writeFrm").attr({"action":"reportUpdateAction", "method":"get"}).submit();
-			}
-			else if(( statusValue.val() == 'TS' || statusValue.val() == 'RT') && ${ position == 'CC'}){
-				alert("결재대기 등록");
-				$("#report_status").val('BR').toString;
-				$("#writeFrm").attr({"action":"reportUpdateAction", "method":"get"}).submit();
-			}
-			else if(( statusValue.val() == 'TS' || statusValue.val() == 'RT') && ${ position == 'BB'}){
-				alert("결재대기 등록");
-				$("#report_status").val('AR').toString;
-				$("#writeFrm").attr({"action":"reportUpdateAction", "method":"get"}).submit();
-			}
-			else if(statusValue.val() == '' && ${ position == 'EE'}) {
-				alert("결재대기 등록");
-				$("#report_status").val('DR').toString;
-				$("#writeFrm").attr({"action":"reportWriteAction", "method":"get"}).submit();
-			}
-			else if( statusValue.val() == '' && ${ position == 'DD'}){
-				alert("결재대기 등록");
-				$("#report_status").val('CR').toString;
-				$("#writeFrm").attr({"action":"reportWriteAction", "method":"get"}).submit();
-			}
-			else if( statusValue.val() == '' && ${ position == 'CC'}){
-				alert("결재대기 등록");
-				$("#report_status").val('BR').toString;
-				$("#writeFrm").attr({"action":"reportWriteAction", "method":"get"}).submit();
-			}
-			else if( statusValue.val() == '' && ${ position == 'BB'}){
-				alert("결재대기 등록");
-				$("#report_status").val('AR').toString;
-				$("#writeFrm").attr({"action":"reportWriteAction", "method":"get"}).submit();
-			}
-			else {
-				alert("임시작성 상태에서만 글 수정이 가능합니다.");				
-			}
-		}			
-	}
-    </script>
+
   </body>
 </html>

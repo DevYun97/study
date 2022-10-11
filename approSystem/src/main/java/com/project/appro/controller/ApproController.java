@@ -35,9 +35,8 @@ public class ApproController {
 	
 	@RequestMapping("approList")
 	public String approList ( @RequestParam Map <String, Object> map, HttpSession session ,Model model) {
-				
 		
-		String member_id = (String) session.getAttribute("id");
+		String member_id = (String) session.getAttribute("id");		
 		String member_position = (String) session.getAttribute("position");	
 			
 		ArrayList<Map <String, Object>> reportList = new ArrayList<>();
@@ -63,8 +62,11 @@ public class ApproController {
 	@RequestMapping("approReturn")
 	public String approReturn ( @RequestParam Map <String, Object> map, HttpSession session ,Model model) {
 				
-			
+		String member_id = (String) session.getAttribute("id");
+		System.out.println(member_id);
 		ArrayList<Map <String, Object>> returnReport = new ArrayList<>();
+		map.put("member_id", member_id);
+		System.out.println(returnReport);
 		returnReport = reportDao.returnReport( map );
 		model.addAttribute("reportList", returnReport);
 		

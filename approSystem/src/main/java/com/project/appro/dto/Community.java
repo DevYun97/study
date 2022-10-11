@@ -5,7 +5,7 @@ import lombok.Data;
 @Data
 public class Community {
 
-	private String commu_no;
+	private int commu_no;
 	private String commu_id;
 	private String commu_name;
 	private String commu_title;
@@ -14,7 +14,7 @@ public class Community {
 	private int commu_hit;
 	
 
-	public Community(String commu_no, String commu_id, String commu_name, String commu_title, String commu_content,
+	public Community(int commu_no, String commu_id, String commu_name, String commu_title, String commu_content,
 			String commu_date, int commu_hit) {
 		super();
 		this.commu_no = commu_no;

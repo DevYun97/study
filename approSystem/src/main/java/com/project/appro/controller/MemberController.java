@@ -55,6 +55,17 @@ public class MemberController {
 		return result;
 	}
 
+	@RequestMapping("memberDelete")
+	public String memberDelete (@RequestParam("member_id") String member_id ) {
+		System.out.println(member_id);
+		int result = memberDao.memberDelete(member_id);
+		if(result == 0) {
+			return "redirect:memberList";
+		} else {
+			return "redirect:memberList";
+		}		
+	}
+	
 	//신규 사원 발급
 	@RequestMapping("memberJoinAction")
 	@ResponseBody

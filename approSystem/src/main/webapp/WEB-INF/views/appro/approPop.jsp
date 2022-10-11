@@ -44,7 +44,7 @@
             <input type="hidden" id="report_status" name="report_status" value="${ report.report_status }" />
             <input type="hidden" id="appro_status" name="appro_status" value="" />
 	        <div>
-	          <input type="button" value="반려" onclick="retrunBtn()" />
+	          <input type="button" value="반려" onclick="returnBtn()" />
 	          <input type="button" value="결재" onclick="approBtn()" />
 	        </div>
 		</form>
@@ -89,7 +89,7 @@
     	  window.close();
       }
      
-      function retrunBtn() {
+      function returnBtn() {
     	  var reValue = $("#report_status");
     	  var apValue = $("#appro_status");
     	  if( reValue.val() == 'END' ) {
@@ -98,8 +98,8 @@
     		} 
     	  else {
     		  alert('문서 반려');
-    		  reValue.val('END').toString;
-    		  apValue.val('END').toString;
+    		  reValue.val('RT').toString;
+    		  apValue.val('RT').toString;
     	  	}
     	  window.opener.name="parent";
     	  document.approFrm.target = "parent";
