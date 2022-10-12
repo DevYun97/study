@@ -6,7 +6,16 @@
 <mapper namespace="com.project.appro.dao.IcommunityDAO">
 		
 	<select id="community" resultType="com.project.appro.dto.Community">
-		SELECT * FROM PAS_COMMUNITY ORDER BY commu_date DESC
+		SELECT
+			commu_no,
+			commu_id,
+			commu_name,
+			commu_title,
+			to_char(commu_date, 'YYYY-DD-MM' ) commu_date,
+			commu_content,
+			commu_hit
+		FROM PAS_COMMUNITY 
+		ORDER BY commu_date DESC
 	</select>
 	
 	<insert id="comWrite">
@@ -36,7 +45,16 @@
 		
 	<!-- notice -->		
 	<select id="notice" resultType="com.project.appro.dto.Notice">
-		SELECT * FROM PAS_NOTICE ORDER BY notice_date desc
+		SELECT
+			notice_no,
+			notice_title,
+			notice_name,
+			notice_content,
+			to_char(notice_date, 'YYYY-DD-MM') notice_date,
+			notice_hit,
+			notice_id
+		FROM PAS_NOTICE 
+		ORDER BY notice_date desc
 	</select>
 	
 	<insert id="noticeWrite">

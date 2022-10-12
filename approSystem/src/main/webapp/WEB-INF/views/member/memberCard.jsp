@@ -41,7 +41,8 @@
             <label for="member_dep">부서</label>
             <select class="custom-select" id="member_dep" name="member_dep" required>
               <option selected disabled>Choose...</option>
-              <option value="dev" <c:if test="${ member.member_dep == 'dev' }" > selected </c:if> >개발팀</option>
+              <option value="A팀" <c:if test="${ member.member_dep == 'A팀' }" > selected </c:if> >A팀</option>
+              <option value="인사팀" <c:if test="${ member.member_dep == '인사팀' }" > selected </c:if> >인사팀</option>
             </select>           
           </div>
           <div class="col-6 mb-3">
@@ -71,13 +72,13 @@
     <!-- testTool 하단 스크립트 추가 후 replace에 이름 넣어주면 text에디터? 사용 가능 -->
     <script src="https://cdn.ckeditor.com/4.15.1/standard/ckeditor.js"></script>
   	<script>CKEDITOR.replace('appro_content');</script>
-
+	<script scr="/JS/memberJS.js"></script>
     <!-- child 팝업창 -->
     <script type="text/javascript">
 
     	function updateBtn() {
     	  
-    		if( ${ position == 'AA' || position == 'BB' || ( position == 'CC' && dep == '인사과')} ){
+    		if( ${ position == 'AA' || position == 'BB' || ( position == 'CC' && dep == '인사팀')} ){
     			window.opener.name="parent";
     	        document.memberUpdatefrm.target = "parent";
     	        document.memberUpdatefrm.method = "post";
@@ -92,7 +93,7 @@
     	
     	function deleteBtn() {
     		
-    		if( ${ position == 'AA' || position == 'BB' || ( position == 'CC' && dep == '인사과')} ){
+    		if( ${ position == 'AA' || position == 'BB' || ( position == 'CC' && dep == '인사팀')} ){
     			//location.href='memberDelete?member_id=${ member.member_id }';
     			window.opener.name="parent";
     			document.memberUpdatefrm.target = "parent";

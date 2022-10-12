@@ -59,20 +59,6 @@ public class ApproController {
 		return "appro/approEND";
 	}
 	
-	@RequestMapping("approReturn")
-	public String approReturn ( @RequestParam Map <String, Object> map, HttpSession session ,Model model) {
-				
-		String member_id = (String) session.getAttribute("id");
-		System.out.println(member_id);
-		ArrayList<Map <String, Object>> returnReport = new ArrayList<>();
-		map.put("member_id", member_id);
-		System.out.println(returnReport);
-		returnReport = reportDao.returnReport( map );
-		model.addAttribute("reportList", returnReport);
-		
-		return "appro/approReturn";
-	}
-	
 	@RequestMapping("approWrite")
 	public String approWrite ( ) {
 		return "appro/approWrite";

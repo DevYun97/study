@@ -97,7 +97,7 @@
 		<div class="w-100 d-flex flex-column justify-content-center align-items-center">
 		    <h4>신규 회원 등록카드</h4>
 		    <div class="pl-2 pt-2 pb-4 w-100 text-left">
-		    	<form action="memberJoinAction" method="post" onsubmit="return nullChecking()">
+		    	<form action="memberJoinAction" method="post" onsubmit="return memberJoin()">
 		        	<div class="form-group row">
 		            	<div class="col-md-6 mb-3">
 		                	<label for="member_name">이름</label>
@@ -107,17 +107,18 @@
 		                	<label for="">부서</label>
 		                	<select class="custom-select" name="member_dep" id="member_dep" required>
 		                  		<option selected disabled value="">Choose...</option>
-		                  		<option value="dev">개발팀</option>
+		                  		<option value="A팀">A팀</option>
+		                  		<option value="인사팀">인사팀</option>
 		                	</select>
 		              	</div>
 		              	<div class="col-md-3 mb-3">
 		                	<label for="">직급</label>
 		                	<select class="custom-select" name="member_position" id="member_position" required>
 		                  		<option selected disabled value="">Choose...</option>
-			                  	<option value="AA">책임</option>
-			                  	<option value="BB">책임</option>
-			                  	<option value="CC">팀장</option>
-			                  	<option value="DD">사수</option>
+			                  	<option value="AA">부장</option>
+			                  	<option value="BB">차장</option>
+			                  	<option value="CC">과장</option>
+			                  	<option value="DD">대리</option>
 			                  	<option value="EE">사원</option>
 		                	</select>                
 		              	</div>
@@ -142,7 +143,7 @@
 		            <div class="form-group row">
 		            	<div class="col-sm-10 offset-sm-2">
 		                	<div class="form-check">
-		                  		<input class="form-check-input nullPointer" type="checkbox" id="joinCK" placeholder="신규 사원 발급에 동의 후 가입이 가능합니다.">
+		                  		<input class="form-check-input" type="checkbox" id="joinCK" placeholder="신규 사원 발급에 동의 후 가입이 가능합니다." required>
 		                 		<label class="form-check-label" for="joinCK">
 		                    	신규 사원 발급에 동의합니다.
 		                  		</label>
@@ -155,6 +156,11 @@
               			</div>
             		</div>
           		</form>
+          		
+          		<input type="hidden" id="dep" value="${ dep }" />          		
+          		<input type="hidden" id="position" value="${ position }" />
+          		
         	</div>     
       	</div>
     </div>
+    

@@ -35,55 +35,32 @@
             <div class="d-flex ">
               <div class="w-100 mr-2">
                 <div class="form-group row">
-                  <label for="report_no" class="col-sm-2 col-form-label A">문서번호 :</label>
-                  <div class="col-sm-10">
+                  <label for="report_no" class="col-form-label pl-3 A" style="width:80px;">문서번호 :</label>
+                  <div>
                     <input type="text" class="form-control-plaintext" id="report_no" name="report_no" value="${ report.report_no }" />
                   </div>
                 </div>
 
                 <div class="form-group row">
-                  <label for="report_name" class="col-sm-2 col-form-label A">작성자 :</label>
-                  <div class="col-sm-10">
+                  <label for="report_name" class="col-form-label pl-3 A" style="width:80px;">작 성 자 :</label>
+                  <div>
                     <input type="text" class="form-control-plaintext" id="report_name" name="report_name" value="${ report.report_name }" />
                   </div>
                 </div>
 
-
                 <div class="form-group row">
-                  <label for="report_date" class="col-sm-2 col-form-label A">작성일 :</label>
-                  <div class="col-sm-10">
+                  <label for="report_date" class="col-form-label pl-3 A" style="width:80px;">작 성 일 :</label>
+                  <div>
                     <input type="text" class="form-control-plaintext" id="report_date" name="report_date" value="${ report.report_date }" />
                   </div>
                 </div>
               </div>
-
-              <div>
-                <table border="1" style="width: 210px;" >
-                  <tr class="text-center">
-                    <th>결재요청</th>
-                    <th>과장</th>
-                    <th>부장</th>
-                  </tr>
-                  <tr class="text-right">
-                    <td>
-                        <input type="checkbox" class="mx-1" disabled />             			
-                    </td>
-                    <td>
-                      <input type="checkbox" class="mx-1" disabled />            			
-                    </td>
-                    <td>            
-                      <input type="checkbox" class="mx-1" disabled />
-                    </td>
-                  </tr>
-                </table> 
-              </div>
             </div>
-            
 
             <div class="form-group row">
-              <label for="report_title" class="col-sm-2 col-form-label">제목 :</label>
-              <div class="col-10">
-                <input type="text" class="form-control" id="report_title" name="report_title" value="${ report.report_title} ">
+              <label for="report_title" class="col-form-label pl-3 A" style="width:80px;">제  목 : </label>
+              <div>
+                <input type="text" class="form-control-plaintext" id="report_title" name="report_title" value="${ report.report_title} ">
               </div>
             </div>
             <div class="form-group">

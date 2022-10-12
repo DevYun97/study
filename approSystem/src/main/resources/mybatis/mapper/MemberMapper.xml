@@ -26,7 +26,7 @@
 	 -->
 
 	<select id="getMemId" resultType="String">
-		SELECT * FROM pas_member WHERE member_id = #{param1}
+		SELECT member_id FROM pas_member WHERE member_id = #{param1}
 	</select>
 	
 	<select id="getMemPw" resultType="String">
@@ -36,8 +36,25 @@
 	<select id="getMemName" resultType="String">
 		SELECT member_name FROM pas_member WHERE member_id = #{param1}
 	</select>
+	
 	<select id="getMemPosition" resultType="String">
-		SELECT member_position FROM pas_member WHERE member_id = #{param1}
+		SELECT 
+			DECODE
+			(
+				member_position,
+				'AA', '부장',
+				'BB', '차장',
+				'CC', '과장',
+				'DD', '대리',
+				'EE', '사원'
+			) 
+			member_position  
+		FROM pas_member 
+		WHERE member_id = #{param1}
+	</select>
+	
+	<select id="getMemDep" resultType="String">
+		SELECT member_dep FROM pas_member WHERE member_id = #{param1}
 	</select>
 	
 	<select id="getMemList" resultType="com.project.appro.dto.MemberDTO">
@@ -45,9 +62,18 @@
 			member_id,
 			member_name,
 			member_dep,
+			DECODE(
+				member_position,
+				'AA', '부장',
+				'BB', '차장',
+				'CC', '과장',
+				'DD', '대리',
+				'EE', '사원'
+			) 
 			member_position,
-			member_join 
-		FROM pas_member ORDER BY member_join DESC
+			to_char (member_join, 'YYYY-MM-DD' ) member_join
+		FROM pas_member 
+		ORDER BY member_position ,member_join DESC
 	</select>
 	
 	<insert id="memberJoin">
@@ -56,7 +82,15 @@
 			member_id, 
 			member_name, 
 			member_gender, 
-			member_dep, 
+			member_dep,
+			DECODE(
+				member_position,
+				'AA', '부장',
+				'BB', '차장',
+				'CC', '과장',
+				'DD', '대리',
+				'EE', '사원'
+			) 
 			member_position 
 		)
 	VALUES 
@@ -84,6 +118,14 @@
 			member_join,
 			member_gender,
 			member_dep,
+			DECODE(
+				member_position,
+				'AA', '부장',
+				'BB', '차장',
+				'CC', '과장',
+				'DD', '대리',
+				'EE', '사원'
+			) 
 			member_position
 		FROM pas_member 
 		WHERE member_id = #{param1}

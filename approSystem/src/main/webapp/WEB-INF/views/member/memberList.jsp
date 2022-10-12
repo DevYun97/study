@@ -41,11 +41,11 @@
 		                	
 	                		<select name="statusType" class="form-control" id="statusType" >
 			                  <option value="" >직급</option>
-			                  <option value="aa" >사장</option>
-			                  <option value="bb">책임</option>
-			                  <option value="cc">팀장</option>
-			                  <option value="dd">사수</option>
-			                  <option value="ff">사원</option>
+			                  <option value="AA" >부장</option>
+			                  <option value="BB">차장</option>
+			                  <option value="CC">과장</option>
+			                  <option value="DD">대리</option>
+			                  <option value="EE">사원</option>
 			                </select>
 	                		<input type="text" id="schTxt" class="form-control mr-2"  name="schTxt" />             
 	              		</div>
@@ -96,6 +96,7 @@
     
     <!-- myJS -->
     <script src="/JS/main.js"></script>
+    <script src="/JS/memberJS.js"></script>
     <!-- child 팝업창 -->
     <script>
     	function openWindow( no ){   		

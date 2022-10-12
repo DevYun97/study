@@ -39,7 +39,7 @@ SELECT
 			re.report_no,
 			re.report_title,
 			re.report_name,
-			re.report_date,
+			to_char( re.report_date, 'YYYY-DD-MM' ) report_date,
 			ap.report_approver,
 			re.report_status
 		FROM PAS_report re LEFT JOIN 
@@ -83,7 +83,18 @@ SELECT
 	</insert>
 	
 	<select id="reportDetail" resultType="com.project.appro.dto.Report">
-		SELECT * FROM PAS_REPORT WHERE report_no = #{report_no}
+		SELECT  
+			report_no,
+			report_id,
+			report_name,
+			report_title,
+			report_content,
+			to_char( report_date, 'YYYY-DD-MM' ) report_date,
+			report_status,
+			report_returnYN,
+			report_hit
+		FROM PAS_REPORT 
+		WHERE report_no = #{report_no}
 	</select>
 	
 	<update id="reportUpdate">
@@ -109,7 +120,7 @@ SELECT
 			re.report_no,
 			re.report_title,
 			re.report_name,
-			re.report_date,
+			to_char( re.report_date, 'YYYY-DD-MM' ) report_date,
 			ap.report_approver,
 			re.report_status
 		FROM PAS_report re LEFT JOIN 
@@ -124,24 +135,4 @@ SELECT
 		where report_status = 'END'
 	</select>
 	
-	<select id="returnReport" parameterType="map" resultMap="list">
-		SELECT
-			re.report_no,
-			re.report_title,
-			re.report_name,
-			re.report_date,
-			ap.report_approver,
-			re.report_status
-		FROM PAS_report re LEFT JOIN 
-			(
-			select    
-			    report_no,
-			    max(report_approver) KEEP (DENSE_RANK LAST order by appro_date) report_approver
-			from pas_appro
-			GROUP by report_no
-			) ap
-		ON re.report_no = ap.report_no
-		where re.report_status = 'RT' AND re.report_id = #{ param1 }
-	</select>
-
 </mapper>

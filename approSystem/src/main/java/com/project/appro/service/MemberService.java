@@ -27,10 +27,12 @@ public class MemberService {
 		if(member_pw.equals(pw)) { // pw == pw
 			String name = memberDao.getMemName(member_id);
 			String position = memberDao.getMemPosition(member_id);
+			String dep = memberDao.getMemDep(member_id);
 			session.setAttribute("id", id);
 			session.setAttribute("pw", pw);
 			session.setAttribute("name", name);
 			session.setAttribute("position", position);
+			session.setAttribute("dep", dep);
 			result = "<script>location.href='../main';</script>";
 		}
 		return result;
