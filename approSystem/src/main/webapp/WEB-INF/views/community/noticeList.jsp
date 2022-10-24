@@ -56,26 +56,54 @@
           </div>
         </div>
 
+        <!-- pageBtn -->
+        <div class="container row my-3 mx-auto" style="position:fixed; top: 720px; z-index:1500;">
+			<nav class="mx-auto">
+				<c:if test="${page.curBlock > 0}">
+			    	<a onclick="goPage('1')">[처음]</a>
+				</c:if>
+				<!-- **이전페이지 블록으로 이동 : 현재 페이지 블럭이 1보다 크면 [이전]하이퍼링크를 화면에 출력 -->
+				<c:if test="${page.curBlock > 1}">
+			    	<a onclick="goPage('${page.prevPage}')">[이전]</a>
+				</c:if>
+				<!-- **하나의 블럭에서 반복문 수행 시작페이지부터 끝페이지까지 -->
+				<c:forEach var="num" begin="${page.blockBegin}" end="${page.blockEnd}">
+				<!-- **현재페이지이면 하이퍼링크 제거 -->
+			    	<c:choose>
+			        	<c:when test="${num == page.curPage}">
+			            	<span style="color: red">${num}</span>
+			        	</c:when>
+			    		<c:otherwise>
+			            	<a onclick="goPage('${num}')">${num}</a>
+			        	</c:otherwise>
+			        </c:choose>
+				</c:forEach>	                
+				<!-- **다음페이지 블록으로 이동 : 현재 페이지 블럭이 전체 페이지 블럭보다 작거나 같으면 [다음]하이퍼링크를 화면에 출력 -->
+				<c:if test="${page.curBlock <= page.totBlock}">
+			    	<a onclick="goPage('${page.nextPage}')">[다음]</a>
+				</c:if>	                
+				<!-- **끝페이지로 이동 : 현재 페이지가 전체 페이지보다 작거나 같으면 [끝]하이퍼링크를 화면에 출력 -->
+				<c:if test="${page.curPage <= page.totPage}">
+					<a onclick="goPage('${page.totPage}')">[끝]</a>
+				</c:if>    
+			</nav>
+		</div>
+
         <!-- search bar -->
-        <div class="search container">
+        <form action="noticeList" method="get" class="search container">
+        <input type="hidden" name="pageNo" id="pageNo" value="1" />
+        <input type="hidden" name="listSize" id="listSize" value="10" />
           <table>
-            <tr>
+            <tr>              
               <td>
-                <select name="내용" id="">
-                  <option value="">제목</option>
-                  <option value="">내용</option>
-                  <option value="">작성자</option>
-                </select>
+                <input type="text" name="schText" id="schText" value="${ sch.schText }" placeholder="검색내용을 입력해주세요." />
               </td>
               <td>
-                <input type="text">
-              </td>
-              <td>
-                <input type="button" value="검색">
+                <input type="submit" id="schBtn" value="검색">
               </td>
             </tr>
           </table>
-        </div>
+        </form>       
       </section>
       
     </main>

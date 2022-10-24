@@ -1,6 +1,7 @@
 package com.project.appro.controller;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -14,9 +15,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.project.appro.dao.IcommunityDAO;
 import com.project.appro.dao.ImemberDAO;
-import com.project.appro.dto.Community;
+import com.project.appro.dao.InoticeDAO;
 import com.project.appro.dto.MemberDTO;
-import com.project.appro.dto.Notice;
 import com.project.appro.service.MemberService;
 
 @Controller
@@ -31,13 +31,18 @@ public class mainController {
 	@Autowired
 	IcommunityDAO comDao;
 	
+	@Autowired
+	InoticeDAO noticeDao;
+	
 	@RequestMapping("")
 	public String root () {
 		return "redirect:main";
 	}
 	
 	@RequestMapping("main")
-	public String index ( HttpSession session ,Model model) {
+	public String index ( 
+			@RequestParam Map<String, Object> map, 
+			HttpSession session, Model model) {
 		
 		String member_id;
 		try {
@@ -49,16 +54,21 @@ public class mainController {
 			return "redirect:login";
 		}
 		
+		if(map.isEmpty()) {
+			map.put("pageNo", 1);
+			map.put("listSize", 3);
+		}
+		
 		//MyCard
 		MemberDTO member = memberDao.getMemberInpor(member_id);
 		model.addAttribute("mem", member);
 				
 		//Notice
-		ArrayList<Notice> notice = comDao.notice();
+		ArrayList<Map<String, Object>> notice = noticeDao.notice(map);
 		model.addAttribute("notice", notice);
 		
 		//Community
-		ArrayList<Community> community = comDao.community();
+		ArrayList<Map<String, Object>> community = comDao.community(map);
 		model.addAttribute("community", community);
 				
 		return "main";

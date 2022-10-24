@@ -5,25 +5,50 @@
     
 <mapper namespace="com.project.appro.dao.ImemberDAO">
 
-<!--
-	CREATE SEQUENCE PAS_MEMBER_SEQ
-	START WITH 1
-	INCREMENT BY 1;
+	<resultMap id="memberMap" type="map">
+		<result column="member_id" property="member_id" />
+		<result column="member_pw" property="member_pw" />
+		<result column="member_name" property="member_name" />
+		<result column="member_gender" property="member_gender" />
+		<result column="member_dep" property="member_dep" />
+		<result column="member_position" property="member_position" />
+		<result column="member_join" property="member_join" />
+	</resultMap>
 	
-	drop SEQUENCE PAS_MEMBER_SEQ;
-	
-	select * from PAS_MEMBER;
-	
-	SELECT member_id FROM pas_member WHERE member_id = 'pas_memNum_2';
-	
-	delete from PAS_MEMBER;
-	
-	insert into PAS_MEMBER ( member_id, member_pw, member_name, member_gender, member_dep, member_position )
-	values ( 'pas_memNum_' || PAS_MEMBER_SEQ.nextval, '1111', 'system', '', '', '' );
-	
-	insert into PAS_MEMBER ( member_id, member_pw, member_name, member_gender, member_dep, member_position )
-	values ( 'system', '1111', 'system', '-', '-', '-' );
-	 -->
+	<select id="memberCount" parameterType="map" resultType="Integer">
+	SELECT 
+		count(member_id)
+	FROM 
+		(
+		select
+			row_number() over(order by member_id desc ) rnum,
+			member_id,
+			member_name,
+			member_dep,
+			DECODE(
+				member_position,
+				'AA', '부장',
+				'BB', '차장',
+				'CC', '과장',
+				'DD', '대리',
+				'EE', '사원'
+			) 
+			member_position,
+			to_char (member_join, 'YYYY-MM-dd' ) member_join
+		FROM pas_member
+		where 1=1
+		<choose>
+			<when test="statusType == 'AA'">
+				AND member_position like 'AA'
+			</when>
+			<when test="statusType == 'BB'">
+				AND member_position like '%'||#{schText}||'%'
+			</when>
+		</choose>
+		AND (member_id like '%'||#{schText}||'%'
+			OR member_name like '%'||#{schText}||'%')
+		)
+	</select>
 
 	<select id="getMemId" resultType="String">
 		SELECT member_id FROM pas_member WHERE member_id = #{param1}
@@ -57,23 +82,49 @@
 		SELECT member_dep FROM pas_member WHERE member_id = #{param1}
 	</select>
 	
-	<select id="getMemList" resultType="com.project.appro.dto.MemberDTO">
-		SELECT
-			member_id,
-			member_name,
-			member_dep,
-			DECODE(
+	<select id="getMemList" parameterType="map" resultMap="memberMap">
+		SELECT 
+			rnum, member_id, member_name, member_dep, member_position, member_join
+		FROM 
+			(
+			select
+				row_number() over(order by member_id desc ) rnum,
+				member_id,
+				member_name,
+				member_dep,
+				DECODE(
+					member_position,
+					'AA', '부장',
+					'BB', '차장',
+					'CC', '과장',
+					'DD', '대리',
+					'EE', '사원'
+				) 
 				member_position,
-				'AA', '부장',
-				'BB', '차장',
-				'CC', '과장',
-				'DD', '대리',
-				'EE', '사원'
-			) 
-			member_position,
-			to_char (member_join, 'YYYY-MM-DD' ) member_join
-		FROM pas_member 
-		ORDER BY member_position ,member_join DESC
+				to_char (member_join, 'YYYY-MM-dd' ) member_join
+			FROM pas_member
+			where 1=1
+			<choose>
+				<when test="statusType == 'AA'">
+					AND member_position like 'AA'
+				</when>
+				<when test="statusType == 'BB'">
+					AND member_position like 'BB'
+				</when>
+				<when test="statusType == 'CC'">
+					AND member_position like 'CC'
+				</when>
+				<when test="statusType == 'DD'">
+					AND member_position like 'DD'
+				</when>
+				<when test="statusType == 'EE'">
+					AND member_position like 'EE'
+				</when>
+			</choose>
+			AND (member_id like '%'||#{schText}||'%'
+				OR member_name like '%'||#{schText}||'%')
+			)
+		WHERE rnum between #{pageNo} * #{listSize} - #{listSize} +1 AND #{pageNo} * #{listSize} 		
 	</select>
 	
 	<insert id="memberJoin">
@@ -141,4 +192,24 @@
 		DELETE FROM PAS_MEMBER WHERE member_id = #{ param1 }
 	</delete>
 	
+	
+	<!--
+	CREATE SEQUENCE PAS_MEMBER_SEQ
+	START WITH 1
+	INCREMENT BY 1;
+	
+	drop SEQUENCE PAS_MEMBER_SEQ;
+	
+	select * from PAS_MEMBER;
+	
+	SELECT member_id FROM pas_member WHERE member_id = 'pas_memNum_2';
+	
+	delete from PAS_MEMBER;
+	
+	insert into PAS_MEMBER ( member_id, member_pw, member_name, member_gender, member_dep, member_position )
+	values ( 'pas_memNum_' || PAS_MEMBER_SEQ.nextval, '1111', 'system', '', '', '' );
+	
+	insert into PAS_MEMBER ( member_id, member_pw, member_name, member_gender, member_dep, member_position )
+	values ( 'system', '1111', 'system', '-', '-', '-' );
+	 -->
 </mapper>

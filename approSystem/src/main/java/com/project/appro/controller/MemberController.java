@@ -1,6 +1,7 @@
 package com.project.appro.controller;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.project.appro.dao.ImemberDAO;
 import com.project.appro.dto.MemberDTO;
+import com.project.appro.dto.Page;
 import com.project.appro.service.MemberService;
 
 @Controller
@@ -29,10 +31,25 @@ public class MemberController {
 	
 	
 	@RequestMapping("memberList")
-	public String memberList ( Model model) {
+	public String memberList ( @RequestParam Map<String, Object> map, Model model) {
 		
-		ArrayList<MemberDTO> getMemberList = memberDao.getMemList();
+		if(map.isEmpty()) {
+			map.put("pageNo", 1);
+			map.put("listSize", 9);
+		}
+		
+		int count = memberDao.memberCount(map);
+		int curPage = Integer.parseInt(map.get("pageNo").toString());
+		
+		Page page = new Page(count, curPage);
+		
+		ArrayList<Map<String, Object>> getMemberList = memberDao.getMemList(map);
+		
 		model.addAttribute("getMemberList", getMemberList);
+		model.addAttribute("page", page);
+		model.addAttribute("sch", map);
+		
+		
 		
 		return "member/memberList";
 	}

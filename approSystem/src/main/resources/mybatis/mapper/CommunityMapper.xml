@@ -5,17 +5,44 @@
     
 <mapper namespace="com.project.appro.dao.IcommunityDAO">
 		
-	<select id="community" resultType="com.project.appro.dto.Community">
-		SELECT
-			commu_no,
-			commu_id,
-			commu_name,
-			commu_title,
-			to_char(commu_date, 'YYYY-DD-MM' ) commu_date,
-			commu_content,
-			commu_hit
-		FROM PAS_COMMUNITY 
-		ORDER BY commu_date DESC
+	<resultMap id="communityMap" type="map">
+		<result column="commu_no" property="commu_no" />
+		<result column="commu_id" property="commu_id" />
+		<result column="commu_name" property="commu_name" />
+		<result column="commu_title" property="commu_title" />
+		<result column="commu_date" property="commu_date" />
+		<result column="commu_content" property="commu_content" />
+		<result column="commu_hit" property="commu_hit" />
+	</resultMap>
+	
+	<select id="comCount" parameterType="map" resultType="Integer">
+		SELECT 
+			count(commu_no)
+		FROM PAS_COMMUNITY
+		WHERE 1=1
+		AND commu_title like '%'||#{schTect}||'%'
+	</select>
+	
+	<select id="community" resultType="map" resultMap="communityMap" >
+		SELECT 
+			rnum, commu_no, commu_id, commu_name, commu_title, commu_date, commu_content, commu_hit
+		FROM
+			(
+			SELECT
+				row_number() over(order by commu_no desc ) rnum,
+				commu_no,
+				commu_id,
+				commu_name,
+				commu_title,
+				to_char(commu_date, 'YYYY-MM-dd' ) commu_date,
+				commu_content,
+				commu_hit
+			FROM PAS_COMMUNITY
+			WHERE 1=1
+			AND (commu_title like '%'||#{schText}||'%'
+				OR commu_content like '%'||#{schText}||'%')
+			)
+		WHERE rnum between #{pageNo} * #{listSize} - #{listSize} +1 AND #{pageNo} + #{listSize}
 	</select>
 	
 	<insert id="comWrite">
@@ -43,47 +70,4 @@
 		WHERE commu_no = #{ param1 }
 	</update>
 		
-	<!-- notice -->		
-	<select id="notice" resultType="com.project.appro.dto.Notice">
-		SELECT
-			notice_no,
-			notice_title,
-			notice_name,
-			notice_content,
-			to_char(notice_date, 'YYYY-DD-MM') notice_date,
-			notice_hit,
-			notice_id
-		FROM PAS_NOTICE 
-		ORDER BY notice_date desc
-	</select>
-	
-	<insert id="noticeWrite">
-		INSERT INTO PAS_NOTICE ( notice_no, notice_id, notice_title, notice_name, notice_content, notice_date )
-		VALUES 
-		( 
-			(select nvl(max(notice_no),0)+1 from PAS_NOTICE ), 
-			#{ param1 }, 
-			#{ param2 }, 
-			#{ param3 }, 
-			#{ param4 }, 
-			sysdate
-		)
-	</insert>
-	
-	<select id="getNoticeDetail" resultType="com.project.appro.dto.Notice">
-		SELECT * FROM PAS_NOTICE WHERE notice_no = #{ param1 }
-	</select>
-	
-	<!-- 공지사항 조회수 -->
-	<update id="noticehit">
-		UPDATE
-			PAS_NOTICE
-		SET notice_hit = notice_hit + 1
-		WHERE notice_no = #{ param1 }
-	</update>
-	
-	<delete id="noticeDelete">
-		DELETE FROM PAS_NOTICE WHERE notice_no = #{param1}
-	</delete>
-	
 </mapper>

@@ -95,3 +95,8 @@ function fileCheck(){
  });
  
  
+ function goPage(num){
+		$("#pageNo").val(num);
+		$("#schBtn").click();
+	}
+ 

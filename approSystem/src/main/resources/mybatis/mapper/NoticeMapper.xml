@@ -4,4 +4,74 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
     
 <mapper namespace="com.project.appro.dao.InoticeDAO">
+
+	<resultMap id="noticeMap" type="map">
+		<result column="notice_no" property="notice_no" />
+		<result column="notice_id" property="notice_id" />
+		<result column="notice_name" property="notice_name" />
+		<result column="notice_title" property="notice_title" />
+		<result column="notice_content" property="notice_content" />
+		<result column="notice_date" property="notice_date" />
+		<result column="notice_hit" property="notice_hit" />
+	</resultMap>
+
+	<select id="noticeCount" parameterType="map" resultType="Integer">
+		SELECT 
+			count(notice_no)
+		FROM PAS_NOTICE
+		WHERE 1=1
+		AND notice_title like '%'||#{schTect}||'%'
+	</select>
+
+	<!-- notice -->			
+	<select id="notice" resultType="map" resultMap="noticeMap" >
+		SELECT 
+			rnum, notice_no, notice_id, notice_name, notice_title, notice_content, notice_date, notice_hit
+		FROM
+			(
+			SELECT
+				row_number() over(order by notice_no desc ) rnum,
+				notice_no,
+				notice_id,
+				notice_name,
+				notice_title,			
+				notice_content,
+				to_char(notice_date, 'YYYY-MM-dd') notice_date,
+				notice_hit				
+			FROM PAS_NOTICE 
+			WHERE 1=1
+			AND notice_title like '%'||#{schText}||'%'
+			)
+		WHERE rnum between #{pageNo} * #{listSize} - #{listSize} +1 AND #{pageNo} + #{listSize}
+	</select>
+	
+	<insert id="noticeWrite">
+		INSERT INTO PAS_NOTICE ( notice_no, notice_id, notice_title, notice_name, notice_content, notice_date )
+		VALUES 
+		( 
+			(select nvl(max(notice_no),0)+1 from PAS_NOTICE ), 
+			#{ param1 }, 
+			#{ param2 }, 
+			#{ param3 }, 
+			#{ param4 }, 
+			sysdate
+		)
+	</insert>
+	
+	<select id="getNoticeDetail" resultType="com.project.appro.dto.Notice">
+		SELECT * FROM PAS_NOTICE WHERE notice_no = #{ param1 }
+	</select>
+	
+	<!-- 공지사항 조회수 -->
+	<update id="noticehit">
+		UPDATE
+			PAS_NOTICE
+		SET notice_hit = notice_hit + 1
+		WHERE notice_no = #{ param1 }
+	</update>
+	
+	<delete id="noticeDelete">
+		DELETE FROM PAS_NOTICE WHERE notice_no = #{param1}
+	</delete>
+
 </mapper>

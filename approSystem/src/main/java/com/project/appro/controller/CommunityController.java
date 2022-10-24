@@ -2,6 +2,7 @@ package com.project.appro.controller;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,9 +13,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.project.appro.dao.IcommunityDAO;
 import com.project.appro.dao.IcommunityReplyDAO;
+import com.project.appro.dao.InoticeDAO;
 import com.project.appro.dto.Community;
 import com.project.appro.dto.CommunityReply;
 import com.project.appro.dto.Notice;
+import com.project.appro.dto.Page;
 import com.project.appro.service.CommunityService;
 
 @Controller
@@ -25,16 +28,33 @@ public class CommunityController {
 	IcommunityDAO comDao;
 	
 	@Autowired
+	InoticeDAO noticeDao;
+	
+	@Autowired
 	CommunityService comService;
 	
 	@Autowired
 	IcommunityReplyDAO replyDao;
 	
 	@RequestMapping("communityList")
-	public String communityList (Model model) {
+	public String communityList (@RequestParam Map<String, Object> map, Model model) {
 		
-		ArrayList<Community> community = comDao.community();
+		if(map.isEmpty()) {
+			map.put("pageNo", 1);
+			map.put("listSize", 10);
+		}
+		
+		int count = comDao.comCount(map);
+		int curPage = Integer.parseInt(map.get("pageNo").toString());
+		
+		Page page = new Page(count, curPage);
+		
+		ArrayList<Map<String, Object>> community = comDao.community(map);
+		
 		model.addAttribute("community", community);
+		model.addAttribute("page", page);
+		model.addAttribute("sch", map);
+
 		
 		return "community/communityList";
 	}
@@ -79,11 +99,24 @@ public class CommunityController {
 	}
 	
 	@RequestMapping("noticeList")
-	public String noticeList (Model model) {
+	public String noticeList (@RequestParam Map<String, Object> map, Model model) {
 		
-		ArrayList<Notice> notice = comDao.notice();
+		if(map.isEmpty()) {
+			map.put("pageNo", 1);
+			map.put("listSize", 10);
+		}
+		
+		int count = noticeDao.noticeCount(map);
+		int curPage = Integer.parseInt(map.get("pageNo").toString());
+		
+		Page page = new Page(count, curPage);
+		
+		ArrayList<Map<String, Object>> notice = noticeDao.notice(map);
+		
 		model.addAttribute("notice", notice);
-		
+		model.addAttribute("page", page);
+		model.addAttribute("sch", map);
+
 		return "community/noticeList";
 	}
 	
@@ -109,8 +142,8 @@ public class CommunityController {
 	@RequestMapping("noticeDetail")
 	public String noticeDetail (@RequestParam("notice_no") String notice_no, Model model) {
 		
-		comDao.noticehit(notice_no);
-		Notice notice = comDao.getNoticeDetail(notice_no);
+		noticeDao.noticehit(notice_no);
+		Notice notice = noticeDao.getNoticeDetail(notice_no);
 		model.addAttribute("notice",notice);
 				
 		return "community/noticeDetail";

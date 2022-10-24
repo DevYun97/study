@@ -5,12 +5,16 @@ import org.springframework.stereotype.Service;
 
 import com.project.appro.dao.IcommunityDAO;
 import com.project.appro.dao.IcommunityReplyDAO;
+import com.project.appro.dao.InoticeDAO;
 
 @Service
 public class CommunityService {
 
 	@Autowired
 	IcommunityDAO comDao;
+	
+	@Autowired
+	InoticeDAO noticeDao;
 	
 	@Autowired
 	IcommunityReplyDAO replyDao;
@@ -49,7 +53,7 @@ public class CommunityService {
 		
 		String result = "";
 		
-		int notice = comDao.noticeWrite(notice_id, notice_title, notice_name, notice_content);		
+		int notice = noticeDao.noticeWrite(notice_id, notice_title, notice_name, notice_content);		
 		if( notice == 0 ) {
 			result = "<script>history.back()-1;</script>";
 		} else {
@@ -63,7 +67,7 @@ public class CommunityService {
 		
 		String result = "";
 		
-		int notice = comDao.noticeDelete(notice_no);		
+		int notice = noticeDao.noticeDelete(notice_no);		
 		if( notice == 0 ) {
 			result = "<script>history.back()-1;</script>";
 		} else {

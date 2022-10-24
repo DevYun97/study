@@ -1,16 +1,16 @@
 package com.project.appro.dao;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 
 import com.project.appro.dto.Community;
-import com.project.appro.dto.Notice;
 
 @Mapper
 public interface IcommunityDAO {
 	
-	public ArrayList<Community> community();
+	public ArrayList<Map<String, Object>> community( Map<String, Object> map);
 	
 	public int comWrite ( String commu_id, String commu_title, String commu_name, String commu_content);
 	
@@ -18,15 +18,7 @@ public interface IcommunityDAO {
 
 	public void communityHit(String commu_no);
 	
-	public ArrayList<Notice> notice();
-	
-	public int noticeWrite(String notice_id, String notice_title, String notice_name, String notice_content);
-
-	public Notice getNoticeDetail(String notice_no);
-
-	public int noticehit(String notice_no);
-
-	public int noticeDelete(String notice_no);
+	public int comCount(Map<String, Object> map);
 	
 
 }

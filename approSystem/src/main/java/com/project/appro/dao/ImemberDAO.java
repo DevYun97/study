@@ -1,6 +1,7 @@
 package com.project.appro.dao;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 
@@ -17,7 +18,7 @@ public interface ImemberDAO {
 	
 	public String getMemPosition(String member_id);
 	
-	public ArrayList<MemberDTO> getMemList();
+	public ArrayList<Map<String, Object>> getMemList(Map<String, Object> map);
 
 	public int memberJoin( MemberDTO member );
 			
@@ -30,5 +31,7 @@ public interface ImemberDAO {
 	public int memberDelete(String member_id);
 
 	public String getMemDep(String member_id);
+
+	public int memberCount(Map<String, Object> map);
 	
 }
