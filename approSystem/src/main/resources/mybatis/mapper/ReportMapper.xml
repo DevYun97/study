@@ -5,53 +5,22 @@
     
 <mapper namespace="com.project.appro.dao.IreportDAO">
 
-	<resultMap type="map" id="list">
+	<resultMap id="list" type="map">
 		<result column="report_no" property="report_no" />
+		<result column="report_id" property="report_id" />
+		<result column="report_name" property="report_name" />
 		<result column="report_title" property="report_title" />
 		<result column="report_content" property="report_content" />
-		<result column="report_name" property="report_name" />
 		<result column="report_approver" property="report_approver" />
-		<result column="report_id" property="report_id" />
 		<result column="report_date" property="report_date" />
 		<result column="report_status" property="report_status" />
-		<result column="report_returnYN" property="report_returnYN" />
+		<result column="appro_date" property="appro_date" />
+		<result column="appro_id" property="appro_id" />
+		<result column="member_id" property="member_id" />
+		<result column="member_position" property="member_position" />
 	</resultMap>
 
-<!--  
-
-SELECT 
-			DISTINCT
-			re.report_no,
-			re.report_title,
-			re.report_name,
-			re.report_date,
-			ap.report_approver,
-			re.report_status 
-		FROM PAS_REPORT re LEFT JOIN PAS_MEMBER mem
-		ON re.report_id = mem.member_id
-		LEFT JOIN PAS_APPRO ap
-		ON re.report_no = ap.report_no
-
--->
-
-	<select id="reportList" parameterType="map" resultMap="list" >
-		SELECT
-			re.report_no,
-			re.report_title,
-			re.report_name,
-			to_char( re.report_date, 'YYYY-DD-MM' ) report_date,
-			ap.report_approver,
-			re.report_status
-		FROM PAS_report re LEFT JOIN 
-			(
-			select    
-			    report_no,
-			    max(report_approver) KEEP (DENSE_RANK LAST order by appro_date) report_approver
-			from pas_appro
-			GROUP by report_no
-			) ap
-		ON re.report_no = ap.report_no
-		WHERE re.report_id = #{ member_id }
+	<sql id="schSql">
 		<choose>
 			<when test="member_position == 'DD'">
 				OR ( report_status = 'DR' OR report_id = #{ member_id } )
@@ -66,7 +35,44 @@ SELECT
 				OR ( report_status = 'AR' OR report_id = #{ member_id } )
 			</when>
 		</choose>
-		ORDER BY report_date DESC
+		AND 
+			( report_name like '%'||#{schText}||'%'
+			OR report_title like '%'||#{schText}||'%')
+		<if test="startDate != null and startDate != ''">
+			and to_char(report_date, 'YYYY-MM-dd') between #{startDate} and #{endDate}
+		</if>
+	</sql>
+
+	<select id="reportList" parameterType="map" resultMap="list">
+		SELECT	    	
+			re.report_no,
+			re.report_title,
+			re.report_name,
+			to_char( re.report_date, 'YYYY-MM-dd' ) report_date,
+			ap.report_approver,
+			re.report_status
+		FROM 
+			(
+				select	                
+			        report_no,
+			        report_id,
+			        report_title,
+			        report_name,
+			        report_date,
+			        report_status
+			    from PAS_report		    
+			    WHERE report_id = #{ member_id }			   
+			    <include refid="schSql"></include>
+			)re
+		LEFT JOIN 
+			(
+			select    
+			    report_no,
+			    max(report_approver) KEEP (DENSE_RANK LAST order by appro_date) report_approver
+			from pas_appro
+			GROUP by report_no
+			) ap
+		ON re.report_no = ap.report_no
 	</select>
 	
 	<insert id="reportWrite">
@@ -89,10 +95,8 @@ SELECT
 			report_name,
 			report_title,
 			report_content,
-			to_char( report_date, 'YYYY-DD-MM' ) report_date,
-			report_status,
-			report_returnYN,
-			report_hit
+			to_char( report_date, 'YYYY-MM-dd' ) report_date,
+			report_status			
 		FROM PAS_REPORT 
 		WHERE report_no = #{report_no}
 	</select>
@@ -115,15 +119,23 @@ SELECT
 		WHERE report_no = #{ report_no }
 	</update>
 	
-	<select id="endReport" parameterType="map" resultMap="list">
+	<select id="endListCount" parameterType="map" resultType="Integer">
 		SELECT
-			re.report_no,
-			re.report_title,
-			re.report_name,
-			to_char( re.report_date, 'YYYY-DD-MM' ) report_date,
-			ap.report_approver,
-			re.report_status
-		FROM PAS_report re LEFT JOIN 
+			count(re.report_no)
+		FROM 		
+			(
+			select	   
+				row_number() over(order by report_no desc ) rnum,             
+			    report_no,
+			    report_id,
+			    report_title,
+			    report_name,
+			    report_date,
+			    report_status
+			  from PAS_report		    
+			where report_status = 'END'
+			)re
+		LEFT JOIN 
 			(
 			select    
 			    report_no,
@@ -132,7 +144,40 @@ SELECT
 			GROUP by report_no
 			) ap
 		ON re.report_no = ap.report_no
-		where report_status = 'END'
+	</select>
+	
+	<select id="endReport" parameterType="map" resultMap="list">
+		SELECT
+			rnum,
+			re.report_no,
+			re.report_title,
+			re.report_name,
+			to_char( re.report_date, 'YYYY-MM-dd' ) report_date,
+			ap.report_approver,
+			re.report_status
+		FROM 		
+			(
+			select	   
+				row_number() over(order by report_no desc ) rnum,             
+			    report_no,
+			    report_id,
+			    report_title,
+			    report_name,
+			    report_date,
+			    report_status
+			from PAS_report		    
+			where report_status = 'END'
+			)re	
+		LEFT JOIN 
+			(
+			select    
+			    report_no,
+			    max(report_approver) KEEP (DENSE_RANK LAST order by appro_date) report_approver
+			from pas_appro
+			GROUP by report_no
+			) ap
+		ON re.report_no = ap.report_no
+		WHERE rnum between #{pageNo} * #{listSize} - #{listSize} +1 AND #{pageNo} * #{listSize} 		
 	</select>
 	
 </mapper>

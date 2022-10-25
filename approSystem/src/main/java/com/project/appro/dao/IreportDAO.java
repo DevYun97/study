@@ -12,7 +12,7 @@ public interface IreportDAO {
 
 	public int reportWrite(Report report);
 
-	public ArrayList<Map <String, Object>> reportList(Map <String, Object> map);
+	public ArrayList<Map<String, Object>> reportList(Map<String, Object> map);
 
 	public Report reportDetail(int report_no);
 
@@ -22,5 +22,6 @@ public interface IreportDAO {
 
 	public ArrayList<Map<String, Object>> endReport(Map<String, Object> map);
 
+	public int endListCount(Map<String, Object> map);
 
 }

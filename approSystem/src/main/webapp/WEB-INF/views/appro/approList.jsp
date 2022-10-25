@@ -28,38 +28,20 @@
 		    	<div>
 		        	<div>문서조회</div>
 		        </div>
-          		<article class="w-100 px-3"> 
+          		<article class="w-100"> 
             		<!-- 검색박스  : 우선 get으로 테스트하고 post 로 변경하기 -->
-            		<form id="" name="" action="" method="get" class="form-inline">              
-	            		<div class="form-group mb-2">
-		            		<select id="schType" class="form-control mr-2" name="schType">
-		                		<option value="sel" >부서</option>
-		                  		<option value="dev">개발팀</option>
-		                	</select>
-		                	
-	                		<select name="statusType" class="form-control" id="statusType" >
-					            <option value="" >직급</option>
-					            <option value="AA" >사장</option>
-					            <option value="BB">책임</option>
-					            <option value="CC">팀장</option>
-					            <option value="DD">사수</option>
-					            <option value="EE">사원</option>
-			                </select>
-	                		<input type="text" id="schTxt" class="form-control mr-2"  name="schTxt" />             
-	              		</div>
-		              	<div class="form-group mb-2">
-			                <input type="date" id="startDate" name="startDate" class="form-control mr-2">
+            		<form action="approList" method="get" class="form-inline">
+            			<input type="hidden" name="pageNo" id="pageNo" value="1" />
+        				<input type="hidden" name="listSize" id="listSize" value="3" />
+	              		<div class="form-group mb-2">
+			                <input type="date" id="startDate" name="startDate" class="form-control">
 			                ~
 			                <input type="date" id="endDate" name="endDate" class="form-control mx-2">  
-			                <input type="submit" value="검색" />
+			                <input type="text" id="schText" name="schText" class="form-control mr-2" />             	              		
+			                <input type="submit" id="schBtn" value="검색" />
 		              	</div>
             		</form>
 				</article>
-				<div class="mb-2 d-flex justify-content-end">
-					<c:if test="${ position != 'AA'  }" >
-	            	<input type="button" value="글 작성" onclick="location.href='approWrite'"/>
-	          		</c:if>
-	          	</div>
 	          	<div class="qna">
 	            	<table>
 	              		<tr>

@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.project.appro.dao.IapproDAO;
 import com.project.appro.dao.IreportDAO;
 import com.project.appro.dto.Appro;
+import com.project.appro.dto.Page;
 import com.project.appro.dto.Report;
 import com.project.appro.service.ApproService;
 
@@ -34,16 +35,18 @@ public class ApproController {
 	IapproDAO approDao;
 	
 	@RequestMapping("approList")
-	public String approList ( @RequestParam Map <String, Object> map, HttpSession session ,Model model) {
-		
+	public String approList ( @RequestParam Map<String, Object> map, HttpSession session ,Model model) {
+				
 		String member_id = (String) session.getAttribute("id");		
 		String member_position = (String) session.getAttribute("position");	
-			
-		ArrayList<Map <String, Object>> reportList = new ArrayList<>();
+				
 		map.put("member_id", member_id);
 		map.put("member_position", member_position);
-		reportList = reportDao.reportList( map );
-		model.addAttribute("reportList", reportList);
+		
+		ArrayList<Map<String, Object>> reportList = reportDao.reportList( map );
+		
+		model.addAttribute("reportList", reportList);		
+		model.addAttribute("sch", map);
 		
 		return "appro/approList";
 	}
@@ -51,10 +54,20 @@ public class ApproController {
 	@RequestMapping("approEND")
 	public String approEND ( @RequestParam Map <String, Object> map, HttpSession session ,Model model) {
 				
+		if(map.isEmpty()) {
+			map.put("pageNo", 1);
+			map.put("listSize", 9);
+		}
+		
+		int count = reportDao.endListCount(map);
+		int curPage = Integer.parseInt(map.get("pageNo").toString());
+		
+		Page page = new Page(count, curPage);
 			
-		ArrayList<Map <String, Object>> endReport = new ArrayList<>();
-		endReport = reportDao.endReport( map );
+		ArrayList<Map <String, Object>> endReport = reportDao.endReport( map );
 		model.addAttribute("reportList", endReport);
+		model.addAttribute("page", page);
+		model.addAttribute("sch", map);
 		
 		return "appro/approEND";
 	}

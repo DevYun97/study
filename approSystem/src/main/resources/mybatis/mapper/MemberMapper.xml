@@ -191,25 +191,5 @@
 	<delete id="memberDelete">
 		DELETE FROM PAS_MEMBER WHERE member_id = #{ param1 }
 	</delete>
-	
-	
-	<!--
-	CREATE SEQUENCE PAS_MEMBER_SEQ
-	START WITH 1
-	INCREMENT BY 1;
-	
-	drop SEQUENCE PAS_MEMBER_SEQ;
-	
-	select * from PAS_MEMBER;
-	
-	SELECT member_id FROM pas_member WHERE member_id = 'pas_memNum_2';
-	
-	delete from PAS_MEMBER;
-	
-	insert into PAS_MEMBER ( member_id, member_pw, member_name, member_gender, member_dep, member_position )
-	values ( 'pas_memNum_' || PAS_MEMBER_SEQ.nextval, '1111', 'system', '', '', '' );
-	
-	insert into PAS_MEMBER ( member_id, member_pw, member_name, member_gender, member_dep, member_position )
-	values ( 'system', '1111', 'system', '-', '-', '-' );
-	 -->
+
 </mapper>
