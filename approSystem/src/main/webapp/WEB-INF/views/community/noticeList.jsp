@@ -30,9 +30,23 @@
           <div>
             <div>공지사항</div>
           </div>
-
-          <div class="mb-2 d-flex justify-content-end">
-            <!-- <input type="button" value="글 작성" onclick="location.href='/community/noticeWrite'"/> -->
+          
+          <div class="mb-2 d-flex justify-content-between">
+          	<!-- search bar -->
+	        <form action="noticeList" method="post">
+		        <input type="hidden" name="pageNo" id="pageNo" value="1" />
+		        <input type="hidden" name="listSize" id="listSize" value="10" />
+		          <table>
+		            <tr>              
+		              <td>
+		                <input type="text" name="schText" id="schText" value="${ sch.schText }" placeholder="검색내용을 입력해주세요." />
+		              </td>
+		              <td>
+		                <input type="submit" id="schBtn" value="검색">
+		              </td>
+		            </tr>
+		          </table>
+	        </form>
           	<input type="button" value="글 작성" onclick="noticeWrite()"/>
           </div>
 
@@ -87,23 +101,7 @@
 					<a onclick="goPage('${page.totPage}')">[끝]</a>
 				</c:if>    
 			</nav>
-		</div>
-
-        <!-- search bar -->
-        <form action="noticeList" method="get" class="search container">
-        <input type="hidden" name="pageNo" id="pageNo" value="1" />
-        <input type="hidden" name="listSize" id="listSize" value="10" />
-          <table>
-            <tr>              
-              <td>
-                <input type="text" name="schText" id="schText" value="${ sch.schText }" placeholder="검색내용을 입력해주세요." />
-              </td>
-              <td>
-                <input type="submit" id="schBtn" value="검색">
-              </td>
-            </tr>
-          </table>
-        </form>       
+		</div>       
       </section>
       
     </main>
@@ -115,15 +113,13 @@
     <script src="/JS/main.js"></script>
     <script>
     	function noticeWrite(){
-    		if( ${ position == 'AA' || position == 'BB' || position == 'CC' } ){
+    		if( ${ position == '부장' || position == '차장' || position == '과장' } ){
     			location.href='/community/noticeWrite';
     		} 
     		else {
     			alert('공지사항 작성 권한이 없는 아이디입니다.');
-    		}
-    		
-    	}
-    
+    		}    		
+    	}   
     </script>
   </body>
 </html>

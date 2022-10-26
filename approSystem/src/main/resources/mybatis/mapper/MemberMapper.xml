@@ -25,15 +25,14 @@
 			member_id,
 			member_name,
 			member_dep,
-			DECODE(
-				member_position,
+			DECODE
+			( member_position,
 				'AA', '부장',
 				'BB', '차장',
 				'CC', '과장',
 				'DD', '대리',
 				'EE', '사원'
-			) 
-			member_position,
+			) member_position,
 			to_char (member_join, 'YYYY-MM-dd' ) member_join
 		FROM pas_member
 		where 1=1
@@ -129,19 +128,11 @@
 	
 	<insert id="memberJoin">
 	INSERT INTO PAS_MEMBER 
-		( 
+		(	
 			member_id, 
 			member_name, 
 			member_gender, 
 			member_dep,
-			DECODE(
-				member_position,
-				'AA', '부장',
-				'BB', '차장',
-				'CC', '과장',
-				'DD', '대리',
-				'EE', '사원'
-			) 
 			member_position 
 		)
 	VALUES 

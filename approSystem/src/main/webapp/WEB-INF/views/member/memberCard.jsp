@@ -58,8 +58,8 @@
           </div>
         </div>      
         <div>
-          <input type="button" value="수정" onclick="updateBtn();"/>
           <input type="button" value="확인" onclick="window.close();" />
+          <input type="button" value="수정" onclick="updateBtn();"/>
           <input type="button" value="삭제" onclick="deleteBtn()" />
         </div>
       </form>
@@ -89,8 +89,7 @@
     		else {
     			alert('권한 없는 사용자입니다.');
     		}
-      }
-    	
+      }   	
     	function deleteBtn() {
     		
     		if( ${ position == 'AA' || position == 'BB' || ( position == 'CC' && dep == '인사팀')} ){
@@ -105,8 +104,7 @@
     		else {
     			alert('권한 없는 사용자입니다.');
     		}
-    	}
-    
+    	}  
     </script>
 
 </body>

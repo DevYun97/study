@@ -24,14 +24,28 @@
       <c:import url="../navBar.jsp"></c:import>
       
       <section class="d-flex flex-column" style="width:800px;">
-        <article></article>
         <!-- 묻고답하기 -->
         <div class="communitySection2 container text-center py-2">
           <div>
-            <div>커뮤니티</div>
+            <h2>커뮤니티</h2>
           </div>
 
-          <div class="mb-2 d-flex justify-content-end">
+          <div class="mb-2 d-flex justify-content-between">
+          <!-- search bar -->
+	        <form action="communityList" method="post">
+		        <input type="hidden" name="pageNo" id="pageNo" value="1" />
+		        <input type="hidden" name="listSize" id="listSize" value="10" />
+		        <table>
+		            <tr>              
+		              	<td>
+		                	<input type="text" name="schText" id="schText" value="${ sch.schText }" placeholder="검색내용을 입력해주세요." />
+		              	</td>
+		              	<td>
+		                	<input type="submit" id="schBtn" value="검색">
+		            	</td>
+		        	</tr>
+		        </table>
+	        </form>
             <input type="button" value="글 작성" onclick="location.href='/community/communityWrite'"/>
           </div>
 
@@ -88,23 +102,7 @@
 					<a onclick="goPage('${page.totPage}')">[끝]</a>
 				</c:if>    
 			</nav>
-		</div>
-
-        <!-- search bar -->
-        <form action="communityList" method="post" class="search container">
-        <input type="hidden" name="pageNo" id="pageNo" value="1" />
-        <input type="hidden" name="listSize" id="listSize" value="10" />
-          <table>
-            <tr>              
-              <td>
-                <input type="text" name="schText" id="schText" value="${ sch.schText }" placeholder="검색내용을 입력해주세요." />
-              </td>
-              <td>
-                <input type="submit" id="schBtn" value="검색">
-              </td>
-            </tr>
-          </table>
-        </form>       
+		</div>       
       </section>
       
     </main>

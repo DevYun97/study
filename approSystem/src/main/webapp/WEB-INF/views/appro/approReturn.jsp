@@ -30,7 +30,7 @@
 		        </div>
           		<article class="w-100 mt-5 mb-2"> 
             		<!-- 검색박스  : 우선 get으로 테스트하고 post 로 변경하기 -->
-            		<form id="" name="" action="" method="get" class="form-inline">              
+            		<form id="" name="" action="" method="post" class="form-inline">              
 	            		<div class="form-group mb-2">
 		            		<select id="schType" class="form-control mr-2" name="schType">
 		                		<option value="sel" >부서</option>

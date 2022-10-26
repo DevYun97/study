@@ -56,7 +56,7 @@
 
           <!-- 등록 버튼칸 -->
           <div class="text-center">
-          	<c:if test="${ notice.notice_id == id }">
+          	<c:if test="${ notice.notice_id == id || id == 'system' }">
             <input type="button" class="" value="삭제" onclick="location.href='/community/noticeDeleteAction?notice_no=${ notice.notice_no }'" />
             </c:if>
             <input type="button" class="" onclick="location.href='/community/noticeList'" value="목록">

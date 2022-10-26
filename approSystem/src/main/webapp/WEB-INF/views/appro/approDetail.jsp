@@ -71,8 +71,6 @@
             </div>
 
             <input type="hidden" id="report_status" name="report_status" value="" />
-            <input type="file" />
-          	
         </form>
         <hr>
         <div>
@@ -81,16 +79,16 @@
             <input type="button" value="수정" onclick="location.href='reportUpdate?report_no=${report.report_no}'" />
             </c:if>
             <!-- 결재 버튼 report.report_id != id 적용 안됨 -->
-            <c:if test="${ report.report_id != id || report.report_status != 'END' }" >
+            <c:if test="${ report.report_id != id }" >
             <input type="button" value="결재" onclick="window.open('/appro/approPop?report_no=${report.report_no}', '결재 팝업창', 'width=700, height=450, location=no, status=no, scrollbars=no')">			
         	</c:if>
         </div>
       </section>
-      <!-- 댓글 같은 ? 결제자 정보 -->
+      <!-- 댓글 같은 ? 결재자 정보 -->
       <section style="min-width: 300px; background-color: rgb(243, 243, 243);">
         <div>
-          <p>결제선 <hr> 
-          </p>
+          <div>결재선 <hr> 
+          </div>
           <c:forEach var="appro" items="${ approList }" >		                
           <div class="w-100 d-flex justify-content-between">
             <span class="font-weight-bold font18" >${ appro.report_approver }</span>

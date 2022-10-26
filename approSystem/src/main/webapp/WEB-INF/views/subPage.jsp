@@ -65,28 +65,6 @@
       </div>
     </div>
 
-	<!-- 메인 페이지 - 프로젝트 소개 팝업창  -->
-	<div class="container-sm container-fluid col-12 position-absolute d-none flex-column justify-content-center bg-white border border-dark-50 rounded" style="top:50%; left: 50%; transform:translate(-50%, -50%); width:800px;" id="PASIntro">
-      <!-- 캔슬 아이콘 -->
-      <div class="w-100 d-flex flex-row justify-content-end my-2">
-        <i class="bi bi-x-lg" width="30px" height="30px" onclick="popupHideAndShow(target = 'PASIntro');"></i>
-      </div>
-      <!-- MainDiv -->
-      <div class="w-100 d-flex flex-column justify-content-center align-items-center">
-        <h4>프로젝트 소개</h4>
-        <div class="pl-2 pt-2 pb-4 w-100 text-left">
-          <hr>
-          <p>
-            프로젝트 PAS <small>(ProjectApproSystem)</small>
-          </p>
-          <p>기간 : 2022.09.20 ~ 2022.10.01 (2주) </p>
-          <p>인원 : 1인 (개인 프로젝트) </p>
-          <p>소개 :</p>
-        </div>     
-      </div>
-    </div>
-			
-			
 	<!-- 신규 회원 등록 카드 -->
 	<div class="container-sm container-fluid col-12 position-absolute d-none flex-column justify-content-center bg-white border border-dark-50 rounded" style="top:50%; left: 50%; transform:translate(-50%, -50%); width:580px;" id="memberAdd">
 	<!-- 캔슬 아이콘 -->

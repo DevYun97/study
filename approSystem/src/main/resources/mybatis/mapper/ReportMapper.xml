@@ -42,6 +42,14 @@
 			and to_char(report_date, 'YYYY-MM-dd') between #{startDate} and #{endDate}
 		</if>
 	</sql>
+	
+	<sql id="reStatusSql">
+		DECODE( re.report_status,
+		'RT', '반려',
+		'TS', '임시작성',
+		'END', '최종승인'
+		)report_status
+	</sql>
 
 	<select id="reportList" parameterType="map" resultMap="list">
 		SELECT	    	
@@ -50,7 +58,7 @@
 			re.report_name,
 			to_char( re.report_date, 'YYYY-MM-dd' ) report_date,
 			ap.report_approver,
-			re.report_status
+			<include refid="reStatusSql"></include>
 		FROM 
 			(
 				select	                
@@ -134,6 +142,7 @@
 			    report_status
 			  from PAS_report		    
 			where report_status = 'END'
+			<include refid="schSql"></include>
 			)re
 		LEFT JOIN 
 			(
@@ -154,7 +163,7 @@
 			re.report_name,
 			to_char( re.report_date, 'YYYY-MM-dd' ) report_date,
 			ap.report_approver,
-			re.report_status
+			<include refid="reStatusSql"></include>
 		FROM 		
 			(
 			select	   
@@ -167,6 +176,7 @@
 			    report_status
 			from PAS_report		    
 			where report_status = 'END'
+			<include refid="schSql"></include>
 			)re	
 		LEFT JOIN 
 			(

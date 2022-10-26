@@ -29,8 +29,7 @@
 		        	<div>문서조회</div>
 		        </div>
           		<article class="w-100"> 
-            		<!-- 검색박스  : 우선 get으로 테스트하고 post 로 변경하기 -->
-            		<form action="approList" method="get" class="form-inline">
+            		<form action="approList" method="post" class="form-inline">
             			<input type="hidden" name="pageNo" id="pageNo" value="1" />
         				<input type="hidden" name="listSize" id="listSize" value="3" />
 	              		<div class="form-group mb-2">
@@ -59,7 +58,20 @@
 		                    <td>${ report.report_name }</td>
 		                    <td>${ report.report_date }</td>
 		                    <td>${ report.report_approver }</td>
-		                    <td>${ report.report_status }</td>
+		                    <td>
+		                    <c:if test="${ (report.report_status != '임시저장' && report.report_status != '최종승인' ) && report.report_name == name }">
+		                    결재 진행중
+		                    </c:if>
+		                    <c:if test="${ (report.report_status != '임시저장' && report.report_status != '최종승인' ) && report.report_name != name }">
+		                    미결재 서류
+		                    </c:if>
+		                    <c:if test="${ report.report_status == '임시저장' || report.report_status == '최종승인'}" >
+		                    ${ report.report_status}
+		                    </c:if>
+		                    <c:if test="${ report.report_status == '반려'}" >
+		                    ${ report.report_status}
+		                    </c:if>
+		                    </td>
 		               	</tr>
 		               	</c:forEach>
 	            	</table>

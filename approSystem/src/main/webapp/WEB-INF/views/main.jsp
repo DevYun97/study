@@ -39,17 +39,16 @@
         <article id="userCard" class="d-flex border" style="max-width: 800px; min-width: 400px;" >
           
           <!-- myCard -->
-			<div id="userInfo" class="py-3 px-4 border-right" style="width:450px;">
-	          	<div class="text-right mt-2 mb-3">
-	          		<input type="button" value="비밀번호 변경" onclick="popupHideAndShow(target ='pwUpdate');" >
-	          	</div>           
-          	
+			<div id="userInfo" class="w-100 py-4 px-5">                   	
 				<div>
-	          		<div class="form-row">
+	          		<div class="form-row justify-content-between">
 			            <div class="col-6 mb-2">
 			            	<label for="member_id" class="font14 text-black-50 mb-0">사원 아이디</label>
 			              	<input type="text" class="form-control-plaintext" id="member_id" name="member_id" value="${ id }" readonly />
 			            </div>
+			            <div class="text-right mt-2 mb-3">
+			          		<input type="button" value="비밀번호 변경" onclick="popupHideAndShow(target ='pwUpdate');" >
+			          	</div>
 		          	</div>
 		          	<div class="form-row">
 			            <div class="col-6 mb-2">
@@ -67,31 +66,6 @@
 		          	</div>
 	        	</div>
 			</div>
-          
-          <div class="d-flex align-items-center">
-
-            <div class="card-group text-right">
-              <div class="">
-                <div class="card-body">
-                  <h6 class="card-title">진행 중 서류</h6>
-                  <p class="card-text">1건</p>
-                </div>
-              </div>
-              <div class="">               
-                <div class="card-body ">
-                  <h6 class="card-title">반려 된 문서</h6>
-                  <p class="card-text">1건</p>
-                </div>
-              </div>
-              <div class="">
-                <div class="card-body">
-                  <h6 class="card-title"> 테스트 </h6>
-                  <p class="card-text">1건</p>
-                </div>
-              </div>
-            </div>
-
-          </div>
         </article>
 
         <article class="d-flex justify-content-between" style="max-width: 800px;">
@@ -123,11 +97,8 @@
             </div>
             <hr>
             <div class="w-100 d-flex justify-content-start align-items-center mt-2 pb-3">
-                <span class="pointer" onclick="popupHideAndShow(target ='aaaa');"> 사용자 메뉴얼 </span>                        
-            </div>
-            <div class="w-100 d-flex justify-content-start align-items-center mt-2 pb-3">
-              <span class="pointer" onclick="popupHideAndShow(target ='PASIntro');"> 프로젝트 소개 </span>                           
-            </div>          
+                <span class="pointer" onclick="popupHideAndShow(target ='aaaa');"> 사용자 매뉴얼 </span>                        
+            </div>         
           </div>
         </article>
 
@@ -154,7 +125,6 @@
       </section>
     </main>
 
-    <!-- 팝업창_ 팝업창 좌표는 화면 정가운데 고정시킴 -->
     <!-- 회원카드 -->
     <div class=" container-sm container-fluid position-absolute d-none flex-column bg-white border border-dark-50 rounded p-2 "style="top:50%; left: 50%; transform:translate(-50%, -50%); width: 400px;" id="pwUpdate">
       	<div class="w-100 d-flex flex-row justify-content-end">
@@ -176,8 +146,6 @@
     
     <!-- 팝업창 -->
     <c:import url="subPage.jsp"></c:import>
-    
-
     <!-- 부트스트랩4 JS 연결 -->
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
@@ -187,8 +155,7 @@
     <script>
  	// 비밀번호 일치 ajax
 	$(function(){
-	    $('#checkPw').focusout(function(){
-	        
+	    $('#checkPw').focusout(function(){	        
 	    	//비밀번호 확인
 	        const member_pw = $('#checkPw').val();
 	        if(!member_pw){

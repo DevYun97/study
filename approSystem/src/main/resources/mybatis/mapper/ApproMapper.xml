@@ -5,7 +5,18 @@
     
 <mapper namespace="com.project.appro.dao.IapproDAO">
 	<select id="approList" resultType="com.project.appro.dto.Appro">
-		SELECT * FROM PAS_APPRO WHERE report_no = #{param1} order by appro_date
+		SELECT
+			report_no,
+			appro_id,
+			report_approver,
+			appro_content,
+			DECODE( appro_status,
+			'TS', '임시저장',
+			'RT', '반려',
+			'END', '최종승인',
+			'결재') appro_status,
+			appro_date
+		FROM PAS_APPRO WHERE report_no = #{param1} order by appro_date
 	</select>
 	
 	<insert id="approWrite">

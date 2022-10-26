@@ -20,7 +20,9 @@
 			count(notice_no)
 		FROM PAS_NOTICE
 		WHERE 1=1
-		AND notice_title like '%'||#{schTect}||'%'
+		AND (
+		notice_title like '%'||#{schText}||'%'
+		OR notice_name like '%'||#{schText}||'%')
 	</select>
 
 	<!-- notice -->			
@@ -40,7 +42,8 @@
 				notice_hit				
 			FROM PAS_NOTICE 
 			WHERE 1=1
-			AND notice_title like '%'||#{schText}||'%'
+			AND ( notice_title like '%'||#{schText}||'%'
+				  OR notice_name like '%'||#{schText}||'%')
 			)
 		WHERE rnum between #{pageNo} * #{listSize} - #{listSize} +1 AND #{pageNo} + #{listSize}
 	</select>
