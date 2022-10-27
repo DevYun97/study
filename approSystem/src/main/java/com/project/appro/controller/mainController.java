@@ -50,6 +50,7 @@ public class mainController {
 		} catch (NullPointerException e) {
 			member_id = null;
 		}
+		
 		if( member_id == null ) {
 			return "redirect:login";
 		}
@@ -75,8 +76,21 @@ public class mainController {
 	}
 	
 	@RequestMapping("login")
-	public String login () {
-		return "login";
+	public String login (HttpSession session) {
+		
+		String member_id;
+		
+		try {
+			member_id = (String) session.getAttribute("id");			
+		} catch (NullPointerException e) {
+			member_id = null;
+		}
+		
+		if( member_id == null ) {
+			return "login";
+		} else {
+			return "redirect:main";
+		}
 	}
 	
 	@RequestMapping("loginAciton")

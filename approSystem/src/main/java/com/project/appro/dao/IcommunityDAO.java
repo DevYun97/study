@@ -15,10 +15,15 @@ public interface IcommunityDAO {
 	public int comWrite ( String commu_id, String commu_title, String commu_name, String commu_content);
 	
 	public Community comDetail (String commu_no);
-
+	
+	public int comDelete( String commu_no, String commu_title, String commu_content);
+	
 	public void communityHit(String commu_no);
 	
 	public int comCount(Map<String, Object> map);
-	
+
+	public int comDelete(String commu_no);
+
+	public int comUpdate(String commu_no, String commu_title, String commu_content);
 
 }

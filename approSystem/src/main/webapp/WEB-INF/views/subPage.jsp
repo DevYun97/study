@@ -84,15 +84,16 @@
 		              	<div class="col-md-3 mb-3">
 		                	<label for="">부서</label>
 		                	<select class="custom-select" name="member_dep" id="member_dep" required>
-		                  		<option selected disabled value="">Choose...</option>
-		                  		<option value="A팀">A팀</option>
+		                  		<option selected disabled >부서</option>
+		                  		<option value="개발팀">개발팀</option>
+		                  		<option value="회계팀">회계팀</option>
 		                  		<option value="인사팀">인사팀</option>
 		                	</select>
 		              	</div>
 		              	<div class="col-md-3 mb-3">
 		                	<label for="">직급</label>
 		                	<select class="custom-select" name="member_position" id="member_position" required>
-		                  		<option selected disabled value="">Choose...</option>
+		                  		<option selected disabled>직급</option>
 			                  	<option value="AA">부장</option>
 			                  	<option value="BB">차장</option>
 			                  	<option value="CC">과장</option>
@@ -130,7 +131,7 @@
 		            </div>
             		<div class="form-group row">
               			<div class="col-sm-10">
-                			<button type="submit" class="btn btn-primary">발급</button>
+              				<input type="submit" value="발급" />
               			</div>
             		</div>
           		</form>

@@ -87,23 +87,24 @@
 		FROM 
 			(
 			select
-				row_number() over(order by member_id desc ) rnum,
+				row_number() over(order by member_dep ,member_position ) rnum,
 				member_id,
 				member_name,
-				member_dep,
-				DECODE(
-					member_position,
-					'AA', '부장',
-					'BB', '차장',
-					'CC', '과장',
-					'DD', '대리',
-					'EE', '사원'
-				) 
+				member_dep, 
 				member_position,
 				to_char (member_join, 'YYYY-MM-dd' ) member_join
 			FROM pas_member
 			where 1=1
 			<choose>
+				<when test="depType == '개발팀'">
+					AND member_dep like '개발팀'
+				</when>
+				<when test="depType == '회계팀'">
+					AND member_dep like '회계팀'
+				</when>
+				<when test="depType == '인사팀'">
+					AND member_dep like '인사팀'
+				</when>
 				<when test="statusType == 'AA'">
 					AND member_position like 'AA'
 				</when>
@@ -137,7 +138,7 @@
 		)
 	VALUES 
 		( 
-			'pas_memNum_' || PAS_MEMBER_SEQ.nextval, 
+			'pas_memNum_' || (select nvl(count(member_id),0) from pas_member),
 			#{member_name}, 
 			#{member_gender}, 
 			#{member_dep}, 

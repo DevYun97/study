@@ -61,7 +61,10 @@ public class MemberService {
 		if(join == 0) {
 			result = "<script>alert('가입 실패'); history.back(-1);</script>";
 		} else {
-			result = "<script>alert('신규 사원의 아이디가 발급되었습니다.');location.href='../member/memberList';</script>";
+			
+			String id = member.getMember_id();
+			
+			result = "<script>alert('신규 사원의 아이디가 발급되었습니다."+id+"');location.href='../member/memberList';</script>";
 		}	
 		return result;
 	}

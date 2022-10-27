@@ -36,13 +36,15 @@
 	              		<input type="hidden" name="pageNo" id="pageNo" value="1" />
         				<input type="hidden" name="listSize" id="listSize" value="9" />
 	              		<div class="form-group mb-2">
-		                	<select id="schType" class="form-control" name="schType">
-		                  		<option value="sel" >부서</option>
-		                  		<option value=""></option>
+		                	<select name="depType" id="depType" class="form-control">
+		                  		<option selected>부서</option>
+		                  		<option value="개발팀" <c:if test="${ sch.depType == '개발팀' }" > selected </c:if>>개발팀</option>
+		                  		<option value="회계팀" <c:if test="${ sch.depType == '회계팀' }" > selected </c:if>>회계팀</option>
+		                  		<option value="인사팀" <c:if test="${ sch.depType == '인사팀' }" > selected </c:if>>인사팀</option>
 		                	</select>
 		                	
 	                		<select name="statusType" class="form-control mx-2" id="statusType" >
-			                  <option value="">직급</option>
+			                  <option >직급</option>
 			                  <option value="AA" <c:if test="${ sch.statusType == 'AA' }" > selected </c:if> >부장</option>
 			                  <option value="BB" <c:if test="${ sch.statusType == 'BB' }" > selected </c:if>>차장</option>
 			                  <option value="CC" <c:if test="${ sch.statusType == 'CC' }" > selected </c:if>>과장</option>
@@ -75,7 +77,13 @@
 		                    <td> ${ mem.member_id } </td>
 		                    <td> ${ mem.member_name } </td>
 		                    <td>${ mem.member_dep }</td>
-		                    <td>${ mem.member_position }</td>
+		                    <td>
+		                    	<c:if test="${ mem.member_position == 'AA' }">부장</c:if>
+		                    	<c:if test="${ mem.member_position == 'BB' }">차장</c:if>
+		                    	<c:if test="${ mem.member_position == 'CC' }">과장</c:if>
+		                    	<c:if test="${ mem.member_position == 'DD' }">대리</c:if>
+		                    	<c:if test="${ mem.member_position == 'EE' }">사원</c:if>
+		                    </td>
 		                    <td>${ mem.member_join }</td>
 		                </tr>
 		                </c:forEach>
@@ -130,7 +138,7 @@
     <!-- child 팝업창 -->
     <script>
     	function openWindow( no ){   		
-    		window.open('/member/memberCard?member_id=${mem.member_id}', '신규 아이디 발급', 'width=700,height=450,location=no,status=no,scrollbars=no');   	      	    		
+    		window.open('/member/memberCard?member_id=${mem.member_id}', '사원 카드', 'width=700,height=430,location=no,status=no,scrollbars=no');   	      	    		
         }
     </script>
   </body>

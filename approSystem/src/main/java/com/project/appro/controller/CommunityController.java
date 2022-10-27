@@ -7,6 +7,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -66,7 +67,8 @@ public class CommunityController {
 	
 	@RequestMapping("communityWriteAction")
 	@ResponseBody
-	public String communityWriteAction (String commu_id, String commu_title, String commu_name, String commu_content) {
+	public String communityWriteAction (
+			String commu_id, String commu_title, String commu_name, String commu_content) {
 		
 		String result=comService.comWrite(commu_id, commu_title, commu_name, commu_content);
 		
@@ -88,6 +90,35 @@ public class CommunityController {
 		
 		return "community/communityDetail";
 	}
+	
+	@RequestMapping("communityUpdate")
+	public String communityUpdate (@RequestParam("commu_no") String commu_no, Model model) {
+		
+		Community community = comDao.comDetail(commu_no);
+		model.addAttribute("community", community);
+		
+		return "community/communityWrite";		
+	}
+	
+	@RequestMapping("communityUpdateAction")
+	@ResponseBody
+	public String communityUpdateAction (
+			String commu_no, String commu_title, String commu_content) {
+		
+		String result = comService.communityUpdate(commu_no, commu_title, commu_content);
+	
+		return result;
+	}
+	
+	@RequestMapping("communityDeleteAction")
+	@ResponseBody
+	public String communityUpdateAction ( @RequestParam("commu_no") String commu_no ) {
+		
+		String result = comService.communityDelete(commu_no);
+	
+		return result;
+	}
+	
 	
 	@RequestMapping("replyWriteAction")
 	@ResponseBody

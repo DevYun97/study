@@ -13,7 +13,6 @@
 <link rel="stylesheet" href="../mainCSS.css" >
 </head>
 <body>
-	<!-- 공용 헤더 -->
     <div class="text-center mt-3">
       <h4>사원 정보 카드</h4>
       <small>사원 정보를 상세보기 / 수정할 수 있는 카드입니다.</small>
@@ -40,31 +39,33 @@
           <div class="col-6 mb-3">
             <label for="member_dep">부서</label>
             <select class="custom-select" id="member_dep" name="member_dep" required>
-              <option selected disabled>Choose...</option>
-              <option value="A팀" <c:if test="${ member.member_dep == 'A팀' }" > selected </c:if> >A팀</option>
+              <option selected disabled>부서</option>
+              <option value="개발팀" <c:if test="${ member.member_dep == '개발팀' }" > selected </c:if> >개발팀</option>
+              <option value="회계팀" <c:if test="${ member.member_dep == '회계팀' }" > selected </c:if> >회계팀</option>
               <option value="인사팀" <c:if test="${ member.member_dep == '인사팀' }" > selected </c:if> >인사팀</option>
             </select>           
           </div>
           <div class="col-6 mb-3">
             <label for="member_position">직급</label>
             <select class="custom-select" id="member_position" name="member_position" required>
-              <option selected disabled >Choose...</option>
-              <option value="AA" <c:if test="${ member.member_position == 'AA' }" > selected </c:if>> 책임</option>
-              <option value="BB" <c:if test="${ member.member_position == 'BB' }" > selected </c:if>> 책임</option>
-              <option value="CC" <c:if test="${ member.member_position == 'CC' }" > selected </c:if>> 팀장</option>
-              <option value="DD" <c:if test="${ member.member_position == 'DD' }" > selected </c:if>> 사수</option>
-              <option value="EE" <c:if test="${ member.member_position == 'EE' }" > selected </c:if>> 사원</option>
+              <option selected disabled >직급</option>
+              <option value="AA" <c:if test="${ member.member_position == '부장' }" > selected </c:if>> 부장</option>
+              <option value="BB" <c:if test="${ member.member_position == '차장' }" > selected </c:if>> 차장</option>
+              <option value="CC" <c:if test="${ member.member_position == '과장' }" > selected </c:if>> 과장</option>
+              <option value="DD" <c:if test="${ member.member_position == '대리' }" > selected </c:if>> 대리</option>
+              <option value="EE" <c:if test="${ member.member_position == '사원' }" > selected </c:if>> 사원</option>
             </select>            
           </div>
         </div>      
         <div>
           <input type="button" value="확인" onclick="window.close();" />
           <input type="button" value="수정" onclick="updateBtn();"/>
-          <input type="button" value="삭제" onclick="deleteBtn()" />
+          <input type="button" value="삭제" onclick="deleteBtn();" />
         </div>
       </form>
-      
     </main>
+    <input type="hidden" id="dep" value="${ dep }" />
+    <input type="hidden" id="position" value="${ position }" />
     <!-- 부트스트랩4 JS 연결 -->
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
@@ -72,40 +73,6 @@
     <!-- testTool 하단 스크립트 추가 후 replace에 이름 넣어주면 text에디터? 사용 가능 -->
     <script src="https://cdn.ckeditor.com/4.15.1/standard/ckeditor.js"></script>
   	<script>CKEDITOR.replace('appro_content');</script>
-	<script scr="/JS/memberJS.js"></script>
-    <!-- child 팝업창 -->
-    <script type="text/javascript">
-
-    	function updateBtn() {
-    	  
-    		if( ${ position == 'AA' || position == 'BB' || ( position == 'CC' && dep == '인사팀')} ){
-    			window.opener.name="parent";
-    	        document.memberUpdatefrm.target = "parent";
-    	        document.memberUpdatefrm.method = "post";
-    	        document.memberUpdatefrm.action = "memberUpdate";
-    	        document.memberUpdatefrm.submit();
-    	        window.close();	
-    		}
-    		else {
-    			alert('권한 없는 사용자입니다.');
-    		}
-      }   	
-    	function deleteBtn() {
-    		
-    		if( ${ position == 'AA' || position == 'BB' || ( position == 'CC' && dep == '인사팀')} ){
-    			//location.href='memberDelete?member_id=${ member.member_id }';
-    			window.opener.name="parent";
-    			document.memberUpdatefrm.target = "parent";
-    	        document.memberUpdatefrm.method = "post";
-    	        document.memberUpdatefrm.action = "memberDelete";
-    	        document.memberUpdatefrm.submit();
-    			window.close();	
-    		}
-    		else {
-    			alert('권한 없는 사용자입니다.');
-    		}
-    	}  
-    </script>
-
+	<script src="/JS/memberJS.js"></script>
 </body>
 </html>

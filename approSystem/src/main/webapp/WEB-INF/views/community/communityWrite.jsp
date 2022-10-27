@@ -23,7 +23,8 @@
       <c:import url="../navBar.jsp"></c:import>
       
       <section class="w-100 d-flex flex-column align-items-center" >
-        <form method="post" action="communityWriteAction" style="width:900px;" onsubmit="return nullChecking()">
+        <form id="communityFrm" method="post" style="width:900px;" >
+          <input type="hidden" id="commu_no" name="commu_no" value="${ community.commu_no }" />          
           <input type="hidden" id="commu_id" name="commu_id" value="${ id }" />
           <div class="communitySection2 container text-center">
             <div class="mb-5">
@@ -35,7 +36,7 @@
                 <tr>
                   <th>제목</th>
                   <td>
-                    <input type="text" name="commu_title" id="commu_title" class="w-75 nullPointer" required />
+                    <input type="text" name="commu_title" id="commu_title" value="${ community.commu_title }" class="w-75" required />
                   </td>
                 </tr>
                 <tr>
@@ -51,13 +52,19 @@
           <div class="container content_textarea">
             <div>
               <textarea id="commu_content" name="commu_content">
+              ${ community.commu_content }
               </textarea>
             </div>
           </div>
 
           <!-- 등록 버튼칸 -->
           <div class="text-center">
-            <input type="submit" class="" value="등록">
+          	<c:if test="${ community.commu_no == null }">
+            <input type="submit" class="" value="등록" onclick="comWriteBtn()" />
+            </c:if>
+            <c:if test="${ community.commu_no != null }">
+            <input type="submit" class="" value="수정" onclick="comUpdateBtn()" />
+            </c:if>
             <input type="button" class="" onclick="location.href='/community/communityList'" value="취소">
           </div>      
         </form>
@@ -71,8 +78,7 @@
     <!-- testTool 하단 스크립트 추가 후 replace에 이름 넣어주면 text에디터? 사용 가능 -->
     <script src="https://cdn.ckeditor.com/4.15.1/standard/ckeditor.js"></script>
   	<script>CKEDITOR.replace('commu_content');</script>
-    
-    
+       
     <!-- myJS -->
     <script src="/JS/main.js"></script>
   </body>

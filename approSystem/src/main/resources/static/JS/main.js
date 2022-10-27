@@ -99,4 +99,12 @@ function fileCheck(){
 		$("#pageNo").val(num);
 		$("#schBtn").click();
 	}
+	
+ function comWriteBtn(){
+    $("#communityFrm").attr("action", "communityWriteAction").attr("method","post").submit(); 		
+ }
+ 
+ function comUpdateBtn(){
+    $("#communityFrm").attr("action", "communityUpdateAction").attr("method","post").submit(); 		
+ }
  

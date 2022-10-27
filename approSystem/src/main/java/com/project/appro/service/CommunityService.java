@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import com.project.appro.dao.IcommunityDAO;
 import com.project.appro.dao.IcommunityReplyDAO;
 import com.project.appro.dao.InoticeDAO;
+import com.project.appro.dto.Community;
 
 @Service
 public class CommunityService {
@@ -33,6 +34,32 @@ public class CommunityService {
 		return result;
 	}	
 	
+	public String communityUpdate( String commu_no, String commu_title, String commu_content) {
+		
+		String result = "";
+		
+		int updating = comDao.comUpdate(commu_no, commu_title, commu_content);
+		
+		if( updating == 0 ) {
+			result = "<script>history.back()-1;</script>";
+		} else {
+			result = "<script>location.href='communityDetail?commu_no="+commu_no+"';</script>";
+		}
+		return result;
+	}
+	
+	public String communityDelete( String commu_no ) {
+		
+		int result = comDao.comDelete(commu_no);
+		
+		if(result == 1) {
+			return "<script>alert('게시글 삭제에 성공하였습니다.'); location.href='communityList';</script>";
+		}
+		else {
+			return "<script>alert('게시글 삭제에 실패하였습니다.'); history.back(-1);</script>";
+		}		
+	}
+	
 	//replyWrite
 	public String replyWrite(String commu_no, String reply_id, String reply_name, String reply_content) {
 		
@@ -42,7 +69,7 @@ public class CommunityService {
 		if( reply == 0 ) {
 			result = "<script>history.back()-1;</script>";
 		} else {
-			result = "<script>location.href='communityList';</script>";
+			result = "<script>location.href='communityDetail?commu_no="+commu_no+"';</script>";
 		}
 		return result;
 	}

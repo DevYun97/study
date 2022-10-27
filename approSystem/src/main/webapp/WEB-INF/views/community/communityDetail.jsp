@@ -36,8 +36,8 @@
 	           
 	            <div class="py-0">
 	              <c:if test="${ community.commu_id == id }">
-	              <input type="button" value="수정" onclick="" />
-	              <input type="button" value="삭제" onclick="" />
+	              <input type="button" value="수정" onclick="location.href='/community/communityUpdate?commu_no=${ community.commu_no }'" />
+	              <input type="button" value="삭제" onclick="location.href='/community/communityDeleteAction?commu_no=${ community.commu_no }'" />
 	              </c:if>
 	            </div>
             </div>           

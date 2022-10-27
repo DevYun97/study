@@ -59,7 +59,15 @@
 	</insert>	
 		
 	<select id="comDetail" resultType="com.project.appro.dto.Community">
-		SELECT * FROM PAS_COMMUNITY WHERE commu_no = #{ param1 }
+		SELECT 
+			commu_no,
+			commu_id,
+			commu_name,
+			commu_title,
+			commu_content,
+			to_char(commu_date, 'YYYY-MM-dd' ) commu_date,
+			commu_hit 
+		FROM PAS_COMMUNITY WHERE commu_no = #{ param1 }
 	</select>	
 	
 	<!-- 조회수 -->
@@ -69,5 +77,16 @@
 		SET commu_hit = commu_hit + 1
 		WHERE commu_no = #{ param1 }
 	</update>
+	
+	<update id="comUpdate">
+		UPDATE 
+			PAS_COMMUNITY 
+		SET commu_title = #{ param2 }, commu_content = #{ param3 }
+		WHERE commu_no = #{ param1 }
+	</update>
+	
+	<delete id="comDelete">
+		DELETE FROM PAS_COMMUNITY WHERE commu_no = #{ param1 }
+	</delete>
 		
 </mapper>
