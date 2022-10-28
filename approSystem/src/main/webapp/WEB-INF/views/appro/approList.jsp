@@ -41,7 +41,7 @@
 		              	</div>
             		</form>
 				</article>
-	          	<div class="qna">
+	          	<div class="listSt">
 	            	<table>
 	              		<tr>
 			                <th>번호</th>
@@ -59,18 +59,20 @@
 		                    <td>${ report.report_date }</td>
 		                    <td>${ report.report_approver }</td>
 		                    <td>
-		                    <c:if test="${ (report.report_status != '임시저장' && report.report_status != '최종승인' ) && report.report_name == name }">
-		                    결재 진행중
-		                    </c:if>
-		                    <c:if test="${ (report.report_status != '임시저장' && report.report_status != '최종승인' ) && report.report_name != name }">
-		                    미결재 서류
-		                    </c:if>
-		                    <c:if test="${ report.report_status == '임시저장' || report.report_status == '최종승인'}" >
-		                    ${ report.report_status}
-		                    </c:if>
-		                    <c:if test="${ report.report_status == '반려'}" >
-		                    ${ report.report_status}
-		                    </c:if>
+			                    <c:if test ="${ report.report_status != '반려' }" >
+				                    <c:if test="${ (report.report_status != '임시저장' && report.report_status != '최종승인' ) && report.report_name == name }">
+				                    결재 진행중
+				                    </c:if>
+				                    <c:if test="${ (report.report_status != '임시저장' && report.report_status != '최종승인' ) && report.report_name != name }">
+				                    미결재 서류
+				                    </c:if>
+				                    <c:if test="${ report.report_status == '임시저장' || report.report_status == '최종승인'}" >
+				                    ${ report.report_status}
+				                    </c:if>
+				                    </c:if>
+			                    <c:if test="${ report.report_status == '반려'}" >
+			                    ${ report.report_status}
+			                    </c:if>
 		                    </td>
 		               	</tr>
 		               	</c:forEach>

@@ -61,7 +61,7 @@
 			          <input type="button" value="신규 아이디 발급" onclick="popupHideAndShow(target = 'memberAdd');">
 			        </div>
           		</article>
-          		<div class="qna">
+          		<div class="listSt">
             		<table>
 		            	<tr>
 			                <th>번호</th>

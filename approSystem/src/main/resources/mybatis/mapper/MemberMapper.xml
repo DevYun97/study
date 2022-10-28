@@ -158,7 +158,7 @@
 		SELECT
 			member_id,
 			member_name,
-			member_join,
+			to_char(member_join, 'YYYY-MM-dd') member_join,
 			member_gender,
 			member_dep,
 			DECODE(

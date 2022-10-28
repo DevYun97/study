@@ -49,30 +49,34 @@
 	        </div>
 		</form>
 	</main>
+	<input type="hidden" id="position" value="${ position }" />
     <!-- 부트스트랩4 JS 연결 -->
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+    <script src="/JS/appro.js"></script>
+  </body>
+</html>    
     
     <script>     
-      function approBtn(){
-    	  var reValue = $("#report_status");
-    	  var apValue = $("#appro_status");
-    	  if( reValue.val() == 'DR' && ${ position == 'DD' } ){
+      /* function approBtn(){
+    	  const reValue = $("#report_status");
+    	  const apValue = $("#appro_status");
+    	  if( reValue.val() == 'DR' && $("#position").val() == '대리' ){
     		  alert('dd 결재');
     		  reValue.val('CR').toString;
     		  apValue.val('CR').toString;
     		} 
-    	  else if ( reValue.val() == 'CR' && ${position == 'CC' } ){
+    	  else if ( reValue.val() == 'CR' && $("#position").val() == '과장' ){
     		  alert('cc 결재');
     		  reValue.val('BR').toString;
     		  apValue.val('BR').toString;
     		} 
-    	  else if ( reValue.val() == 'BR' && ${position == 'BB' } ){
+    	  else if ( reValue.val() == 'BR' && $("#position").val() == '차장' ){
     		  alert('bb 결재');
     		  reValue.val('AR').toString;
     		  apValue.val('AR').toString;
     		}
-    	  else if ( reValue.val() == 'AR' && ${position == 'AA' } ){
+    	  else if ( reValue.val() == 'AR' && $("#position").val() == '부장' ){
     		  alert('aa 결재');
     		  reValue.val('END').toString;
     		  apValue.val('END').toString;
@@ -107,8 +111,5 @@
     	  document.approFrm.action = "approAction";
     	  document.approFrm.submit();
     	  window.close();
-      }
+      } */
     </script>
-
-  </body>
-</html>

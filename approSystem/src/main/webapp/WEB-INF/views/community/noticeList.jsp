@@ -50,7 +50,7 @@
           	<input type="button" value="글 작성" onclick="noticeWrite()"/>
           </div>
 
-          <div class="qna">
+          <div class="listSt">
             <table>
               <tr>
                 <th>번호</th>

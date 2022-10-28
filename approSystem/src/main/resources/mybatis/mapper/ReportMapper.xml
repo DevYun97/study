@@ -22,16 +22,16 @@
 
 	<sql id="schSql">
 		<choose>
-			<when test="member_position == 'DD'">
+			<when test="member_position == '대리'">
 				OR ( report_status = 'DR' OR report_id = #{ member_id } )
 			</when>
-			<when test="member_position == 'CC'">
+			<when test="member_position == '과장'">
 				OR ( report_status = 'CR' OR report_id = #{ member_id } )
 			</when>
-			<when test="member_position == 'BB'">
+			<when test="member_position == '차장'">
 				OR ( report_status = 'BR' OR report_id = #{ member_id } )
 			</when>
-			<when test="member_position == 'AA'">
+			<when test="member_position == '부장'">
 				OR ( report_status = 'AR' OR report_id = #{ member_id } )
 			</when>
 		</choose>
@@ -46,7 +46,7 @@
 	<sql id="reStatusSql">
 		DECODE( re.report_status,
 		'RT', '반려',
-		'TS', '임시작성',
+		'TS', '임시저장',
 		'END', '최종승인'
 		)report_status
 	</sql>

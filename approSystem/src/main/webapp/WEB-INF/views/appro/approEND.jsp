@@ -47,7 +47,7 @@
 		        	</form>
 	          	</div>
 	          
-	          	<div class="qna">
+	          	<div class="listSt">
 	          		<table>
 	              		<tr>
 			                <th>번호</th>
