@@ -27,7 +27,7 @@ public class ApproService {
 		if( reportWrite == 0 ) {
 			result = "<script>location.href='history.back(-1)';</script>";
 		} else {
-			result = "<script>alert('작성 완료'); location.href='../appro/approList';</script>";
+			result = "<script>location.href='../appro/approList';</script>";
 		}
 		
 		return result;

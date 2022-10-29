@@ -124,25 +124,6 @@
         </article>
       </section>
     </main>
-
-    <!-- 회원카드 -->
-    <div class=" container-sm container-fluid position-absolute d-none flex-column bg-white border border-dark-50 rounded p-2 "style="top:50%; left: 50%; transform:translate(-50%, -50%); width: 400px;" id="pwUpdate">
-      	<div class="w-100 d-flex flex-row justify-content-end">
-        	<i class="bi bi-x-lg" width="30px" height="30px" onclick="popupHideAndShow(target = 'pwUpdate');"></i>
-      	</div>
-      	<div class="w-100 d-flex flex-column justify-content-center align-items-center">
-        	<h6 class="">비밀번호 변경하기</h6>
-        	<form action="member/pwChange" method="get" id="pwChangeFrm" class="d-flex flex-column align-items-center col-12 mt-2" onsubmit="return pwChangeOk();">
-	          	<input type="hidden" name="member_id" value="${ id }"  /> 
-	          	<input type="password" class="mt-2 mb-1 w-75 form-control" id="checkPw" placeholder="기존 비밀번호를 입력하세요" />
-	          	<input type="password" class="mt-2 mb-1 w-75 bg-white form-control" id="pw1" placeholder="새 비밀번호를 입력하세요" disabled/>
-	          	<input type="password" class="my-1 w-75 bg-white form-control" name="member_pw" id="pw2" placeholder="새 비밀번호 재확인" disabled/>
-	          	<div id="pwCkNo" style="color: red; display: none;" >*비밀번호가 일치하지 않습니다*</div>
-		      	<div id="pwCkOk" style="color: green; display: none;" >*비밀번호가 일치합니다*</div>
-	          	<input type="submit" id="pwSubmitBtn" class="btn btn-primary col-6 mt-3 mb-5" value="확인" disabled />
-        	</form>
-      </div>
-	</div>
     
     <!-- 팝업창 -->
     <c:import url="subPage.jsp"></c:import>
