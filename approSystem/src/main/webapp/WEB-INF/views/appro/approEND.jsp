@@ -25,9 +25,8 @@
       
       	<section class="d-flex flex-column" style="width:800px;">
       		<div class="communitySection2 container text-center py-2">
-		    	<div>
-		        	<h2>문서조회</h2>
-		        </div>
+		    	
+				<h3>문서조회</h3>
 		        
 		        <div class="d-flex justify-content-between mb-2 mt-3">
 		          	<!-- search bar -->

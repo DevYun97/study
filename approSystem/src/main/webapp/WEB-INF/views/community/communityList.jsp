@@ -26,9 +26,8 @@
       <section class="d-flex flex-column" style="width:800px;">
         <!-- 묻고답하기 -->
         <div class="communitySection2 container text-center py-2">
-          <div>
-            <h2>커뮤니티</h2>
-          </div>
+          
+          <h3>커뮤니티</h3>
 
           <div class="mb-2 d-flex justify-content-between">
           <!-- search bar -->

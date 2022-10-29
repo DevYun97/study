@@ -27,9 +27,8 @@
         <article></article>
         <!-- 묻고답하기 -->
         <div class="communitySection2 container text-center py-2">
-          <div>
-            <div>공지사항</div>
-          </div>
+          
+          <h3>공지사항</h3>
           
           <div class="mb-2 d-flex justify-content-between">
           	<!-- search bar -->

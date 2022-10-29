@@ -135,8 +135,8 @@
         	<form action="member/pwChange" method="get" id="pwChangeFrm" class="d-flex flex-column align-items-center col-12 mt-2" onsubmit="return pwChangeOk();">
 	          	<input type="hidden" name="member_id" value="${ id }"  /> 
 	          	<input type="password" class="mt-2 mb-1 w-75 form-control" id="checkPw" placeholder="기존 비밀번호를 입력하세요" />
-	          	<input type="password" class="mt-2 mb-1 w-75 form-control" id="pw1" placeholder="새 비밀번호를 입력하세요" />
-	          	<input type="password" class="my-1 w-75 form-control" name="member_pw" id="pw2" placeholder="새 비밀번호 재확인" />
+	          	<input type="password" class="mt-2 mb-1 w-75 bg-white form-control" id="pw1" placeholder="새 비밀번호를 입력하세요" disabled/>
+	          	<input type="password" class="my-1 w-75 bg-white form-control" name="member_pw" id="pw2" placeholder="새 비밀번호 재확인" disabled/>
 	          	<div id="pwCkNo" style="color: red; display: none;" >*비밀번호가 일치하지 않습니다*</div>
 		      	<div id="pwCkOk" style="color: green; display: none;" >*비밀번호가 일치합니다*</div>
 	          	<input type="submit" id="pwSubmitBtn" class="btn btn-primary col-6 mt-3 mb-5" value="확인" disabled />
@@ -152,34 +152,8 @@
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <!-- myJS -->
     <script src="/JS/main.js"></script>
+    <script src="/JS/memberJS.js"></script>
     <script>
- 	// 비밀번호 일치 ajax
-	$(function(){
-	    $('#checkPw').focusout(function(){	        
-	    	//비밀번호 확인
-	        const member_pw = $('#checkPw').val();
-	        if(!member_pw){
-	        	alert("비밀번호를 입력해주세요.");
-	            return false;
-	        }
-	        $.ajax({	        	
-	            url: 'http://localhost:8081/member/pwChkAjax?member_pw='+ member_pw,	// action	            
-	            type: 'POST', //method     
-	            success: function(data) {   //success : function( 변수명 ) -- return "data"; 호출받아서 실행되는 부분.  function: 액션이 선행되어어야 함.
-	            	let data_num = Number( data );
-	               	if( data_num >= 1){
-	          			alert('기존비밀번호를 재확인 해 주세요');
-	          			$('#checkPw').val('');
-	          		  }else{
-	                   	$('#pwSubmitBtn').removeAttr('disabled'); //submit 버튼 잠금해제
-	          		  }
-	          		},
-	            error: function(){
-	            	console.log('통신 실패');
-	            }	
-	   		});
-	    })
-    })    
     </script>
   </body>
 </html>

@@ -25,22 +25,21 @@
       
       	<section class="d-flex flex-column" style="width:800px;">
       		<div class="communitySection2 container text-center py-2">
-		    	<div>
-		        	<div>문서조회</div>
-		        </div>
-          		<article class="w-100"> 
-            		<form action="approList" method="post" class="form-inline">
-            			<input type="hidden" name="pageNo" id="pageNo" value="1" />
-        				<input type="hidden" name="listSize" id="listSize" value="3" />
-	              		<div class="form-group mb-2">
-			                <input type="date" id="startDate" name="startDate" class="form-control">
-			                ~
-			                <input type="date" id="endDate" name="endDate" class="form-control mx-2">  
-			                <input type="text" id="schText" name="schText" class="form-control mr-2" />             	              		
-			                <input type="submit" id="schBtn" value="검색" />
-		              	</div>
-            		</form>
-				</article>
+		    	
+		    	<h3>문서조회</h3>
+		       
+		       <div class="d-flex justify-content-start mb-2 mt-3">
+			   		<form action="approList" method="post" class="w-100 text-start">
+				        <input type="hidden" name="pageNo" id="pageNo" value="1" />
+				        <input type="hidden" name="listSize" id="listSize" value="10" />
+				        <input type="date" id="startDate" name="startDate" class="">
+				            ~
+			            <input type="date" id="endDate" name="endDate" class=" mx-2">  
+			            <input type="text" id="schText" name="schText" class=" mr-2" />             	              		
+			            <input type="submit" id="schBtn" value="검색" />
+		        	</form>
+	          	</div>
+		       				
 	          	<div class="listSt">
 	            	<table>
 	              		<tr>

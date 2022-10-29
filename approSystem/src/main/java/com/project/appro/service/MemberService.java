@@ -64,7 +64,7 @@ public class MemberService {
 			
 			String id = member.getMember_id();
 			
-			result = "<script>alert('신규 사원의 아이디가 발급되었습니다."+id+"');location.href='../member/memberList';</script>";
+			result = "<script>alert('신규 사원의 아이디가 발급되었습니다.');location.href='../member/memberList';</script>";
 		}	
 		return result;
 	}

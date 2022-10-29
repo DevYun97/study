@@ -72,28 +72,6 @@ function fileCheck(){
       return;
   }
 }
-
-	
-// 비밀번호 수정 스크립트
- $("#pwChangeFrm").keyup(function(){ 
-		
-	const pw1 = $('#pw1').val();
-	const pw2 = $('#pw2').val();
-	      
-	if( !pw1 || !pw2){      //null 체크
-	    $('#pwCkOk').css('display','none');   
-	    $('#pwCkNo').css('display','none');
-	}
-	else if( pw1 != pw2 ) { //비밀번호 수정이 일치하지 않을 경우
-	   	$('#pwCkNo').css('display','block');
-	    $('#pwCkOk').css('display','none');   		
-	}
-	else if(pw1 == pw2){  //비밀번호 수정이 일치
-	    $('#pwCkNo').css('display','none');
-	    $('#pwCkOk').css('display','block');
-	}
- });
- 
  
  function goPage(num){
 		$("#pageNo").val(num);
