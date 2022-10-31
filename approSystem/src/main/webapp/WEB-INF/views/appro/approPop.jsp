@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -45,7 +46,15 @@
             <input type="hidden" id="appro_status" name="appro_status" value="" />
 	        <div>
 	          <input type="button" value="반려" onclick="returnBtn()" />
+	          <c:if test="${ position != '부장' }">
 	          <input type="button" value="결재" onclick="approBtn()" />
+	          </c:if>
+	          <%-- <c:if test="${ position == '부장' }">
+	          <input type="button" value="최종승인" onclick="approBtn()" />
+	          </c:if> --%>
+	          <c:if test="${ position == '과장' || position == '차장' || position == '부장' }" >
+	          <input type="button" value="최종승인" onclick="approEndBtn()" />
+	          </c:if>
 	        </div>
 		</form>
 	</main>

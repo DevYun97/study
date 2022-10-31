@@ -10,9 +10,9 @@
 	            return false;
 	        }
 	        $.ajax({	        	
-	            url: 'http://localhost:8081/member/pwChkAjax?member_pw='+ member_pw,	// action	            
-	            type: 'POST', //method     
-	            success: function(data) {   //success : function( 변수명 ) -- return "data"; 호출받아서 실행되는 부분.  function: 액션이 선행되어어야 함.
+	            url: 'http://localhost:8081/member/pwChkAjax?member_pw='+ member_pw,       
+	            type: 'POST', 
+	            success: function(data) { 
 	            	let data_num = Number( data );
 	               	if( data_num >= 1 ){
 						if( pwNone ) {
@@ -40,19 +40,21 @@
 	if( !pw1 || !pw2){      //null 체크
 	    $('#pwCkOk').css('display','none');   
 	    $('#pwCkNo').css('display','none');
+	    $('#pwSubmitBtn').attr('disabled', true);	
 	}
 	else if( pw1 != pw2 ) { //비밀번호 수정이 일치하지 않을 경우
 	   	$('#pwCkNo').css('display','block');
-	    $('#pwCkOk').css('display','none');   		
+	    $('#pwCkOk').css('display','none');   
+	    $('#pwSubmitBtn').attr('disabled', true);		
 	}
 	else if(pw1 == pw2){  //비밀번호 수정이 일치
 	    $('#pwCkNo').css('display','none');
 	    $('#pwCkOk').css('display','block');
-	    $('#pwSubmitBtn').removeAttr('disabled'); //submit 버튼 잠금해제
+	    $('#pwSubmitBtn').removeAttr('disabled', false); //submit 버튼 잠금해제
 	}
  });    
  
- function pwChangeOk(){
+/* function pwChangeOk(){
 	
 	const pw1 = $('#pw1').val();
 	const pw2 = $('#pw2').val();
@@ -62,7 +64,7 @@
 	} else {
 		return false;
 	}
- }
+ }*/
 
  //회원가입 JS
  function memberJoin() {   

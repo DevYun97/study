@@ -156,30 +156,29 @@
     	  const reValue = $("#report_status");
     	  const apValue = $("#appro_status");
     	  if( reValue.val() == 'DR' && $("#position").val() == '대리' ){
-    		  alert('dd 결재');
+    		  alert('결재가 완료되었습니다.');
     		  reValue.val('CR').toString;
     		  apValue.val('CR').toString;
     		} 
     	  else if ( reValue.val() == 'CR' && $("#position").val() == '과장' ){
-    		  alert('cc 결재');
+    		  alert('결재가 완료되었습니다.');
     		  reValue.val('BR').toString;
     		  apValue.val('BR').toString;
     		} 
     	  else if ( reValue.val() == 'BR' && $("#position").val() == '차장' ){
-    		  alert('bb 결재');
+    		  alert('결재가 완료되었습니다.');
     		  reValue.val('AR').toString;
     		  apValue.val('AR').toString;
     		}
     	  else if ( reValue.val() == 'AR' && $("#position").val() == '부장' ){
-    		  alert('aa 결재');
+    		  alert('결재가 완료되었습니다.');
     		  reValue.val('END').toString;
     		  apValue.val('END').toString;
     	  	}
     	  else {
     		  alert('결재를 할 수 없습니다.');
     		  window.close();
-    		  return false;
-    		  
+    		  return false;   		  
     	  }
     	  window.opener.name="parent";
     	  document.approFrm.target = "parent";
@@ -190,8 +189,8 @@
       }
      
       function returnBtn() {
-    	  var reValue = $("#report_status");
-    	  var apValue = $("#appro_status");
+    	  const reValue = $("#report_status");
+    	  const apValue = $("#appro_status");
     	  if( reValue.val() == 'END' ) {
     		  alert('반려 할 수 없는 문서입니다.');
     		  window.close();
@@ -208,4 +207,35 @@
     	  document.approFrm.submit();
     	  window.close();
       }
-	
+
+ function approEndBtn() {
+	const reValue = $("#report_status");
+    const apValue = $("#appro_status");
+    
+    if( reValue.val() == 'CR' && $("#position").val() == '과장' ){
+    	alert('결재가 완료되었습니다.');
+    	reValue.val('END').toString;
+    	apValue.val('END').toString;
+    }
+    else if ( reValue.val() == 'BR' && $("#position").val() == '차장' ){
+    	alert('결재가 완료되었습니다.');
+    	reValue.val('END').toString;
+    	apValue.val('END').toString;
+    }
+    else if ( reValue.val() == 'AR' && $("#position").val() == '부장' ){
+    	alert('결재가 완료되었습니다.');
+    	reValue.val('END').toString;
+    	apValue.val('END').toString;
+    }
+    else {
+    	alert('결재를 할 수 없습니다.');
+    	window.close();
+    	return false;   		  
+    }
+    window.opener.name="parent";
+    document.approFrm.target = "parent";
+    document.approFrm.method = "post";
+    document.approFrm.action = "approAction";
+    document.approFrm.submit();
+    window.close();
+ }

@@ -113,7 +113,6 @@ public class MemberController {
 			@RequestParam ("member_pw") String member_pw,			
 			HttpServletRequest request) {
 		
-		System.out.println(member_id);
 		int result = memService.userPwUpdate(member_id, member_pw);
 		if(result == 1) {
 			request.getSession().invalidate();

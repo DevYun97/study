@@ -77,7 +77,7 @@
       </div>
     </div>
     
-    <!-- 회원카드 -->
+    <!-- 비밀번호 변경 팝업창 -->
     <div class=" container-sm container-fluid position-absolute d-none flex-column bg-white border border-dark-50 rounded p-2 "style="top:50%; left: 50%; transform:translate(-50%, -50%); width: 400px;" id="pwUpdate">
       	<div class="w-100 d-flex flex-row justify-content-end">
         	<i class="bi bi-x-lg" width="30px" height="30px" onclick="popupHideAndShow(target = 'pwUpdate');"></i>
