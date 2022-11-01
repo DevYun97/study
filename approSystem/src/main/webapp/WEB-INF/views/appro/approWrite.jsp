@@ -54,8 +54,7 @@
               <textarea class="form-control TASizsFixed" id="report_content" name="report_content" rows="3">${ report.report_content }</textarea>
             </div>
             
-            <input type="hidden" id="report_status" name="report_status" value="${ report.report_status }" />
-            <input type="file" />         	
+            <input type="hidden" id="report_status" name="report_status" value="${ report.report_status }" />        	
         </form>
         <hr>
         <div>
