@@ -61,11 +61,11 @@
         	<input type="button" class="" value="취소" onclick="location.href='approList'" />
             <c:if test="${ report.report_status != 'RT' }" >
             <input type="button" class="" value="임시저장" onclick="writeBtnA()" />			
-            <input type="button" class="" value="결재" onclick="writeBtnB()" />	
+            <input type="button" class="" value="제출" onclick="writeBtnB()" />	
         	</c:if>
         	<c:if test="${ report.report_status == 'RT' }" >
             <input type="button" class="" value="임시저장" onclick="writeRT()" />			
-            <input type="button" class="" value="결재" onclick="approRT()" />	
+            <input type="button" class="" value="제출" onclick="approRT()" />	
         	</c:if>
         </div>
         <input type="hidden" name="member_position" id="member_position" value="${ position }" />
