@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .alert-box {
+      background-color: rgb(187, 206, 229);
+      margin: 5px 0;
+      padding: 10px;
+      color:white;
+      display: none;
+    }
+
+    .yellow-bg {
+      background-color: yellow;
+    }
+  </style>
+</head>
+<body>
+  <div class="alert-box" id="alert">
+    <p id="text">Alert Box</p>
+    <!-- <button onclick="closeBox()"> X </button> -->
+  </div>
+
+  <!-- <button onclick="openBox('block')">open</button> -->
+
+  <button onclick="openBox('아이디')">openID</button>
+  <button onclick="openBox('비번')">openPW</button>
+
+  <h4 id="code6">Yellow</h4>
+
+  <script>
+
+    //document.getElementById('alert').innerHTML = '안녕';
+    //document.getElementById('alert').style.fontSize = '30px';
+
+    /** 
+    function openBox(){
+      document.getElementById('alert').style.display = 'block';
+    }
+
+    function closeBox(){
+      document.getElementById('alert').style.display = 'none';
+    }
+     */
+    
+    /**
+     function openBox(date){
+      document.getElementById('alert').style.display = date;
+     }
+     */
+
+     function openBox(date){
+     
+      const Alert = document.getElementById('alert');
+      const display = getComputedStyle(Alert).display;
+
+      if( display == 'block' ) {
+        document.getElementById('alert').style.display = 'none';
+        document.getElementById('text').innerHTML = date+' 입력하세요';  
+      } else {
+        document.getElementById('alert').style.display = 'block';
+        document.getElementById('text').innerHTML = date+' 입력하세요';
+      }
+     }
+
+     document.getElementById('code6').classList.add('yellow-bg');
+
+
+
+  </script>
+
+</body>
+</html>
