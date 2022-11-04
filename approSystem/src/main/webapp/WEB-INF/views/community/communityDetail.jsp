@@ -22,7 +22,7 @@
 	<main>
       <c:import url="../navBar.jsp"></c:import>
       
-      <section class="w-100 d-flex flex-column align-items-center" >
+      <section class="d-flex flex-column align-items-center" >
         <div style="width:900px;">
           <div class="communitySection2 container text-center">
             <div class="mb-4">

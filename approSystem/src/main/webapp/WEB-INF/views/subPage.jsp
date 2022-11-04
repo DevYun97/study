@@ -91,7 +91,7 @@
 	          	<input type="password" class="my-1 w-75 bg-white form-control" name="member_pw" id="pw2" placeholder="새 비밀번호 재확인" disabled/>
 	          	<div id="pwCkNo" style="color: red; display: none;" >*비밀번호가 일치하지 않습니다*</div>
 		      	<div id="pwCkOk" style="color: green; display: none;" >*비밀번호가 일치합니다*</div>
-	          	<input type="submit" id="pwSubmitBtn" class="btn btn-primary col-6 mt-3 mb-5" value="확인" disabled />
+	          	<input type="submit" id="pwSubmitBtn" class="col-6 mt-3 mb-5" value="확인" disabled />
         	</form>
       </div>
 	</div>

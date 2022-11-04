@@ -62,7 +62,15 @@
 	</insert>
 	
 	<select id="getNoticeDetail" resultType="com.project.appro.dto.Notice">
-		SELECT * FROM PAS_NOTICE WHERE notice_no = #{ param1 }
+		SELECT 
+			notice_no,
+			notice_name,
+			notice_title,			
+			notice_content,
+			to_char(notice_date, 'YYYY-MM-dd') notice_date,
+			notice_hit,
+			notice_id			
+		FROM PAS_NOTICE WHERE notice_no = #{ param1 }
 	</select>
 	
 	<!-- 공지사항 조회수 -->
