@@ -1,0 +1,76 @@
+*{
+  margin: 0;
+}
+body {
+  overflow: auto;
+}
+
+.modalBg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* background-color: rgb( 0, 0, 0, 0.05 ); */
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+
+.modalWindow{
+  width: 400px;
+  height: auto;
+  border:1px solid rgb(185, 185, 185);
+  border-radius: 10px;
+  text-align: center;
+  background-color: rgb(255, 246, 247);
+}
+
+.modalWindow > h5 {
+  margin: 25px 0 10px;
+  font-size: 25px;
+  font-weight: 400;
+
+}
+
+.modalWindow > p {
+  text-align: left;
+  font-weight: lighter;
+  margin: 0px 20px;
+  padding-top: 5px;
+}
+
+.modalWindow > input {
+  margin: 10px 20px;
+  width: 360px;
+  height: 25px;
+  border: 1px solid rgb(199, 199, 199);
+  border-radius: 5px;
+  background-color: white;
+  
+}
+.modalWindow > button {
+  margin: 10px 0 25px;
+  width: 120px;
+  height: 40px;
+  font-size: 16px;
+  color: white;
+  border: 1px solid rgb(222, 220, 220);
+  border-radius: 20px;
+  background-color: rgb(255, 114, 213);
+}
+
+.textShadow{
+  /* text-shadow : x축 y축 blur color */
+  font-size: 30px;
+  color:rgb(250, 160, 160);
+  text-shadow:
+  -1px 0px 0px #000,
+  1px 0px 0px #000,
+  0px -1px 0px #000,
+  0px 1px 0px #000
+}
+
+.textBlur {
+  text-shadow: 1px -1px 3px rgb(105, 105, 105);
+}

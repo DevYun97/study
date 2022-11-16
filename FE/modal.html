@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="modal.css">
+  <title>모달창</title>
+</head>
+<body>
+  
+<p class="textShadow">Modal CSS AND JS</p>
+
+  <!-- 본문 페이지 -->
+  <div id="mainDiv">
+    <button id="modalOnBtn">ModalOn</button>
+    <p>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit aspernatur asperiores necessitatibus voluptatibus voluptatum perspiciatis consequatur quidem tenetur possimus inventore! Facilis esse culpa tenetur. Veniam placeat quam provident sequi inventore!
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione cumque veritatis illum, aliquid maiores impedit ducimus blanditiis quia in inventore ex deserunt voluptas rem dolore nemo accusantium. Modi, nobis harum?
+    </p>
+  </div>
+
+  <div id="modalBg" class="modalBg">
+    <div class="modalWindow">
+      <h5>modal title</h5>
+      <p>
+        hello Modal !      
+      </p>
+      <input type="text" class="modalInput" />
+      <button id="modalOffBtn">off</button>
+    </div>
+  </div>
+
+  <script>
+    //1. 모달 on/off ok
+    //2. 모달 범위 넘어서 클릭 시 off ok
+    //3. 본문 스크롤 동작 제어
+    //4. 모달 종료 시 모달 창 초기화
+    
+    document.getElementById('modalOnBtn').addEventListener("click", function(){
+      document.getElementById('modalBg').style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+      document.getElementById('mainDiv').classList.add('textBlur');
+    })
+
+    document.getElementById('modalOffBtn').addEventListener("click", function(){
+      document.getElementById('modalBg').style.display = 'none';
+      document.body.style.overflow = 'auto';
+      document.getElementById('mainDiv').style.opacity = 1;
+      document.getElementById('mainDiv').classList.remove('textBlur');
+      const modalInput = document.getElementsByClassName('modalInput');
+        for( var a=0; modalInput.length; a++){
+          modalInput[a].value = "";
+        }
+    })
+    
+
+    const modal = document.getElementById('modalBg');
+    
+    modal.addEventListener("click", e => {
+      const evTarget = e.target;
+      if(evTarget.classList.contains("modalBg")){
+        modal.style.display = 'none';
+        document.getElementById('mainDiv').style.opacity = 1;
+        document.getElementById('mainDiv').classList.remove('textBlur');
+        const modalInput = document.getElementsByClassName('modalInput');
+        for( var a=0; modalInput.length; a++){
+          modalInput[a].value = "";
+        }
+      }
+    })
+
+  </script>
+</body>
+</html>
