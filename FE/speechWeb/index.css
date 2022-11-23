@@ -1,0 +1,82 @@
+body {
+  margin: 0;  
+  background: linear-gradient(rgb(59, 11, 89), rgb(33, 83, 170), rgb(166, 141, 233));
+  height: 100vh;
+  color:white;
+  
+}
+/* 스타일로 안보이게 숨기기 */
+input { 
+  border:none;
+  background-color:rgb(59, 11, 89)
+}
+
+.inputDark{
+  background-color: rgb(37, 20, 55);
+}
+
+
+.noSpeeking {
+  display: none;
+}
+/*  */
+
+.textArea {
+  font-size: 60px;
+  font-style: italic;
+  font-weight: 100;
+  color: rgb(89, 18, 155);
+  text-shadow: 1px -1px 1px rgb(99, 55, 141);
+}
+
+
+/* 모달창 */
+.modal {
+  display: none;
+  border: 1px solid rgb(193, 193, 193);
+  border-radius: 10px;
+  background-color: rgb(255, 255, 255, 0.3);
+  width: 600px;
+  padding: 30px 25px 30px;
+  font-weight: lighter;
+  text-align: center;
+  margin:0 auto;
+}
+
+.modalIcon{
+  font-size: 20px;
+  border: 1px solid;
+  border-radius: 100%;
+  padding: 5px 10px;
+  float: left;
+}
+.modalIcon > i {
+  color: rgb(212, 165, 255);
+}
+
+.modalTitle {
+  font-size: 30px;
+  font-weight: lighter;
+  
+}
+.modal-container{
+  margin-top: 20px ;
+  text-align: left;
+}
+#modal_item02{
+  display: none;
+  font-size: 14px;
+}
+.modalBtn {
+  padding: 10px 0 20px;
+}
+.modalBtn > span  {
+  font-size: 25px;
+  color: rgb(212, 165, 255);
+}
+
+.sum{
+  background-color: rgb(37, 20, 55);
+
+  background-color: rgb(225, 207, 243);
+}
