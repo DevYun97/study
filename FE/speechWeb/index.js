@@ -1,6 +1,6 @@
 
-function modalOn(){
-  document.getElementById("modal").style.display = 'block';
+function menuOn(){
+  document.getElementById("menuModal").style.display = 'block';
 }
 
 function modalItem01(){
@@ -17,18 +17,18 @@ function lightMode(){
   
 }
 
-function speekOnBtn() { // 마이크 사용 허용
-  let speekYN = document.getElementsByClassName('speekYN');  
-  for(let i = 0; i < speekYN.length; i++){
-    speekYN[i].classList.remove(String('noSpeeking'));
-  }
-}
+// function speekOnBtn() { // 마이크 사용 허용
+//   let speekYN = document.getElementsByClassName('speekYN');  
+//   for(let i = 0; i < speekYN.length; i++){
+//     speekYN[i].classList.remove(String('noSpeeking'));
+//   }
+// }
 
-function speekOffBtn() { // 마이크 사용 안함
-  let speekYN = document.getElementsByClassName('speekYN');  
-  for(let i = 0; i < speekYN.length; i++){
-     speekYN[i].classList.add(String('noSpeeking'));
-  }
-}
+// function speekOffBtn() { // 마이크 사용 안함
+//   let speekYN = document.getElementsByClassName('speekYN');  
+//   for(let i = 0; i < speekYN.length; i++){
+//      speekYN[i].classList.add(String('noSpeeking'));
+//   }
+// }
 
 

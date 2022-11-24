@@ -11,20 +11,24 @@
 </head>
 <body>
   <input type="text" id="speech_result" class="t_result" onfocus="speechEventList()" />
-  <div id="nav" class="nav">
-    <span onclick="modalOn()"> <i class="bi bi-envelope"></i> </span>
-    <!-- <span onclick="keyUp()"> <i class="bi bi-key"></i> </span> -->
-    <span onclick="lightMode()"> <i class="bi bi-brightness-low"></i> </span>
-    
-  </div>
   
-  <div id="textArea" class="textArea">
-    s
-  </div>
-  <button type="button" onclick="startSpeechRecognition()">Start Record</button>
-  <button type="button" onclick="stopSpeechRecognition()">Stop Record</button>
+  <div class="iconBox">
+    <div id="nav" class="magic">
+      <i class="bi bi-envelope" onclick="menuOn()"></i>
+    </div>
+    <div id="startSpeechMagic" class="magic">
+      <i class="bi bi-magic" onclick="startSpeechRecognition()"></i>
+    </div>
 
-  <div id="modal" class="modal">
+    <div id="endSpeechMagic" class="magic endMagic">
+      <i class="bi bi-magic" onclick="stopSpeechRecognition()"></i>
+    </div>
+  </div>
+
+  <div id="textArea" class="textArea">  
+  </div>
+
+  <div id="menuModal" class="modal">
     <span class="modalIcon"><i class="bi bi-envelope"></i></span>
     <span class="modalTitle">    
       사이트에 오신 것을 환영합니다.
@@ -32,16 +36,35 @@
     
     <div class="modal-container">
       <div id="modal_item01" class="inner">
-        <small>    
-          첫 방문이신 이용자분께선 먼저 사이트 규칙을 확인하신 후 사이트를 이용해주세요.
-        </small>
-        <p>
-          사이트에 오신 것을 환영합니다 <br>
-          해당 사이트는 음성인식 기능을 기반으로 한 사이트입니다 사이트 이용을 위해 마이크 사용을 허용해주세요!
-          버튼을 누른 후 사이트에게 명령하시면 멋진 일이 일어날거에요
-          사이트 이용 외 ~한 짓은 하지 않으니 안심하셔도 됩니다. ( 능력도 없습니다🥺 ) <br>
-          
-        </p>
+        <div>
+          <p>
+            당신에게는 두 가지 마술봉이 있습니다.
+          </p>
+          <div class="modelItemContainer">
+            <div class="a">
+              <div class="magic">
+                <i class="bi bi-magic"></i>
+              </div>
+              <p>
+                이 흰색 마술봉은 당신의 음성을 전달해주는 마술봉입니다. 
+                명령어를 말씀하시기 전에 마술봉을 클릭 하신 후 말씀해주세요. 
+              </p>
+            </div>
+            <div class="a">
+              <div class="magic endMagic">
+                <i class="bi bi-magic"></i>
+              </div>
+              <p>
+                검은 마술봉은 언제든 당신의 음성 녹음을 끌 수 있는 마술봉입니다.
+                만약 명령어를 모두 말한 후 마이크가 꺼지지 않았다면 이 마술봉을 이용해보세요.
+                <br>
+                <small>
+                  ﹡검은 마술봉을 누르지않아도 시간이 지나면 마이크는 자동으로 꺼집니다.
+                </small>
+              </p>
+            </div>
+          </div>                  
+        </div>
         <div>
           <div><i class="bi bi-exclamation-triangle"></i> <small>사용 전 유의사항 <small> </div>
           <div>
@@ -76,7 +99,11 @@
       <span onclick="modalItem02()" style="float:right;"><i class="bi bi-caret-right"></i></span>
     </div>
   </div>
-  
+
+  <div id="consoleBox" class="modal">
+    
+  </div>
+
   <script type="text/javascript" src="index.js"></script>
   <script type="text/javascript" src="speechJS.js"></script>
   <script type="text/javascript" src="speechEventList.js"></script>

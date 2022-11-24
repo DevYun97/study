@@ -63,6 +63,16 @@ input {
   margin-top: 20px ;
   text-align: left;
 }
+
+.modelItemContainer{
+  display: flex;
+  justify-content: space-around;
+}
+
+.a{
+  width: 250px;
+}
+
 #modal_item02{
   display: none;
   font-size: 14px;
@@ -75,6 +85,44 @@ input {
   color: rgb(212, 165, 255);
 }
 
+.magic {
+  text-align: center;
+  margin: 20px auto 0;
+  width: 50px;
+  height: 50px;
+  border: 1px solid rgb(181, 181, 181);
+  border-radius: 100px;     
+}
+
+.magic  > i {
+  margin: 0;
+  line-height: 50px;
+  font-size: 30px;
+  
+}
+
+.magic > i:active {
+  color:rgb(246, 171, 246);
+}
+
+.endMagic {
+  border:1px solid rgb(255, 255, 255);
+  text-shadow: px 1px -1px white;
+  color:rgb(0, 0, 0);
+  background-color: rgb(255, 255, 255, 0.07);
+  
+}
+
+.endMagic > i:active {
+  color:rgb(132, 161, 255);
+}
+
+
+.iconBox {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
 .sum{
   background-color: rgb(37, 20, 55);
 

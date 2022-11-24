@@ -27,8 +27,11 @@
       padding: 30px 25px 30px;
       font-weight: lighter;
       text-align: center;
+      align-items: center;
       margin:0 auto;
     }
+
+    
   </style>
 </head>
 <body>
@@ -51,25 +54,19 @@
     
     재밌는 이용이 되셨으면 좋겠습니다. <br>
 
-    그럼 이제 사이트의 메인 화면으로 이동해볼까요?
-    <div>
-      하단의 버튼을 클릭한 후 "메인 화면" 혹은 "홈 화면" 을 말하시면 메인 화면으로 이동하실 수 있습니다.
-      <button type="button" onclick="startSpeechRecognition()">Start Record</button>
+    그럼 이제 사이트의 메인 화면으로 이동해볼까요? <br>
+    
+    하단의 버튼을 클릭한 후 "메인 화면" <br> 
+    
+    혹은 <br>
+    
+    "홈 화면" 을 말하시면 메인 화면으로 이동하실 수 있습니다.
+    
+    <div id="startSpeechMagic" class="magic">
+      <i class="bi bi-magic" onclick="startSpeechRecognition()"></i>
     </div>
-    <div>
-      하단의 버튼을 클릭하시면 메인 화면으로 이동하실 수 있습니다.
-      <input type="button" value="home"/>
-    </div>
-
   </div>
-  <div>
-
-  </div>
-  
-
-  
-
-
+ 
   <script type="text/javascript" src="index.js"></script>
   <script type="text/javascript" src="speechJS.js"></script>
   <script type="text/javascript" src="speechEventList.js"></script>
