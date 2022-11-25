@@ -104,28 +104,31 @@
     
   </div>
 
-  <div id="miniGameBox" class="modal test">
-    <p> 네 좋아요! </p>
-    <small>하단의 버튼을 누른 후 "가위", "바위", "보"를 진행해주세요. 게임을 종료하고 싶으시다면 버튼을 누룬 후 "닫기" 명령어를 말하시면 됩니다.</small>
-    
-    <div id="startSpeechMagic" class="magic">
-      <i class="bi bi-magic" onclick="startSpeechRecognition()"></i>
+  <div id ="gameBackground" class="gameBackground">
+    <div id="miniGameBox" class="modal">
+      <p> 네 좋아요! </p>
+      <small>하단의 버튼을 누른 후 "가위", "바위", "보"를 진행해주세요. 게임을 종료하고 싶으시다면 버튼을 누룬 후 "닫기" 명령어를 말하시면 됩니다.</small>
+      
+      <div id="startSpeechMagic" class="magic">
+        <i class="bi bi-controller" onclick="startSpeechRecognition()"></i>
+        <!-- <i class="bi bi-magic" ></i> -->
+      </div>
+  
+      <div id="gameResultBox" class="gameResultBox" style="display: block;">
+        <div>
+          <p id="userGameIcon" class="gameIcon"></p>
+          <p>당신</p>
+        </div>
+        <div id="gameResultSign" class="gameResultSign">
+          
+        </div>
+        <div>
+          <p id="comsGameIcon" class="gameIcon"></p>
+          <p>컴퓨터</p>
+        </div>
+      </div>
+  
     </div>
-
-    <div class="gameResultBox">
-      <div>
-        <p id="userGameIcon" class="gameIcon"></p>
-        <p>당신</p>
-      </div>
-      <div id="gameResultSign" class="gameResultSign">
-        
-      </div>
-      <div>
-        <p id="comsGameIcon" class="gameIcon"></p>
-        <p>컴퓨터</p>
-      </div>
-    </div>
-
   </div>
 
 

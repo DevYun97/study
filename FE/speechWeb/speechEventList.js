@@ -53,18 +53,19 @@ function speechEventList(){
         foodResult = "바니~ 바니~ 바니~ 바니~ 당근! 당근!";
         break;
     }
-    console.log(foodIcon + foodResult);
+
     document.getElementById('consoleBox').style.display = 'block';
     document.getElementById("consoleBox").innerHTML = '<div style="font-size:35px; margin:10px 0;">'+foodIcon+'</div>' + foodResult;
     setTimeout( consoleOut, 5000);
-  
   }
 
   // 가위 바위 보
   let resultArr = [];
 
-  if(text.value == "가위바위보 할래"){
-    document.getElementById('miniGameBox').style.display = 'block';  
+  if(text.value == "가위바위보 할래" || text.value == "가위바위보"){
+    document.getElementById('gameBackground').style.display = 'flex';
+    document.getElementById('miniGameBox').style.display = 'block';   
+    document.getElementById('gameResultBox').style.display = 'none';
   }
 
   if(text.value == "가위" || text.value == "바위" || text.value == "보"){
@@ -114,10 +115,17 @@ function speechEventList(){
       break;
     }
 
+    document.getElementById('gameResultBox').style.display = 'flex';
+
     document.getElementById('userGameIcon').innerHTML = useIcons;
     document.getElementById('gameResultSign').innerHTML = resultArr[0];
     document.getElementById('comsGameIcon').innerHTML = coms;
-    
+
+  }
+
+  if(text.value == '게임종료'){ //미 테스트
+    document.getElementById('gameBackground').style.display = 'none';
+    document.getElementById('miniGameBox').style.display = 'none';
   }
 
   
