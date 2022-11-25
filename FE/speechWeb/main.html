@@ -29,7 +29,7 @@
   </div>
 
   <div id="menuModal" class="modal">
-    <span class="modalIcon"><i class="bi bi-envelope"></i></span>
+    <span class="modalIcon" onclick="menuOff()"><i class="bi bi-envelope"></i></span>
     <span class="modalTitle">    
       사이트에 오신 것을 환영합니다.
     </span>
@@ -70,7 +70,7 @@
           <div>
             <li>크롬과 익스플로 엣지 외 브라우저에선 호환성 문제로 음성인식이 동작하지 않을 수 있습니다.</li>
             <li>마이크 허용 제한 시 사이트 이용에 제한이 따르는 점 양해 부탁드립니다.</li>
-            <li></li>
+            <li>모바일에선 음성인식 작동이 되지 않습니다. PC에서 부탁드립니다. </li>
           </div>    
         </div>
       </div>
@@ -79,16 +79,16 @@
           첫 화면으로 이동하고 싶으시다면 <b>"메인화면"</b> 이나 <b>"홈 화면"</b> 이라고 말해주세요
         </p>
         <p>
-          다크 모드로 변경하고 싶으시다면 <b>"다크 모드"</b> 이나 <b>"어둡게"</b> 라고 말해주세요
+          <b>"지금 몇 시야"</b> 혹은 <b>"시간"</b> 이라고 말하시면 현재 시간을 알려드립니다.
         </p>
         <p>
           라이트 모드로 변경하고 싶으시다면 <b>"라이트 모드"</b> 이나 <b>"밝게"</b> 라고 말해주세요
         </p>
         <p>
-          설명서를 다 읽으셨나요? 그럼 이제 <b>"설명서 내려줘"</b> 이나 <b>"그만 읽을래"</b> 라고 말해주세요
+          모달창을 닫고 싶으시다면 그럼 이제 <b>"닫기"</b>라고 말해보세요.
         </p>
         <p>
-          명령어를 잊으셨다면 설명서를 불러보세요 <b>"설명서"</b> 이나 <b>"00"</b> 라고 말해주세요
+          명령어를 잊으셨다면 설명서를 불러보세요 <b>"설명서"</b> 라고 말해주세요
         </p>
       </div>
       
@@ -103,6 +103,31 @@
   <div id="consoleBox" class="modal">
     
   </div>
+
+  <div id="miniGameBox" class="modal test">
+    <p> 네 좋아요! </p>
+    <small>하단의 버튼을 누른 후 "가위", "바위", "보"를 진행해주세요. 게임을 종료하고 싶으시다면 버튼을 누룬 후 "닫기" 명령어를 말하시면 됩니다.</small>
+    
+    <div id="startSpeechMagic" class="magic">
+      <i class="bi bi-magic" onclick="startSpeechRecognition()"></i>
+    </div>
+
+    <div class="gameResultBox">
+      <div>
+        <p id="userGameIcon" class="gameIcon"></p>
+        <p>당신</p>
+      </div>
+      <div id="gameResultSign" class="gameResultSign">
+        
+      </div>
+      <div>
+        <p id="comsGameIcon" class="gameIcon"></p>
+        <p>컴퓨터</p>
+      </div>
+    </div>
+
+  </div>
+
 
   <script type="text/javascript" src="index.js"></script>
   <script type="text/javascript" src="speechJS.js"></script>
