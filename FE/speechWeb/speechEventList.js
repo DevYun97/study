@@ -123,7 +123,7 @@ function speechEventList(){
 
   }
 
-  if(text.value == '게임종료'){ //미 테스트
+  if(text.value == '게임 종료'){ //미 테스트
     document.getElementById('gameBackground').style.display = 'none';
     document.getElementById('miniGameBox').style.display = 'none';
   }

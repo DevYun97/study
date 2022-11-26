@@ -69,17 +69,19 @@ input {
   justify-content: space-around;
 }
 
-.a{
+.aBox {
   width: 250px;
 }
 
-#modal_item02{
+#modal_item02 {
   display: none;
   font-size: 14px;
 }
+
 .modalBtn {
   padding: 10px 0 20px;
 }
+
 .modalBtn > span  {
   font-size: 25px;
   color: rgb(212, 165, 255);
@@ -147,9 +149,18 @@ input {
   width: 100vw;
   height: 100vh;
 }
-#miniGameBox > p {
-  font-size: 20px;
-  margin: 10px auto;
+
+.miniGameBox{
+  display: none;
+  border: 1px solid rgb(193, 193, 193);
+  border-radius: 10px;
+  background-color: rgb(255, 255, 255, 0.3);
+  width: 600px;
+  padding: 30px 25px 30px;
+  font-weight: lighter;
+  text-align: center;
+  margin:0 auto;
+  font-size: 20px;  
 }
 
 .gameResultBox {

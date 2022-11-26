@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="UTF-8">
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,12 +11,12 @@
   <style>
     *{
       text-align: center;
-      font-size: 16px;
-      font-weight:300;
+      line-height: 40px;
     }
     h1 {
       font-size: 30px;
       padding: 20px 0;
+      font-weight:300;
     }
 
     .container {
@@ -24,11 +24,15 @@
       border-radius: 10px;
       background-color: rgb(255, 255, 255, 0.3);
       width: 600px;
-      padding: 30px 25px 30px;
-      font-weight: lighter;
-      text-align: center;
+      padding: 30px 25px 30px;      
       align-items: center;
       margin:0 auto;
+    }
+
+    .container > p {
+      text-align:left;
+      font-weight: lighter;
+      font-size: 18px;
     }
 
     
@@ -44,23 +48,19 @@
   -->
   <h1>The Marauder's Web</h1>
   <div class="container">
-    환영합니다. 사이트에 방문해주셔서 감사합니다. <br>
-    
-    이곳은 음성 명령을 통해 사이트에서 다양한 이벤트를 확인할 수 있는 사이트 입니다. <br>
-    
-    매뉴얼에서 제공하는 기본 명령어와 <br>
-    
-    숨겨진 명령어들을 통해 사이트에서 다양한 이벤트를 경험해보세요! <br>
-    
-    재밌는 이용이 되셨으면 좋겠습니다. <br>
-
-    그럼 이제 사이트의 메인 화면으로 이동해볼까요? <br>
-    
-    하단의 버튼을 클릭한 후 "메인 화면" <br> 
-    
-    혹은 <br>
-    
-    "홈 화면" 을 말하시면 메인 화면으로 이동하실 수 있습니다.
+    <p>
+      사이트에 방문해주셔서 감사합니다. <br>    
+      이 사이트는 음성 명령을 이용해서 간단한 이벤트를 확인할 수 있는 사이트 입니다.
+    </p>
+    <p>
+      매뉴얼에서 제공하는 기본 명령어와 숨겨진 명령어들을 통해 사이트에서 다양한 이벤트를 경험해보세요! <br>
+      재밌는 이용이 되셨으면 좋겠습니다. <br>
+      그럼 이제 사이트의 메인 화면으로 이동해볼까요? <br>
+    </p>
+    <p>
+      하단의 버튼을 클릭한 후 <br>
+      <b>"메인 화면"</b> 혹은 <b>"홈 화면"</b> 을 말하시면 메인 화면으로 이동하실 수 있습니다.
+    </p>
     
     <div id="startSpeechMagic" class="magic">
       <i class="bi bi-magic" onclick="startSpeechRecognition()"></i>
