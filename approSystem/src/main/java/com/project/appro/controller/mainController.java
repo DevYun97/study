@@ -54,7 +54,7 @@ public class mainController {
 		if( member_id == null ) {
 			return "redirect:login";
 		}
-		
+			
 		if(map.isEmpty()) {
 			map.put("pageNo", 1);
 			map.put("listSize", 3);
