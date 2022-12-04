@@ -62,9 +62,8 @@ public class MemberService {
 			result = "<script>alert('가입 실패'); history.back(-1);</script>";
 		} else {
 			
-			String id = member.getMember_id();
-			
-			result = "<script>alert('신규 사원의 아이디가 발급되었습니다.');location.href='../member/memberList';</script>";
+			String testID = memberDao.getJoinId();			
+			result = "<script>alert('신규 사원의 아이디가 발급되었습니다. 신규발급 된 사원의 아이디는 "+testID+" 입니다.'); location.href='../member/memberList';</script>";
 		}	
 		return result;
 	}

@@ -138,7 +138,9 @@
 		)
 	VALUES 
 		( 
-			'pas_memNum_' || (select nvl(count(member_id),0) from pas_member),
+			<!-- nvl 방식은 자칫 등록삭제에서 error 발생확률이 있다. 
+			'pas_memNum_' || (select nvl(count(member_id),0)+1 from pas_member),-->
+			'pas_memNum_' || pas_member_seq.nextval,			
 			#{member_name}, 
 			#{member_gender}, 
 			#{member_dep}, 
@@ -183,5 +185,11 @@
 	<delete id="memberDelete">
 		DELETE FROM PAS_MEMBER WHERE member_id = #{ param1 }
 	</delete>
+	
+	<select id="getJoinId" resultType="String">		
+		SELECT 
+			MAX(member_id) KEEP (DENSE_RANK LAST ORDER BY member_join) as member_id 
+		FROM pas_member
+	</select>
 
 </mapper>

@@ -34,4 +34,6 @@ public interface ImemberDAO {
 
 	public int memberCount(Map<String, Object> map);
 	
+	public String getJoinId();
+	
 }
