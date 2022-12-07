@@ -19,6 +19,10 @@ repositories {
 	mavenCentral()
 }
 
+// war 배포용 문법 ( 에러방지 )
+bootWar.enabled = false
+war.enabled = true
+
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	compileOnly 'org.projectlombok:lombok'

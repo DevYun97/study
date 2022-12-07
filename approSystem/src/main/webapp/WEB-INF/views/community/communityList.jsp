@@ -45,7 +45,7 @@
 		        	</tr>
 		        </table>
 	        </form>
-            <input type="button" value="글 작성" onclick="location.href='/community/communityWrite'"/>
+            <input type="button" value="글 작성" onclick="location.href='/pas/community/communityWrite'"/>
           </div>
 
           <div class="listSt">
@@ -59,7 +59,7 @@
               	<c:forEach var="community" items="${ community }" varStatus="status" >		 
               	<tr>
                     <td>${ status.count }</td>
-                    <td onclick="location.href='/community/communityDetail?commu_no=${community.commu_no}'">${community.commu_title}</td>
+                    <td onclick="location.href='/pas/community/communityDetail?commu_no=${community.commu_no}'">${community.commu_title}</td>
                     <td>
                     	조회수: ${community.commu_hit}
                     </td>
@@ -110,6 +110,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
     
     <!-- myJS -->
-    <script src="/JS/main.js"></script>
+    <script src="/pas/JS/main.js"></script>
   </body>
 </html>

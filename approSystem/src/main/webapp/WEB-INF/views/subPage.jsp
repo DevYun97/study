@@ -84,7 +84,7 @@
       	</div>
       	<div class="w-100 d-flex flex-column justify-content-center align-items-center">
         	<h6 class="">비밀번호 변경하기</h6>
-        	<form action="member/pwChange" method="get" id="pwChangeFrm" class="d-flex flex-column align-items-center col-12 mt-2" onsubmit="return pwChangeOk();">
+        	<form action="pas/member/pwChange" method="get" id="pwChangeFrm" class="d-flex flex-column align-items-center col-12 mt-2" onsubmit="return pwChangeOk();">
 	          	<input type="hidden" name="member_id" value="${ id }"  /> 
 	          	<input type="password" class="mt-2 mb-1 w-75 form-control" id="checkPw" placeholder="기존 비밀번호를 입력하세요" />
 	          	<input type="password" class="mt-2 mb-1 w-75 bg-white form-control" id="pw1" placeholder="새 비밀번호를 입력하세요" disabled/>

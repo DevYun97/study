@@ -22,8 +22,8 @@
 <!-- 부트아이콘 -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
 <!-- myCSS -->
-<link rel="stylesheet" href="../css/mainCss.css" >
-<link rel="stylesheet" href="../css/test.css" >
+<link rel="stylesheet" href="../pas/css/mainCss.css" >
+<link rel="stylesheet" href="../pas/css/test.css" >
 </head>
 <body>
 	
@@ -75,14 +75,14 @@
                 <i class="bi bi-megaphone"></i>
                 공지사항
               </span>
-              <span class="text-right pointer pl-2 my-2" onclick="location.href='/community/noticeList'">
+              <span class="text-right pointer pl-2 my-2" onclick="location.href='/pas/community/noticeList'">
                 more <i class="bi bi-chevron-right " ></i>
               </span>
             </div>
             <hr>
             <c:forEach var="notice" items="${ notice }" begin="0" end="2" >		 
             <div class="w-100 d-flex justify-content-between align-items-center mt-2 pb-3">
-                <a href="/community/noticeDetail?notice_no=${notice.notice_no}">${notice.notice_title}</a>             
+                <a href="/pas/community/noticeDetail?notice_no=${notice.notice_no}">${notice.notice_title}</a>             
                 <small class="text-right">${notice.notice_date}</small>                        
             </div>          	 
             </c:forEach>
@@ -109,14 +109,14 @@
                 <i class="bi bi-chat-square-dots"></i>
                 커뮤니티
               </span>
-              <span class="text-right pointer pl-2 my-2" onclick="location.href='/community/communityList'">
+              <span class="text-right pointer pl-2 my-2" onclick="location.href='/pas/community/communityList'">
                 more <i class="bi bi-chevron-right " ></i>
               </span>
             </div>
             <hr>
             <c:forEach var="community" items="${ community }" begin="0" end="2" >		 
             <div class="w-100 d-flex justify-content-between align-items-center mt-2 pb-3">
-                <a href="/community/communityDetail?commu_no=${community.commu_no}">${community.commu_title}</a>             
+                <a href="/pas/community/communityDetail?commu_no=${community.commu_no}">${community.commu_title}</a>             
                 <small class="text-right">${community.commu_date}</small>                        
             </div>          	 
             </c:forEach>       
@@ -132,8 +132,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <!-- myJS -->
-    <script src="/JS/main.js"></script>
-    <script src="/JS/memberJS.js"></script>
+    <script src="/pas/JS/main.js"></script>
+    <script src="/pas/JS/memberJS.js"></script>
     <script>
     </script>
   </body>

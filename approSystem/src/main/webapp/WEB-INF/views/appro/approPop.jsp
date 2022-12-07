@@ -49,9 +49,6 @@
 	          <c:if test="${ position != '부장' }">
 	          <input type="button" value="결재" onclick="approBtn()" />
 	          </c:if>
-	          <%-- <c:if test="${ position == '부장' }">
-	          <input type="button" value="최종승인" onclick="approBtn()" />
-	          </c:if> --%>
 	          <c:if test="${ position == '과장' || position == '차장' || position == '부장' }" >
 	          <input type="button" value="최종승인" onclick="approEndBtn()" />
 	          </c:if>
@@ -62,63 +59,6 @@
     <!-- 부트스트랩4 JS 연결 -->
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
-    <script src="/JS/appro.js"></script>
+    <script src="/pas/JS/appro.js"></script>
   </body>
-</html>    
-    
-    <script>     
-      /* function approBtn(){
-    	  const reValue = $("#report_status");
-    	  const apValue = $("#appro_status");
-    	  if( reValue.val() == 'DR' && $("#position").val() == '대리' ){
-    		  alert('dd 결재');
-    		  reValue.val('CR').toString;
-    		  apValue.val('CR').toString;
-    		} 
-    	  else if ( reValue.val() == 'CR' && $("#position").val() == '과장' ){
-    		  alert('cc 결재');
-    		  reValue.val('BR').toString;
-    		  apValue.val('BR').toString;
-    		} 
-    	  else if ( reValue.val() == 'BR' && $("#position").val() == '차장' ){
-    		  alert('bb 결재');
-    		  reValue.val('AR').toString;
-    		  apValue.val('AR').toString;
-    		}
-    	  else if ( reValue.val() == 'AR' && $("#position").val() == '부장' ){
-    		  alert('aa 결재');
-    		  reValue.val('END').toString;
-    		  apValue.val('END').toString;
-    	  	}
-    	  else {
-    		  alert('결재를 할 수 없습니다.');
-    		  window.close();
-    	  }
-    	  window.opener.name="parent";
-    	  document.approFrm.target = "parent";
-    	  document.approFrm.method = "post";
-    	  document.approFrm.action = "approAction";
-    	  document.approFrm.submit();
-    	  window.close();
-      }
-     
-      function returnBtn() {
-    	  var reValue = $("#report_status");
-    	  var apValue = $("#appro_status");
-    	  if( reValue.val() == 'END' ) {
-    		  alert('반려 할 수 없는 문서입니다.');
-    		  window.close();
-    		} 
-    	  else {
-    		  alert('문서 반려');
-    		  reValue.val('RT').toString;
-    		  apValue.val('RT').toString;
-    	  	}
-    	  window.opener.name="parent";
-    	  document.approFrm.target = "parent";
-    	  document.approFrm.method = "post";
-    	  document.approFrm.action = "approAction";
-    	  document.approFrm.submit();
-    	  window.close();
-      } */
-    </script>
+</html> 

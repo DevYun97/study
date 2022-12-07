@@ -33,7 +33,7 @@ public class MemberService {
 			session.setAttribute("name", name);
 			session.setAttribute("position", position);
 			session.setAttribute("dep", dep);
-			result = "<script>location.href='../main';</script>";
+			result = "<script>location.href='../pas/main';</script>";
 		}
 		return result;
 	}

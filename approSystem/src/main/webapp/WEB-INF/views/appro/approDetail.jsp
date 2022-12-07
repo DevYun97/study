@@ -79,7 +79,7 @@
             </c:if>
             <!-- 결재 버튼 report.report_id != id 적용 안됨 -->
             <c:if test="${ report.report_id != id }" >
-            <input type="button" value="결재" onclick="window.open('/appro/approPop?report_no=${report.report_no}', '결재 팝업창', 'width=700, height=450, location=no, status=no, scrollbars=no')">			
+            <input type="button" value="결재" onclick="window.open('/pas/appro/approPop?report_no=${report.report_no}', '결재 팝업창', 'width=700, height=450, location=no, status=no, scrollbars=no')">			
         	</c:if>
         </div>
       </section>
@@ -108,10 +108,10 @@
     <!-- child 팝업창 -->
     <script>
       function openWindow( no ){
-        window.open('/appro/approPop?report_no=${report.report_no}', '결재 팝업창', 'width=700, height=450, location=no, status=no, scrollbars=no')
+        window.open('/pas/appro/approPop?report_no=${report.report_no}', '결재 팝업창', 'width=700, height=450, location=no, status=no, scrollbars=no')
       }
     </script>
     <!-- myJS -->
-    <script src="/JS/main.js"></script>
+    <script src="/pas/JS/main.js"></script>
   </body>
 </html>

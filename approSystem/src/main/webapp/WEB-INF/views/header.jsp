@@ -3,5 +3,5 @@
 
 	<!-- 공용 헤더 -->
     <header class="fixed-top">
-      <span onclick="location.href='../main'">PAS</span>
+      <span onclick="location.href='/pas/main'">PAS</span>
     </header>

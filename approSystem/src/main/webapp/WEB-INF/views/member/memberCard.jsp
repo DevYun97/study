@@ -73,6 +73,6 @@
     <!-- testTool 하단 스크립트 추가 후 replace에 이름 넣어주면 text에디터? 사용 가능 -->
     <script src="https://cdn.ckeditor.com/4.15.1/standard/ckeditor.js"></script>
   	<script>CKEDITOR.replace('appro_content');</script>
-	<script src="/JS/memberJS.js"></script>
+	<script src="/pas/JS/memberJS.js"></script>
 </body>
 </html>

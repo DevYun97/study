@@ -57,9 +57,9 @@
           <!-- 등록 버튼칸 -->
           <div class="text-center">
           	<c:if test="${ notice.notice_id == id || id == 'system' }">
-            <input type="button" class="" value="삭제" onclick="location.href='/community/noticeDeleteAction?notice_no=${ notice.notice_no }'" />
+            <input type="button" class="" value="삭제" onclick="location.href='/pas/community/noticeDeleteAction?notice_no=${ notice.notice_no }'" />
             </c:if>
-            <input type="button" class="" onclick="location.href='/community/noticeList'" value="목록">
+            <input type="button" class="" onclick="location.href='/pas/community/noticeList'" value="목록">
           </div>      
         </div>
       
@@ -71,6 +71,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
     
     <!-- myJS -->
-    <script src="/JS/main.js"></script>
+    <script src="/pas/JS/main.js"></script>
   </body>
 </html>

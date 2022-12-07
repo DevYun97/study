@@ -58,7 +58,7 @@
                 <th>작성일</th>
               </tr>
               <c:forEach var="notice" items="${ notice }" varStatus="status" >		                
-              <tr onclick="location.href='/community/noticeDetail?notice_no=${notice.notice_no}'">
+              <tr onclick="location.href='/pas/community/noticeDetail?notice_no=${notice.notice_no}'">
                 <td>${ status.count }</td>              
                 <td>${ notice.notice_title }</td>
                 <td>${ notice.notice_name }</td>
@@ -109,11 +109,11 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
     
     <!-- myJS -->
-    <script src="/JS/main.js"></script>
+    <script src="/pas/JS/main.js"></script>
     <script>
     	function noticeWrite(){
     		if( ${ position == '부장' || position == '차장' || position == '과장' } ){
-    			location.href='/community/noticeWrite';
+    			location.href='/pas/community/noticeWrite';
     		} 
     		else {
     			alert('공지사항 작성 권한이 없는 아이디입니다.');

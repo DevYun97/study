@@ -72,7 +72,7 @@
 			                <th>입사일</th>
 		              	</tr>
 		              	<c:forEach var="mem" items="${ getMemberList }" varStatus="status" >
-		                <tr onclick="window.open('/member/memberCard?member_id=${ mem.member_id }', '신규 아이디 발급', 'width=700,height=450,location=no,status=no,scrollbars=no')">
+		                <tr onclick="window.open('/pas/member/memberCard?member_id=${ mem.member_id }', '신규 아이디 발급', 'width=700,height=450,location=no,status=no,scrollbars=no')">
 		                    <td> ${ status.count } </td>
 		                    <td> ${ mem.member_id } </td>
 		                    <td> ${ mem.member_name } </td>
@@ -133,8 +133,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
     
     <!-- myJS -->
-    <script src="/JS/main.js"></script>
-    <script src="/JS/memberJS.js"></script>
+    <script src="/pas/JS/main.js"></script>
+    <script src="/pas/JS/memberJS.js"></script>
     <!-- child 팝업창 -->
     <script>
     	function openWindow( no ){   		

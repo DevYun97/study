@@ -80,8 +80,8 @@
   	<script>CKEDITOR.replace('report_content');</script>
    
     <!-- myJS -->
-    <script src="/JS/main.js"></script>
-    <script src="/JS/appro.js"></script>
+    <script src="/pas/JS/main.js"></script>
+    <script src="/pas/JS/appro.js"></script>
 
   </body>
 </html>

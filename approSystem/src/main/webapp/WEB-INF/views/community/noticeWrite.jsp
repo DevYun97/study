@@ -59,7 +59,7 @@
 	          <!-- 등록 버튼칸 -->
 	          <div class="text-center">
 	            <input type="submit" class="" value="등록">
-	            <input type="button" class="" onclick="location.href='/community/noticeList'" value="취소">
+	            <input type="button" class="" onclick="location.href='/pas/community/noticeList'" value="취소">
 	          </div>      
 	      	</form>      
     	</section>
@@ -74,6 +74,6 @@
   	<script>CKEDITOR.replace('notice_content');</script>
     
     <!-- myJS -->
-    <script src="/JS/main.js"></script>
+    <script src="/pas/JS/main.js"></script>
   </body>
 </html>

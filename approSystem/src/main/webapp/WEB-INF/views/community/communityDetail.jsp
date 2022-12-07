@@ -31,13 +31,13 @@
             </div>
             <div class="d-flex justify-content-between align-items-center">
             	<div>
-            		<input type="button" class="font14" onclick="location.href='/community/communityList'" value="목록">
+            		<input type="button" class="font14" onclick="location.href='/pas/community/communityList'" value="목록">
 	            </div>
 	           
 	            <div class="py-0">
 	              <c:if test="${ community.commu_id == id }">
-	              <input type="button" value="수정" onclick="location.href='/community/communityUpdate?commu_no=${ community.commu_no }'" />
-	              <input type="button" value="삭제" onclick="location.href='/community/communityDeleteAction?commu_no=${ community.commu_no }'" />
+	              <input type="button" value="수정" onclick="location.href='/pas/community/communityUpdate?commu_no=${ community.commu_no }'" />
+	              <input type="button" value="삭제" onclick="location.href='/pas/community/communityDeleteAction?commu_no=${ community.commu_no }'" />
 	              </c:if>
 	            </div>
             </div>           
@@ -109,6 +109,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
     
     <!-- myJS -->
-    <script src="/JS/main.js"></script>
+    <script src="/pas/JS/main.js"></script>
   </body>
 </html>

@@ -65,7 +65,7 @@
             <c:if test="${ community.commu_no != null }">
             <input type="submit" class="" value="수정" onclick="comUpdateBtn()" />
             </c:if>
-            <input type="button" class="" onclick="location.href='/community/communityList'" value="취소">
+            <input type="button" class="" onclick="location.href='/pas/community/communityList'" value="취소">
           </div>      
         </form>
       </section>
@@ -80,6 +80,6 @@
   	<script>CKEDITOR.replace('commu_content');</script>
        
     <!-- myJS -->
-    <script src="/JS/main.js"></script>
+    <script src="/pas/JS/main.js"></script>
   </body>
 </html>

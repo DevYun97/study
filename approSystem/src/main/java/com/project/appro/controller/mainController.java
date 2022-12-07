@@ -20,6 +20,7 @@ import com.project.appro.dto.MemberDTO;
 import com.project.appro.service.MemberService;
 
 @Controller
+@RequestMapping
 public class mainController {
 
 	@Autowired
@@ -109,7 +110,7 @@ public class mainController {
 	public String logoutAciton(HttpServletRequest request) {		
 		//세션객체 초기화
 		request.getSession().invalidate();
-		return "<script>alert('로그아웃 되었습니다.'); location.href='/login';</script>";					
+		return "<script>alert('로그아웃 되었습니다.'); location.href='/pas/login';</script>";					
 	}
 	
 	@RequestMapping("list")

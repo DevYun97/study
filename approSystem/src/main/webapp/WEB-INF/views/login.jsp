@@ -11,7 +11,7 @@
 <!-- 부트아이콘 -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
 <!-- myCSS -->
-<link rel="stylesheet" href="../css/mainCss.css" >
+<link rel="stylesheet" href="../pas/css/mainCss.css" >
 </head>
 <body>
  
