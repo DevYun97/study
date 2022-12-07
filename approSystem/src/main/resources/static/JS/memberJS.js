@@ -10,7 +10,7 @@
 	            return false;
 	        }
 	        $.ajax({	        	
-	            url: 'http://localhost:8081/member/pwChkAjax?member_pw='+ member_pw,       
+	            url: 'http://localhost:8089/pas/member/pwChkAjax?member_pw='+ member_pw,       
 	            type: 'POST', 
 	            success: function(data) { 
 	            	let data_num = Number( data );
