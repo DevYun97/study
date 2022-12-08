@@ -66,7 +66,7 @@ public class MemberController {
 	@RequestMapping("memberUpdate")
 	@ResponseBody
 	public String memberUpdate (@ModelAttribute MemberDTO member) {
-		System.out.println(member);
+		
 		String result = memService.memberUpdate(member);
 			
 		return result;
@@ -74,7 +74,7 @@ public class MemberController {
 
 	@RequestMapping("memberDelete")
 	public String memberDelete (@RequestParam("member_id") String member_id ) {
-		System.out.println(member_id);
+		
 		int result = memberDao.memberDelete(member_id);
 		if(result == 0) {
 			return "redirect:memberList";

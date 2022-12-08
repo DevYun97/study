@@ -3,8 +3,7 @@
  $(function(){
 	$('#checkPw').focusout(function(){	        
 		//비밀번호 확인
-	        const member_pw = $('#checkPw').val();
-	        
+	        const member_pw = $('#checkPw').val();        
 	        if(!member_pw){
 	        	alert("비밀번호를 입력해주세요.");
 	            return false;
@@ -15,10 +14,10 @@
 	            success: function(data) { 
 	            	let data_num = Number( data );
 	               	if( data_num >= 1 ){
-						if( pwNone ) {
-							alert('기존비밀번호를 재확인 해 주세요');
-	          				$('#checkPw').val('');
-						}	          			
+						
+						alert('기존비밀번호를 재확인 해 주세요');
+	          			$('#checkPw').val('');
+							          			
 	          		  }else{
 	                   		$('#pw1').removeAttr('disabled');
 	                   		$('#pw2').removeAttr('disabled');
@@ -53,18 +52,6 @@
 	    $('#pwSubmitBtn').removeAttr('disabled', false); //submit 버튼 잠금해제
 	}
  });    
- 
-/* function pwChangeOk(){
-	
-	const pw1 = $('#pw1').val();
-	const pw2 = $('#pw2').val();
-	
-	if(pw1 == pw2){
-		return true;
-	} else {
-		return false;
-	}
- }*/
 
  //회원가입 JS
  function memberJoin() {   

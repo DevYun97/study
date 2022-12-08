@@ -31,7 +31,6 @@
 	            	<div>회원조회</div>
 	        	</div>
           		<article class="d-flex justify-content-between w-100 mt-3"> 
-            		<!-- 검색박스  : 우선 get으로 테스트하고 post 로 변경하기 -->
             		<form action="memberList" method="post" class="form-inline">              
 	              		<input type="hidden" name="pageNo" id="pageNo" value="1" />
         				<input type="hidden" name="listSize" id="listSize" value="9" />
